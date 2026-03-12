@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+data/weather_data.db
+.env
+.DS_Store
+*.log

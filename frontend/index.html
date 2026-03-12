@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Weather Station</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <header class="macro-banner">
+            <div class="macro-block">
+                <span class="macro-label">Relative Pressure</span>
+                <span class="macro-value" id="ui-pressure">-- hPa</span>
+                <span class="macro-label" id="ui-pressure-time">--:--</span>
+            </div>
+            
+            <div class="macro-block right-align">
+                <span class="macro-label">Last Updated: <span id="ui-time">--:--</span></span>
+            </div>
+        </header>
+
+        <section class="pressure-trend-section">
+            <span class="trend-label">72-Hour Pressure Trend</span>
+            <div class="sparkline-container">
+                <canvas id="pressure-sparkline"></canvas>
+            </div>
+        </section>
+
+        <main class="hero-section">
+            <h2 class="zone-title" id="ui-zone-name">Loading...</h2>
+            <div class="hero-temp" id="ui-temp">--&deg;</div>
+            <div class="hero-context">
+                <span>L: <span id="ui-low">--&deg;</span></span>
+                <span class="divider">|</span>
+                <span>H: <span id="ui-high">--&deg;</span></span>
+                <span class="divider">|</span>
+                <span>Hum: <span id="ui-humidity">--%</span></span>
+                <span class="divider">|</span>
+                <span>Dew Point: <span id="ui-dewpoint">--&deg;</span></span>
+            </div>
+            <div id="ui-stale-warning" style="color: var(--accent-orange); font-size: 0.9rem; margin-top: 10px; display: none;">
+                Warning: Sensor data is stale
+            </div>
+        </main>
+
+        <nav class="zone-toggles" id="ui-toggles">
+            </nav>
+
+        <section class="visualizer-section">
+            <div class="chart-container">
+                <canvas id="zone-chart"></canvas>
+            </div>
+        </section>
+
+    </div>
+    
+    <script src="app.js?v=1.1"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+:root {
+    --bg-color: #121212;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0A0;
+    --accent-blue: #4DA8DA;
+    --accent-orange: #E27D60;
+    --panel-bg: #1E1E1E;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.macro-banner {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 10%; 
+    padding-bottom: 15px;
+}
+
+.macro-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-align {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.macro-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.macro-value {
+    font-size: 2.2rem;
+    font-weight: 300;
+}
+
+.macro-sub {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.pressure-trend-section {
+    flex: 0 0 12%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.trend-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.sparkline-container {
+    flex: 1;
+    width: 100%;
+    position: relative; 
+}
+
+.hero-section {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.zone-title {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.hero-temp {
+    font-size: 11rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+@media (max-width: 600px) {
+    .hero-temp {
+        font-size: 6rem;
+    }
+    
+    .macro-value {
+        font-size: 1.5rem;
+    }
+    
+    .hero-context {
+        font-size: 1.1rem;
+    }
+
+    .visualizer-section {
+        flex: 0 0 300px; /* Fixed height on small screens to ensure visibility */
+        margin-bottom: 20px;
+    }
+}
+
+.hero-context {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    font-size: 1.5rem; 
+    font-weight: 500; 
+    color: var(--text-secondary);
+}
+
+.divider {
+    color: #444;
+}
+
+.zone-toggles {
+    flex: 0 0 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.toggle-btn {
+    background-color: var(--panel-bg);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn.active {
+    background-color: var(--text-primary);
+    color: var(--bg-color);
+}
+
+.visualizer-section {
+    flex: 0 0 35%; 
+    min-height: 300px;
+    background-color: var(--panel-bg);
+    border-radius: 16px;
+    padding: 15px 15px 0 15px; /* Removed bottom padding */
+    position: relative;
+    display: flex; /* Added flex to container */
+    flex-direction: column;
+}
+
+.chart-container {
+    position: relative;
+    flex: 1; /* Allow container to grow and fill section */
+    width: 100%;
+}
