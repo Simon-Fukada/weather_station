@@ -1,6 +1,6 @@
 // --- 1. Configuration & State ---
 const API_BASE = '/api'; 
-let currentSensorId = 1; 
+let currentSensorId = parseInt(localStorage.getItem('preferredSensorId')) || 1;
 let pressureChartInstance = null;
 let zoneChartInstance = null;
 
@@ -106,8 +106,9 @@ async function buildToggles() {
                 currentSensorId = sensor.id;
                 
 
-                fetchZoneData(sensor.id, sensor.friendly_name);
+                localStorage.setItem('preferredSensorId', currentSensorId);
 
+                fetchZoneData(sensor.id, sensor.friendly_name);
                 fetchMacroData(); 
             };
 
@@ -115,7 +116,11 @@ async function buildToggles() {
         });
 
         if (sensors.length > 0) {
-            fetchZoneData(sensors[0].id, sensors[0].friendly_name);
+            const defaultSensor = sensors.find(s => s.id === currentSensorId) || sensors[0];
+            
+            currentSensorId = defaultSensor.id; 
+            
+            fetchZoneData(defaultSensor.id, defaultSensor.friendly_name);
         }
     } catch (error) {
         console.error("Failed to build toggles:", error);
