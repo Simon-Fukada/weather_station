@@ -195,6 +195,7 @@ async def get_historical_readings(sensor_id: int, hours: int = 24):
                 "value": dew_point
             })
 
+
     return history_list
 
 # Resolve the path to your new frontend directory

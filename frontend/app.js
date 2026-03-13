@@ -1,6 +1,6 @@
 // --- 1. Configuration & State ---
 const API_BASE = '/api'; 
-let currentSensorId = 1; 
+let currentSensorId = 3; 
 let pressureChartInstance = null;
 let zoneChartInstance = null;
 
@@ -73,7 +73,7 @@ async function fetchZoneData(sensorId, friendlyName) {
 
         const historyRes = await fetch(`${API_BASE}/readings/history/${sensorId}?hours=24`);
         const historyData = await historyRes.json();
-        
+
         drawZoneChart(historyData);
 
     } catch (error) {
