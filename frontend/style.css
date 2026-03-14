@@ -141,11 +141,9 @@ body {
 .visualizer-section {
     flex: 0 0 35%; 
     min-height: 300px;
-    background-color: var(--panel-bg);
-    border-radius: 16px;
-    padding: 15px 15px 0 15px; /* Removed bottom padding */
+    padding: 15px 0 5px 0;
     position: relative;
-    display: flex; /* Added flex to container */
+    display: flex;
     flex-direction: column;
 }
 
@@ -162,7 +160,8 @@ body {
     gap: 15px;
     padding: 20px 0;
     border-top: 1px solid #333;
-    margin-top: 20px;
+    border-bottom: 1px solid #333;
+    margin: 20px 0;
 }
 
 .telemetry-block {

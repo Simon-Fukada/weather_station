@@ -82,7 +82,7 @@ async function fetchZoneData(sensorId, friendlyName) {
         staleWarning.style.color = 'var(--text-secondary)'; // Make it subtle gray instead of orange
         staleWarning.innerText = `Sensor read at: ${formatDateTime(currentData.timestamp)}`;
 
-        const historyRes = await fetch(`${API_BASE}/readings/history/${sensorId}?hours=24`);
+        const historyRes = await fetch(`${API_BASE}/readings/history/${sensorId}?hours=72`);
         const historyData = await historyRes.json();
 
         drawZoneChart(historyData);
@@ -200,6 +200,8 @@ function drawPressureChart(trendArray, averageValue) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            // Task 3: Ensure Margins Match
+            layout: { padding: { left: 0, right: 0, top: 0, bottom: 0 } },
             legend: { display: false },
             tooltips: { enabled: false },
             scales: {
@@ -228,7 +230,25 @@ function drawPressureChart(trendArray, averageValue) {
                         }
                     }
                 }],
-                yAxes: [{ display: false }]  
+                yAxes: [{
+                    display: true,
+                    position: 'left',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Pressure (hPa)',
+                        fontColor: '#A0A0A0'
+                    },
+                    ticks: {
+                        fontColor: '#A0A0A0'
+                    },
+                    gridLines: {
+                        color: '#333333'
+                    },
+                    // Task 2: Update the Bottom Chart
+                    afterFit: function(scaleInstance) {
+                        scaleInstance.width = 75;
+                    }
+                }]  
             },
             // Task 4: Annotate the 72-Hour Pressure Graph
             animation: {
@@ -264,13 +284,11 @@ function drawZoneChart(historyData) {
     });
     
     var tempData = temperatureEntries.map(function(d) { return d.value; });
-    var humData = historyData.filter(function(d) { return d.metric_type === 'humidity_pct'; }).map(function(d) { return d.value; });
     var dewData = historyData.filter(function(d) { return d.metric_type === 'dew_point_c'; }).map(function(d) { return d.value; });
 
-    // Combine Temp and Dew Point data for left-axis scaling
+    // Combine Temp and Dew Point data for axis scaling
     var combinedTempData = tempData.concat(dewData);
     var tempBounds = calculateChartBounds(combinedTempData, 10);
-    var humBounds = calculateChartBounds(humData, 20);
 
     if (zoneChartInstance) zoneChartInstance.destroy();
 
@@ -288,7 +306,6 @@ function drawZoneChart(historyData) {
                     fill: false,
                     lineTension: 0.4,
                     pointRadius: 0,
-                    // Task 1: Dataset line style for legend
                     pointStyle: 'line'
                 },
                 {
@@ -301,19 +318,6 @@ function drawZoneChart(historyData) {
                     fill: false,
                     lineTension: 0.4,
                     pointRadius: 0,
-                    // Task 1: Dataset line style for legend
-                    pointStyle: 'line'
-                },
-                {
-                    label: 'Humidity',
-                    data: humData,
-                    borderColor: '#4DA8DA',
-                    yAxisID: 'yHum',
-                    borderWidth: 2,
-                    fill: false,
-                    lineTension: 0.4,
-                    pointRadius: 0,
-                    // Task 1: Dataset line style for legend
                     pointStyle: 'line'
                 }
             ]
@@ -321,15 +325,15 @@ function drawZoneChart(historyData) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            layout: { padding: { bottom: 0 } },
+            // Task 3: Ensure Margins Match
+            layout: { padding: { left: 0, right: 0, top: 0, bottom: 0 } },
             legend: { 
                 display: true, 
-                position: 'top',
+                position: 'bottom',
                 labels: {
                     fontColor: '#A0A0A0',
                     fontSize: 12,
                     padding: 15,
-                    // Task 1: Use line indicators in legend
                     usePointStyle: true
                 }
             },
@@ -342,7 +346,6 @@ function drawZoneChart(historyData) {
                         if (label) {
                             label += ': ';
                         }
-                        // Task 4: Round all values to 1 decimal place
                         label += parseFloat(tooltipItem.yLabel).toFixed(1);
                         return label;
                     }
@@ -350,36 +353,46 @@ function drawZoneChart(historyData) {
             },
             scales: {
                 xAxes: [{
-                    ticks: { maxTicksLimit: 6, fontColor: '#A0A0A0' },
-                    gridLines: { display: false }
+                    display: true,
+                    position: 'top',
+                    gridLines: {
+                        display: true,
+                        color: '#333333',
+                        drawBorder: false,
+                        zeroLineColor: '#333333'
+                    },
+                    ticks: {
+                        fontColor: '#A0A0A0',
+                        fontSize: 10,
+                        autoSkip: false,
+                        maxRotation: 0,
+                        callback: function(value, index, values) {
+                            var len = values.length;
+                            if (len === 0) return null;
+                            if (index === 0) return '-72h';
+                            if (index === Math.floor(len / 3)) return '-48h';
+                            if (index === Math.floor((len * 2) / 3)) return '-24h';
+                            if (index === len - 1) return 'Now';
+                            return null;
+                        }
+                    }
                 }],
                 yAxes: [
                     {
                         id: 'yTemp',
                         type: 'linear',
                         position: 'left',
-                        scaleLabel: { display: true, labelString: 'Temperature / Dew (°C)', fontColor: '#FFFFFF' },
+                        scaleLabel: { display: true, labelString: 'Temperature / Dew Point (°C)', fontColor: '#FFFFFF' },
                         ticks: { 
                             fontColor: '#FFFFFF',
-                            // Task 3: Apply calculated bounds
                             suggestedMin: tempBounds.suggestedMin,
                             suggestedMax: tempBounds.suggestedMax
                         },
-                        gridLines: { color: '#333' }
-                    },
-                    {
-                        id: 'yHum',
-                        type: 'linear',
-                        position: 'right',
-                        scaleLabel: { display: true, labelString: 'Humidity (%)', fontColor: '#4DA8DA' },
-                        ticks: { 
-                            fontColor: '#4DA8DA',
-                            // Task 3: Apply calculated bounds
-                            suggestedMin: humBounds.suggestedMin,
-                            suggestedMax: humBounds.suggestedMax
-                        },
-                        // Task 2: Disable horizontal grid lines on the right axis
-                        gridLines: { display: false } 
+                        gridLines: { color: '#333' },
+                        // Task 1: Update the Top Chart
+                        afterFit: function(scaleInstance) {
+                            scaleInstance.width = 75;
+                        }
                     }
                 ]
             }
