@@ -32,19 +32,15 @@ body {
 
 .macro-banner {
     display: flex;
-    justify-content: space-between;
-    flex: 0 0 10%; 
+    justify-content: center;
+    flex: 0 0 auto; 
     padding-bottom: 15px;
 }
 
 .macro-block {
     display: flex;
     flex-direction: column;
-}
-
-.right-align {
-    text-align: right;
-    align-items: flex-end;
+    text-align: center;
 }
 
 .macro-label {
@@ -55,32 +51,11 @@ body {
     margin-bottom: 5px;
 }
 
-.macro-value {
-    font-size: 2.2rem;
-    font-weight: 300;
-}
-
-.macro-sub {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-top: 2px;
-}
-
 .pressure-trend-section {
-    flex: 0 0 12%;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid #333;
     padding-bottom: 15px;
-    margin-bottom: 15px;
-}
-
-.trend-label {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
 }
 
 .sparkline-container {
@@ -143,30 +118,24 @@ body {
     color: #444;
 }
 
-.zone-toggles {
-    flex: 0 0 8%;
+.zone-dropdown-container {
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
-.toggle-btn {
+#sensor-dropdown {
     background-color: var(--panel-bg);
-    color: var(--text-secondary);
+    color: var(--text-primary);
     border: none;
-    border-radius: 30px;
+    border-radius: 8px;
     padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.toggle-btn.active {
-    background-color: var(--text-primary);
-    color: var(--bg-color);
+    font-size: 1.1rem;
+    width: 80%;
+    max-width: 400px;
+    appearance: none;
+    text-align: center;
 }
 
 .visualizer-section {
@@ -184,4 +153,40 @@ body {
     position: relative;
     flex: 1; /* Allow container to grow and fill section */
     width: 100%;
+}
+
+.global-telemetry {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+}
+
+.telemetry-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.telemetry-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.telemetry-value {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.telemetry-sub {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 2px;
 }

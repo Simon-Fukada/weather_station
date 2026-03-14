@@ -34,6 +34,17 @@ async function fetchMacroData() {
         const data = await response.json();
 
         document.getElementById('ui-pressure').innerText = `${data.mslp_hpa} hPa`;
+        
+        // Update Wind Data (targeting new DOM IDs)
+        var uiWind = document.getElementById('ui-wind');
+        var uiGust = document.getElementById('ui-gust');
+        
+        // Task 1: Graceful Wind Fallbacks (ES5 / iOS 12 Safe)
+        var windValue = (data.wind_sustained_kmh !== undefined && data.wind_sustained_kmh !== null) ? data.wind_sustained_kmh : '--';
+        var gustValue = (data.wind_gust_kmh !== undefined && data.wind_gust_kmh !== null) ? data.wind_gust_kmh : '--';
+
+        if (uiWind) uiWind.innerText = windValue + " km/h";
+        if (uiGust) uiGust.innerText = gustValue + " km/h";
 
         // Pressure specific timestamp
         var pressureTime = data.pressure_timestamp ? formatDateTime(data.pressure_timestamp) : '--:--';
@@ -81,49 +92,44 @@ async function fetchZoneData(sensorId, friendlyName) {
     }
 }
 
-// --- 5. Dynamic Toggles ---
+// --- 5. Dynamic Dropdown ---
 async function buildToggles() {
     try {
         const response = await fetch(`${API_BASE}/sensors`);
         const sensors = await response.json();
         
-        const toggleContainer = document.getElementById('ui-toggles');
-        toggleContainer.innerHTML = ''; 
+        const dropdown = document.getElementById('sensor-dropdown');
+        dropdown.innerHTML = ''; 
 
-        sensors.forEach(sensor => {
-            const btn = document.createElement('button');
-            btn.className = 'toggle-btn';
-            btn.innerText = sensor.location;
-            
+        sensors.forEach(function(sensor) {
+            const opt = document.createElement('option');
+            opt.value = sensor.id;
+            opt.text = sensor.location;
             if (sensor.id === currentSensorId) {
-                btn.classList.add('active');
+                opt.selected = true;
             }
+            dropdown.appendChild(opt);
+        });
 
-            btn.onclick = () => {
-                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                currentSensorId = sensor.id;
-                
-
-                localStorage.setItem('preferredSensorId', currentSensorId);
-
-                fetchZoneData(sensor.id, sensor.friendly_name);
-                fetchMacroData(); 
-            };
-
-            toggleContainer.appendChild(btn);
+        dropdown.addEventListener('change', function() {
+            currentSensorId = parseInt(this.value);
+            localStorage.setItem('preferredSensorId', currentSensorId);
+            
+            var selectedSensor = sensors.find(function(s) { return s.id === currentSensorId; });
+            if (selectedSensor) {
+                fetchZoneData(selectedSensor.id, selectedSensor.friendly_name);
+                fetchMacroData();
+            }
         });
 
         if (sensors.length > 0) {
-            const defaultSensor = sensors.find(s => s.id === currentSensorId) || sensors[0];
-            
+            const defaultSensor = sensors.find(function(s) { return s.id === currentSensorId; }) || sensors[0];
             currentSensorId = defaultSensor.id; 
-            
+            dropdown.value = currentSensorId;
             fetchZoneData(defaultSensor.id, defaultSensor.friendly_name);
         }
     } catch (error) {
-        console.error("Failed to build toggles:", error);
+        console.error("Failed to build sensor dropdown:", error);
     }
 }
 
@@ -197,7 +203,31 @@ function drawPressureChart(trendArray, averageValue) {
             legend: { display: false },
             tooltips: { enabled: false },
             scales: {
-                xAxes: [{ display: false }],
+                xAxes: [{
+                    display: true,
+                    position: 'top',
+                    gridLines: {
+                        display: true,
+                        color: '#333333', // Subtle gray vertical lines
+                        drawBorder: false,
+                        zeroLineColor: '#333333'
+                    },
+                    ticks: {
+                        fontColor: '#A0A0A0',
+                        fontSize: 10,
+                        autoSkip: false,
+                        maxRotation: 0,
+                        callback: function(value, index, values) {
+                            var len = values.length;
+                            if (len === 0) return null;
+                            if (index === 0) return '-72h';
+                            if (index === Math.floor(len / 3)) return '-48h';
+                            if (index === Math.floor((len * 2) / 3)) return '-24h';
+                            if (index === len - 1) return 'Now';
+                            return null; // Hides the label and gridline for all other points
+                        }
+                    }
+                }],
                 yAxes: [{ display: false }]  
             },
             // Task 4: Annotate the 72-Hour Pressure Graph
@@ -206,14 +236,15 @@ function drawPressureChart(trendArray, averageValue) {
                     var chartInstance = this.chart,
                         ctx = chartInstance.ctx;
                     ctx.font = Chart.helpers.fontString(10, 'normal', 'sans-serif');
-                    ctx.textAlign = 'right';
                     ctx.textBaseline = 'bottom';
-                    ctx.fillStyle = '#4DA8DA';
 
                     var meta = chartInstance.controller.getDatasetMeta(1);
+                    
+                    // Task 2: Reset styles for the mean label (Right Side)
                     var lastPoint = meta.data[meta.data.length - 1];
                     if (lastPoint) {
-                        // Task 2: Update the Average Annotation
+                        ctx.textAlign = 'right';
+                        ctx.fillStyle = '#4DA8DA';
                         ctx.fillText('mean: ' + averageValue + ' hPa', chartInstance.width, lastPoint._model.y - 5);
                     }
                 }
