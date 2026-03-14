@@ -14,22 +14,9 @@
         
         <header class="macro-banner">
             <div class="macro-block">
-                <span class="macro-label">Relative Pressure</span>
-                <span class="macro-value" id="ui-pressure">-- hPa</span>
-                <span class="macro-label" id="ui-pressure-time">--:--</span>
-            </div>
-            
-            <div class="macro-block right-align">
                 <span class="macro-label">Last Updated: <span id="ui-time">--:--</span></span>
             </div>
         </header>
-
-        <section class="pressure-trend-section">
-            <span class="trend-label">72-Hour Pressure Trend</span>
-            <div class="sparkline-container">
-                <canvas id="pressure-sparkline"></canvas>
-            </div>
-        </section>
 
         <main class="hero-section">
             <h2 class="zone-title" id="ui-zone-name">Loading...</h2>
@@ -48,12 +35,35 @@
             </div>
         </main>
 
-        <nav class="zone-toggles" id="ui-toggles">
-            </nav>
+        <nav class="zone-dropdown-container">
+            <select id="sensor-dropdown"></select>
+        </nav>
 
         <section class="visualizer-section">
             <div class="chart-container">
                 <canvas id="zone-chart"></canvas>
+            </div>
+        </section>
+
+        <section class="global-telemetry">
+            <div class="telemetry-block">
+                <span class="telemetry-label">Relative Pressure</span>
+                <span class="telemetry-value" id="ui-pressure">-- hPa</span>
+                <span class="telemetry-sub" id="ui-pressure-time">--:--</span>
+            </div>
+            <div class="telemetry-block">
+                <span class="telemetry-label">Wind Speed</span>
+                <span class="telemetry-value" id="ui-wind">-- km/h</span>
+            </div>
+            <div class="telemetry-block">
+                <span class="telemetry-label">Wind Gusts</span>
+                <span class="telemetry-value" id="ui-gust">-- km/h</span>
+            </div>
+        </section>
+
+        <section class="pressure-trend-section">
+            <div class="sparkline-container">
+                <canvas id="pressure-sparkline"></canvas>
             </div>
         </section>
 
