@@ -4,7 +4,7 @@ import os
 def init_db():
     db_path = 'data/weather_data.db'
     
-    # Ensure data directory exists (just in case)
+    # Ensure data directory exists
     os.makedirs(os.path.dirname(db_path), exist_ok=True)
     
     conn = sqlite3.connect(db_path)
@@ -23,7 +23,7 @@ def init_db():
         )
     ''')
     
-    # Table 2: readings
+    # Table 2: readings (Time-Series Data)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS readings (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,10 +34,27 @@ def init_db():
             FOREIGN KEY (sensor_id) REFERENCES sensors(id)
         )
     ''')
+
+    # Table 3: sensor_health (State Data / Upsert Pattern)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS sensor_health (
+            sensor_id INTEGER PRIMARY KEY,
+            battery_ok INTEGER,
+            last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (sensor_id) REFERENCES sensors(id)
+        )
+    ''')
+
+    # --- PERFORMANCE UPGRADE ---
+    # Create a composite index to massively speed up historical data retrieval
+    cursor.execute('''
+        CREATE INDEX IF NOT EXISTS idx_sensor_metric_time 
+        ON readings (sensor_id, metric_type, timestamp DESC);
+    ''')
     
     conn.commit()
     conn.close()
-    print(f"Database initialized at {db_path}")
+    print(f"Database initialized at {db_path} with performance indexes and health tables.")
 
 if __name__ == "__main__":
     init_db()

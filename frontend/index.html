@@ -30,8 +30,13 @@
                 <span class="divider">|</span>
                 <span>Dew Point: <span id="ui-dewpoint">--&deg;</span></span>
             </div>
-            <div id="ui-stale-warning" style="color: var(--accent-orange); font-size: 0.9rem; margin-top: 10px; display: none;">
-                Warning: Sensor data is stale
+            <div style="margin-top: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <div id="ui-stale-warning" style="color: var(--text-secondary); font-size: 0.9rem; display: none;">
+                    Sensor read at: --:--
+                </div>
+                <div id="ui-battery-warning" style="color: #ff4444; font-size: 0.9rem; font-weight: bold; display: none;">
+                    ⚠️ Low Battery
+                </div>
             </div>
         </main>
 
@@ -69,6 +74,6 @@
 
     </div>
     
-    <script src="app.js?v=1.1"></script>
+    <script src="app.js?v=1.8"></script>
 </body>
 </html>
