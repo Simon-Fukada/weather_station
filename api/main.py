@@ -4,7 +4,7 @@ import sqlite3
 import os
 import math
 from dotenv import load_dotenv
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import sys
 
 # Explicitly add the current 'api' directory to Python's system path
@@ -57,7 +57,7 @@ def calculate_dew_point(temp_c: float, humidity_pct: float) -> float:
     return round(dew_point, 1)
 
 def get_quantized_grid(raw_rows, hours_back=72, interval_minutes=5):
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     end_minute = (now.minute // interval_minutes) * interval_minutes
     end_time = now.replace(minute=end_minute, second=0, microsecond=0)
     start_time = end_time - timedelta(hours=hours_back)
@@ -70,9 +70,10 @@ def get_quantized_grid(raw_rows, hours_back=72, interval_minutes=5):
 
     for row in raw_rows:
         safe_iso_string = row["timestamp"].replace(" ", "T")
-        dt = datetime.fromisoformat(safe_iso_string)
+        dt = datetime.fromisoformat(safe_iso_string).replace(tzinfo=timezone.utc)
         if dt >= start_time:
             snapped_minute = (dt.minute // interval_minutes) * interval_minutes
+            print(snapped_minute)
             snapped_dt = dt.replace(minute=snapped_minute, second=0, microsecond=0)
             
             if snapped_dt > end_time:
@@ -91,7 +92,7 @@ def get_quantized_grid(raw_rows, hours_back=72, interval_minutes=5):
         for metric, values in grid[current_time].items():
             bucket[metric] = sum(values) / len(values) if values else None
         averaged_grid.append(bucket)
-        
+    #print('averaged_grid', averaged_grid)
     return averaged_grid
 
 # --- API Endpoints ---
