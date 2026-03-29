@@ -8,7 +8,6 @@ from datetime import datetime, timedelta, timezone
 import sys
 
 # Explicitly add the current 'api' directory to Python's system path
-# so systemd can find repository.py regardless of where it executes from.
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
 
@@ -20,8 +19,8 @@ app = FastAPI(title="Weather Station API")
 
 # --- Constants ---
 DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'weather_data.db'))
-BAROMETER_MACHINE_ID = os.getenv("BAROMETER_MACHINE_ID")
-WINDSPEED_MACHINE_ID = os.getenv("WINDSPEED_MACHINE_ID")
+
+# Notice how clean this is now! Only the elevation remains.
 ELEVATION_M = float(os.getenv("STATION_ELEVATION", 0))
 
 METRIC_TEMP = 'temperature_c'
@@ -32,7 +31,6 @@ METRIC_WIND = 'wind_kmh'
 
 # --- Database Dependency (With Threading Fix) ---
 def get_db():
-    # Fix applied here: check_same_thread=False prevents FastAPI worker thread jumping from crashing SQLite
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     try:
@@ -73,7 +71,6 @@ def get_quantized_grid(raw_rows, hours_back=72, interval_minutes=5):
         dt = datetime.fromisoformat(safe_iso_string).replace(tzinfo=timezone.utc)
         if dt >= start_time:
             snapped_minute = (dt.minute // interval_minutes) * interval_minutes
-            print(snapped_minute)
             snapped_dt = dt.replace(minute=snapped_minute, second=0, microsecond=0)
             
             if snapped_dt > end_time:
@@ -92,7 +89,6 @@ def get_quantized_grid(raw_rows, hours_back=72, interval_minutes=5):
         for metric, values in grid[current_time].items():
             bucket[metric] = sum(values) / len(values) if values else None
         averaged_grid.append(bucket)
-    #print('averaged_grid', averaged_grid)
     return averaged_grid
 
 # --- API Endpoints ---
@@ -121,9 +117,7 @@ async def get_current_reading(sensor_id: int, conn: sqlite3.Connection = Depends
     data["temp_high_24h"] = round(extremes["high"], 1) if extremes and extremes["high"] else data.get("temperature_c")
     data["temp_low_24h"] = round(extremes["low"], 1) if extremes and extremes["low"] else data.get("temperature_c")
     
-    # --- NEW: Battery Health Integration ---
     health_row = repository.get_sensor_health(conn, sensor_id)
-    # If the sensor has never reported a battery state, default to None
     data["battery_ok"] = health_row["battery_ok"] if health_row else None
     
     return data
@@ -131,22 +125,21 @@ async def get_current_reading(sensor_id: int, conn: sqlite3.Connection = Depends
 @app.get("/api/fixed_sensors")
 async def get_fixed_sensor_data(sensor_id: int = 1, conn: sqlite3.Connection = Depends(get_db)):
     
-    # Delegate all database fetching to the repository
-    pressure_row = repository.get_latest_single_metric(conn, BAROMETER_MACHINE_ID, METRIC_PRESSURE)
+    # 1. Grab the latest global data, ignoring specific sensor IDs
+    pressure_row = repository.get_latest_global_metric(conn, METRIC_PRESSURE)
     current_pressure = pressure_row["value"] if pressure_row else 100.0
     pressure_timestamp = pressure_row["timestamp"] if pressure_row else None
 
+    # We still fetch temperature for the specific UI zone to do the MSLP math correctly
     temp_row = repository.get_latest_single_metric(conn, str(sensor_id), METRIC_TEMP)
     current_temp = temp_row["value"] if temp_row else -9999
             
-    trend_rows = repository.get_historical_trend(conn, BAROMETER_MACHINE_ID, METRIC_PRESSURE, hours_back=72)
-    sustained_wind = repository.get_sustained_wind(conn, WINDSPEED_MACHINE_ID, METRIC_WIND)
-    max_gust = repository.get_max_wind_gust(conn, WINDSPEED_MACHINE_ID, METRIC_WIND)
+    # 2. Grab global trends and wind using the new repository functions
+    trend_rows = repository.get_global_historical_trend(conn, METRIC_PRESSURE, hours_back=72)
+    sustained_wind = repository.get_global_sustained_wind(conn, METRIC_WIND)
+    max_gust = repository.get_global_max_wind_gust(conn, METRIC_WIND)
 
     # Apply business logic
-    if max_gust is not None and sustained_wind is not None and max_gust <= sustained_wind + 2.0:
-        max_gust = None
-
     mslp = calculate_mslp(current_pressure, current_temp, ELEVATION_M)
     averaged_grid = get_quantized_grid(trend_rows, hours_back=72)
     

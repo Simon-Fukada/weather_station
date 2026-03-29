@@ -69,6 +69,7 @@ document.body.innerHTML = `
     <div id="ui-low"></div>
     <div id="ui-humidity"></div>
     <div id="ui-dewpoint"></div>
+    <div id="sensor-read-time" style="display: none;"></div>
     <div id="ui-stale-warning" style="display: none;"></div>
     <div id="ui-battery-warning" style="display: none;"></div>
     <canvas id="zone-chart"></canvas>

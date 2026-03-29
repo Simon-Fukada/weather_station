@@ -6,18 +6,11 @@ import time
 from typing import Callable, Optional, Dict, Tuple
 from dotenv import load_dotenv
 
-# Explicitly load the .env file
+# Explicitly load the .env file (Now only used for STATION_ELEVATION, 
+# but good practice to keep the loader intact for future system variables)
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'weather_data.db'))
-
-# Dynamically load the hardware mapping
-try:
-    raw_map = json.loads(os.getenv("SDR_SENSOR_MAP", "{}"))
-    SENSOR_MAP = {int(k): v for k, v in raw_map.items()}
-except json.JSONDecodeError:
-    print("CRITICAL ERROR: SDR_SENSOR_MAP in .env is not valid JSON. Defaulting to empty map.")
-    SENSOR_MAP = {}
 
 class WeatherDatabase:
     """Manages a persistent connection to the SQLite database."""
@@ -26,6 +19,17 @@ class WeatherDatabase:
         # Enable Write-Ahead Logging for better concurrency and write performance
         self.conn.execute("PRAGMA journal_mode=WAL;")
         
+    def get_sensor_map(self) -> Dict[str, int]:
+        """
+        Dynamically builds the sensor map from the database.
+        Returns a dictionary mapping the Physical ID (machine_name) to the Database ID.
+        Example: {'12345': 2, 'bme280_local': 1}
+        """
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT id, machine_name FROM sensors")
+        # We enforce str() on the machine_name to ensure safe matching later
+        return {str(row["machine_name"]): row["id"] for row in cursor.fetchall()}
+
     def insert(self, sensor_id: int, metric_type: str, value: float, timestamp: str):
         """Inserts a single time-series metric into the database."""
         cursor = self.conn.cursor()
@@ -88,6 +92,13 @@ def run_sdr_listener():
     print("Starting RTL-SDR Listener...")
     
     db = WeatherDatabase(DB_PATH)
+    # We must explicitly set row_factory to sqlite3.Row so get_sensor_map can use string keys
+    db.conn.row_factory = sqlite3.Row 
+    
+    # 1. Load the map ONCE into RAM at boot
+    sensor_map = db.get_sensor_map()
+    print(f"Loaded Sensor Map from Database: {sensor_map}")
+    
     limiter = RateLimiter(interval_seconds=300)
     
     with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, universal_newlines=True) as process:
@@ -99,18 +110,24 @@ def run_sdr_listener():
                     
                 try:
                     data = json.loads(line)
-                    sensor_hardware_id = data.get("id")
                     
-                    if sensor_hardware_id not in SENSOR_MAP:
+                    # 2. Safely extract the physical ID and cast it to a string
+                    raw_id = data.get("id")
+                    if raw_id is None:
                         continue
                         
-                    db_sensor_id = SENSOR_MAP[sensor_hardware_id]
+                    sensor_hardware_id = str(raw_id)
+                    
+                    # 3. Check our RAM cache to see if we care about this sensor
+                    if sensor_hardware_id not in sensor_map:
+                        continue
+                        
+                    db_sensor_id = sensor_map[sensor_hardware_id]
                     timestamp = data.get("time")
                     
-                    # --- NEW: Battery Upsert Logic ---
+                    # --- Battery Upsert Logic ---
                     if "battery_ok" in data:
                         battery_status = int(data["battery_ok"])
-                        # Using the rate limiter to protect the SD card from excessive writes
                         if limiter.should_save(db_sensor_id, "battery_state"):
                             db.update_health(db_sensor_id, battery_status, timestamp)
                             status_text = "OK" if battery_status == 1 else "LOW"

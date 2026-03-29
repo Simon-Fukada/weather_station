@@ -128,10 +128,10 @@ async function updateSelectedSensorData(sensorId, friendlyName) {
         document.getElementById('ui-humidity').innerHTML = safeFallback(currentData.humidity_pct, '%');
         document.getElementById('ui-dewpoint').innerHTML = safeFallback(currentData.dew_point_c, '&deg;');
 
-        const staleWarning = document.getElementById('ui-stale-warning');
-        staleWarning.style.display = 'block';
-        staleWarning.style.color = 'var(--text-secondary)'; 
-        staleWarning.innerText = `Sensor read at: ${formatDateTime(currentData.timestamp)}`;
+        const sensorReadTime = document.getElementById('sensor-read-time');
+        sensorReadTime.style.display = 'block';
+        sensorReadTime.style.color = 'var(--text-secondary)'; 
+        sensorReadTime.innerText = `Sensor read at: ${formatDateTime(currentData.timestamp)}`;
 
         // Battery Warning Toggle
         const batteryWarning = document.getElementById('ui-battery-warning');
@@ -215,14 +215,22 @@ function drawPressureChart(trendArray, averageValue) {
         data: {
             labels: labels,
             datasets: [
-                { label: 'Trend', data: trendValues, borderColor: '#A0A0A0', borderWidth: 2, fill: false, lineTension: 0.4, pointRadius: 0 },
-                { label: 'Average', data: averageLineData, borderColor: '#4DA8DA', borderWidth: 1, borderDash: [5, 5], fill: false, pointRadius: 0 }
+                { label: 'Pressure (hPa)', data: trendValues, borderColor: '#A0A0A0', borderWidth: 2, fill: false, lineTension: 0.4, pointRadius: 0 },
+                { label: 'Average (hPa)', data: averageLineData, borderColor: '#4DA8DA', borderWidth: 1, borderDash: [5, 5], fill: false, pointRadius: 0 }
             ]
         },
         options: {
             responsive: true, maintainAspectRatio: false,
             layout: { padding: { left: 0, right: 0, top: 0, bottom: 0 } },
-            legend: { display: false }, tooltips: { enabled: false },
+            legend: { display: false },
+            tooltips: {
+                mode: 'index', intersect: false,
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        return (data.datasets[tooltipItem.datasetIndex].label || '') + ': ' + parseFloat(tooltipItem.yLabel).toFixed(1);
+                    }
+                }
+            },
             scales: {
                 xAxes: getSharedXAxis(), 
                 yAxes: [{
