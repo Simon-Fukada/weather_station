@@ -24,14 +24,19 @@ def get_global_historical_trend(conn: sqlite3.Connection, metric_type: str, hour
 
 def get_global_sustained_wind(conn: sqlite3.Connection, metric_type: str): 
     cursor = conn.cursor()
+    
+    # The inner query now strictly bounds the search to the last 20 minutes
+    # BEFORE taking the limit of 3.
     cursor.execute("""
         SELECT AVG(value) as sustained_wind 
         FROM (
             SELECT value FROM readings 
             WHERE metric_type = ? 
+            AND timestamp >= datetime('now', '-20 minutes')
             ORDER BY timestamp DESC LIMIT 3
         )
     """, (metric_type,))
+    
     row = cursor.fetchone()
     return round(row["sustained_wind"], 1) if row and row["sustained_wind"] is not None else None
 

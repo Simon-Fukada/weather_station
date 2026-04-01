@@ -213,3 +213,36 @@ def test_sql_injection_prevention(db_connection):
     row_count = cursor.fetchone()["count"]
     
     assert row_count == 2
+
+def test_get_global_sustained_wind_ignores_stale_data(db_connection):
+    cursor = db_connection.cursor()
+    
+    # 0. Create a dummy sensor first so the database is happy
+    cursor.execute("""
+        INSERT INTO sensors (machine_name, friendly_name, location) 
+        VALUES ('test_wind_sensor', 'Test Anemometer', 'Roof')
+    """)
+    sensor_id = cursor.lastrowid # Grab the ID of the sensor we just created
+    
+    # 1. Insert two readings from 3 weeks ago, tied to our dummy sensor
+    cursor.execute("""
+        INSERT INTO readings (sensor_id, metric_type, value, timestamp) 
+        VALUES 
+        (?, 'wind_speed', 50.0, datetime('now', '-21 days')),
+        (?, 'wind_speed', 50.0, datetime('now', '-21 days'))
+    """, (sensor_id, sensor_id))
+    
+    # 2. Insert one reading from 5 minutes ago, tied to our dummy sensor
+    cursor.execute("""
+        INSERT INTO readings (sensor_id, metric_type, value, timestamp) 
+        VALUES (?, 'wind_speed', 10.0, datetime('now', '-5 minutes'))
+    """, (sensor_id,))
+    
+    db_connection.commit()
+    
+    # 3. Execute the function
+    # (Assuming you need to import get_global_sustained_wind at the top of your test file)
+    result = repository.get_global_sustained_wind(db_connection, 'wind_speed')
+    
+    # 4. The Assertion
+    assert result == 10.0
