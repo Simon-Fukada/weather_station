@@ -71,6 +71,24 @@ graph TD
 - BME280 I2C Barometric Pressure Sensor
 
 These instructions assume you are deploying this on a fresh Raspberry Pi.
+### Hardware Wiring (BME280)
+If you are incorporating the hardwired BME280 sensor, you must connect it to the Raspberry Pi's specific I2C pins. 
+
+*Note: The below connection guide is for reference only and may be incorrect or vary depending on your specific hardware. Please double-check all connections before applying power to your Raspberry Pi.*
+
+Connection Guide:
+| BME280 Pin | Raspberry Pi Physical Pin | Function |
+| :--- | :--- | :--- |
+| **VIN / VCC** | Pin 1 (3.3V Power) | Supplies power to the sensor |
+| **GND** | Pin 6 (Ground) | Completes the electrical circuit |
+| **SDA** | Pin 3 (GPIO 2) | I2C Serial Data (carries the temperature readings) |
+| **SCL** | Pin 5 (GPIO 3) | I2C Serial Clock (keeps the devices synchronized) |
+
+**Enable I2C on the Raspberry Pi:**
+By default, the I2C hardware interface is turned off on a fresh Raspberry Pi. To enable it, run the configuration tool in your terminal:
+`sudo raspi-config`
+Navigate to **Interface Options** -> **I2C** -> Select **Yes** to enable. You will need to reboot the Pi for this to take effect.
+
 
 ### 1. System Dependencies
 
