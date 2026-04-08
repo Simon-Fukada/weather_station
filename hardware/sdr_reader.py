@@ -83,12 +83,19 @@ METRIC_DISPATCH = {
     "wind_avg_mi_h": ("wind_kmh", lambda mph: round(mph * 1.60934, 1), "km/h (converted)"),
     "wind_max_km_h": ("wind_gust_kmh", None, "km/h"),
     "wind_max_mi_h": ("wind_gust_kmh", lambda mph: round(mph * 1.60934, 1), "km/h (converted)"),
+
+    # --- New Signal Quality Metrics ---
+    "rssi":          ("rssi_dbm", None, " dBm"),
+    "snr":           ("snr_db", None, " dB"),
+    "noise":         ("noise_dbm", None, " dBm"),
 }
 
 def run_sdr_listener():
     """Spawns the rtl_433 C-program and processes its JSON output."""
     
-    command = ['rtl_433', '-F', 'json', '-M', 'utc', '-M', 'metric']
+    command = ['rtl_433', '-F', 'json', '-M', 'utc', '-M', 'metric', '-M', 'level']
+
+
     print("Starting RTL-SDR Listener...")
     
     db = WeatherDatabase(DB_PATH)

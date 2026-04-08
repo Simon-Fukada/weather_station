@@ -73,6 +73,15 @@ document.body.innerHTML = `
     <div id="ui-stale-warning" style="display: none;"></div>
     <div id="ui-battery-warning" style="display: none;"></div>
     <canvas id="zone-chart"></canvas>
+
+    <div id="ui-humidity"></div>
+    <div id="ui-dewpoint"></div>
+    
+    <div id="ui-rssi"></div><div id="ui-rssi-trend"></div>
+    <div id="ui-noise"></div><div id="ui-noise-trend"></div>
+    <div id="ui-snr"></div><div id="ui-snr-trend"></div>
+    
+    <div id="sensor-read-time" style="display: none;"></div>
     
     <select id="sensor-dropdown"></select>
 `;
@@ -196,6 +205,49 @@ describe('Weather Station Frontend (app.js)', () => {
 
             const batteryWarning = document.getElementById('ui-battery-warning');
             expect(batteryWarning.style.display).toBe('none');
+        });
+
+        test('updateSelectedSensorData applies 3-tier SNR color coding correctly', async () => {
+            // Helper to dry up the test
+            const runColorTest = async (snrValue, expectedColor) => {
+                fetch
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({ snr_db: snrValue, rssi_dbm: -50, noise_dbm: -80 }) })
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+                
+                await updateSelectedSensorData(1, 'Radio Sensor');
+                return document.getElementById('ui-snr').style.color;
+            };
+
+            // Test Red (< 10)
+            expect(await runColorTest(5.0, '#ff4444')).toBe('rgb(255, 68, 68)'); // jsdom converts hex to rgb
+
+            // Test Yellow (10 to 19.9)
+            expect(await runColorTest(15.0, '#ffbb33')).toBe('rgb(255, 187, 51)');
+
+            // Test Green (>= 20)
+            expect(await runColorTest(25.0, '#00c851')).toBe('rgb(0, 200, 81)');
+        });
+
+        test('updateSelectedSensorData clears RF UI if radio data is missing', async () => {
+            // Mock a sensor payload that lacks any radio metrics (e.g., hardwired I2C sensor)
+            const wiredSensorMock = {
+                temperature_c: 20.0,
+                humidity_pct: 50.0
+            };
+
+            fetch
+                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue(wiredSensorMock) })
+                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+
+            await updateSelectedSensorData(1, 'Wired Pi Sensor');
+
+            // Verify the UI elements gracefully revert to the default empty state
+            expect(document.getElementById('ui-rssi').innerText).toBe('--');
+            expect(document.getElementById('ui-rssi-trend').innerText).toBe('');
+            
+            const snrEl = document.getElementById('ui-snr');
+            expect(snrEl.innerText).toBe('--');
+            expect(snrEl.style.color).toBe('inherit'); // Ensures a previous green/red state is wiped
         });
     });
 });

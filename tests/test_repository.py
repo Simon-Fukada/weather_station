@@ -147,6 +147,40 @@ def test_get_sensor_health_not_found(db_connection):
     health = repository.get_sensor_health(db_connection, 999)
     assert health is None
 
+def test_get_rf_trend_data(db_connection):
+    cursor = db_connection.cursor()
+    now = datetime.now(timezone.utc)
+    
+    # 1. Define the timestamps for the "Current" window (0 to 3 hours ago)
+    one_hour_ago = (now - timedelta(hours=1)).strftime('%Y-%m-%d %H:%M:%S')
+    two_hours_ago = (now - timedelta(hours=2)).strftime('%Y-%m-%d %H:%M:%S')
+    
+    # 2. Define the timestamps for the "Past" window (3 to 6 hours ago)
+    four_hours_ago = (now - timedelta(hours=4)).strftime('%Y-%m-%d %H:%M:%S')
+    five_hours_ago = (now - timedelta(hours=5)).strftime('%Y-%m-%d %H:%M:%S')
+    
+    # 3. Insert mock data for the Current window (Average should be 15.0)
+    cursor.execute("INSERT INTO readings (sensor_id, metric_type, value, timestamp) VALUES (1, 'snr_db', 20.0, ?)", (one_hour_ago,))
+    cursor.execute("INSERT INTO readings (sensor_id, metric_type, value, timestamp) VALUES (1, 'snr_db', 10.0, ?)", (two_hours_ago,))
+    
+    # 4. Insert mock data for the Past window (Average should be 30.0)
+    cursor.execute("INSERT INTO readings (sensor_id, metric_type, value, timestamp) VALUES (1, 'snr_db', 25.0, ?)", (four_hours_ago,))
+    cursor.execute("INSERT INTO readings (sensor_id, metric_type, value, timestamp) VALUES (1, 'snr_db', 35.0, ?)", (five_hours_ago,))
+    
+    # 5. Insert an edge case: Data older than 6 hours (Should be ignored by the query)
+    seven_hours_ago = (now - timedelta(hours=7)).strftime('%Y-%m-%d %H:%M:%S')
+    cursor.execute("INSERT INTO readings (sensor_id, metric_type, value, timestamp) VALUES (1, 'snr_db', 99.0, ?)", (seven_hours_ago,))
+    
+    db_connection.commit()
+
+    # 6. Execute the function
+    results = repository.get_rf_trend_data(db_connection, 1)
+    
+    # 7. Assertions
+    assert "snr_db" in results
+    assert results["snr_db"]["current"] == 15.0
+    assert results["snr_db"]["past"] == 30.0
+
 # --- Empty State Tests ---
 
 def test_get_all_sensors_empty():
@@ -191,6 +225,13 @@ def test_get_global_max_wind_gust_no_data(db_connection):
 def test_get_multi_metric_history_no_data(db_connection):
     history = repository.get_multi_metric_history(db_connection, 999, 1)
     assert history == []
+
+def test_get_rf_trend_data_no_data(db_connection):
+    # Query a sensor ID that has no corresponding radio data
+    results = repository.get_rf_trend_data(db_connection, 999)
+    
+    # The function should return an empty dictionary, not a NoneType or an error
+    assert results == {}
 
 # --- Security Tests ---
 
@@ -246,3 +287,4 @@ def test_get_global_sustained_wind_ignores_stale_data(db_connection):
     
     # 4. The Assertion
     assert result == 10.0
+

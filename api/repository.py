@@ -108,3 +108,29 @@ def get_sensor_health(conn: sqlite3.Connection, sensor_id: int):
         WHERE sensor_id = ?
     """, (sensor_id,))
     return cursor.fetchone()
+
+def get_rf_trend_data(conn: sqlite3.Connection, sensor_id: int): 
+    """Calculates the current 3-hour average and the previous 3-hour baseline."""
+    cursor = conn.cursor()
+    
+    # We use a clever SQL trick with CASE to get both averages in one single pass
+    cursor.execute("""
+        SELECT 
+            metric_type, 
+            AVG(CASE WHEN timestamp >= datetime('now', '-3 hours') THEN value END) as current_avg,
+            AVG(CASE WHEN timestamp >= datetime('now', '-6 hours') AND timestamp < datetime('now', '-3 hours') THEN value END) as past_avg
+        FROM readings
+        WHERE sensor_id = ? 
+        AND metric_type IN ('rssi_dbm', 'noise_dbm', 'snr_db')
+        AND timestamp >= datetime('now', '-6 hours')
+        GROUP BY metric_type
+    """, (sensor_id,))
+    
+    # Returns: {'rssi_dbm': {'current': -65.2, 'past': -64.8}, ...}
+    results = {}
+    for row in cursor.fetchall():
+        results[row["metric_type"]] = {
+            "current": row["current_avg"],
+            "past": row["past_avg"]
+        }
+    return results

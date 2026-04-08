@@ -91,6 +91,42 @@ def test_get_current_reading_not_found(mock_readings):
     assert response.status_code == 404
     assert response.json()["detail"] == "No readings found."
 
+@patch("repository.get_latest_sensor_readings")
+@patch("repository.get_24h_extremes")
+@patch("repository.get_sensor_health")
+@patch("repository.get_rf_trend_data")
+def test_get_current_reading_rf_trends(mock_rf_trends, mock_health, mock_extremes, mock_readings):
+    # Mock the live radio readings
+    mock_readings.return_value = [
+        {"metric_type": "temperature_c", "value": 22.5, "timestamp": "2026-03-19 12:00:00"},
+        {"metric_type": "rssi_dbm", "value": -60.0, "timestamp": "2026-03-19 12:00:00"},
+        {"metric_type": "noise_dbm", "value": -90.0, "timestamp": "2026-03-19 12:00:00"},
+        {"metric_type": "snr_db", "value": 30.0, "timestamp": "2026-03-19 12:00:00"}
+    ]
+    mock_extremes.return_value = {"high": 25.0, "low": 18.0}
+    mock_health.return_value = {"battery_ok": 1}
+    
+    # Mock the historical averages to test the directional arrows
+    mock_rf_trends.return_value = {
+        "rssi_dbm": {"current": -60.0, "past": -65.0}, # Signal improved (+5.0) -> Expect ⬆️
+        "noise_dbm": {"current": -90.0, "past": -88.0}, # Noise dropped (-2.0) -> Expect ⬇️
+        "snr_db": {"current": 30.0, "past": 30.0}       # No change (0.0) -> Expect ➖
+    }
+
+    response = client.get("/api/readings/current/1")
+    assert response.status_code == 200
+    
+    data = response.json()
+    
+    # Assert the raw values were passed through
+    assert data["rssi_dbm"] == -60.0
+    assert data["snr_db"] == 30.0
+    
+    # Assert the mathematical trend logic worked correctly
+    assert data["rssi_trend"] == "⬆️"
+    assert data["noise_trend"] == "⬇️"
+    assert data["snr_trend"] == "➖"
+
 # --- UPDATED: Testing the Global Data Fetching ---
 @patch("repository.get_latest_single_metric") # Still needed for local temperature MSLP math
 @patch("repository.get_latest_global_metric")

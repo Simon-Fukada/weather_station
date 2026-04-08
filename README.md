@@ -2,7 +2,7 @@
 
 Thanks for checking out my project! I should emphasize this is a hobby project to track weather data from your own weather sensors. As such, please use the code at your own risk as there is no guarantee the code is stable or reliable. With that said, I have attempted to design the most robust and clean architecture possible. It has been a wonderful learning experience in many ways! 
 
-Essentially, this is a self-hosted weather dashboard powered by a Raspberry Pi. The Pi acts as both your database and web server, logging sensor readings every 5 minutes to SQLite and serving the UI across your local network. You can access it from any browser in your network. I specifically engineered the frontend to be compatible with iOS 12 so I could repurpose an old iPad as a dedicated display. But by no means do you need an old iPad to view the application; it should work on any modern device as well. I have attempted to design the database so that you can dynamically add as many sensors as you would like. Although, the displayed metrics are currently limited to Temperature, Humidity, Dew Point, Pressure, and Wind Speed. 
+Essentially, this is a self-hosted weather dashboard powered by a Raspberry Pi. The Pi acts as both your database and web server, logging sensor readings every 5 minutes to SQLite and serving the UI across your local network. You can access it from any browser in your network. I specifically engineered the frontend to be compatible with iOS 12 so I could repurpose an old iPad as a dedicated display. But by no means do you need an old iPad to view the application; it should work on any modern device as well. I have attempted to design the database so that you can dynamically add as many sensors as you would like. Currently, the dashboard tracks standard meteorological metrics (Temperature, Humidity, Dew Point, Pressure, and Wind Speed), alongside a small Radio Frequency dashboard to keep an eye on your wireless connection health.
 
 <img src="images/Dashboard_image.png" alt="Desktop Dashboard Display" width="400">
 
@@ -59,6 +59,22 @@ graph TD
 4. Client Presentation (The UI)
 
     Located in the /frontend directory, the UI is driven entirely by vanilla JavaScript in app.js. If you want to understand how the dashboard updates, open app.js and scroll to the bottom. You will find the initialization functions (updateFixedSensorData() and initializeSensorDropdown()) and a setInterval() heartbeat that refreshes the data. From there, you can trace the API calls backward to the backend.
+
+### Radio Frequency (RF) Signal Health
+
+Because 433MHz wireless sensors are subject to environmental interference, battery degradation, and cross-polarization, the dashboard includes an RF monitoring layer. 
+
+The UI displays the three raw RF metrics calculated by the rtl_433 software: RSSI, Noise, and SNR. To make the Signal-to-Noise Ratio (SNR) easier to interpret at a glance, the values are colour-coded:
+
+* **Green (SNR > 20 dB):** 
+* **Yellow (SNR 10 - 20 dB):** 
+* **Red (SNR < 10 dB):** 
+
+
+**Signal Strength Trend:**
+Additionally, trend arrows (`⬆️` / `⬇️` / `➖`) have been added to track signal health for the RSSI, Noise, and SNR. The logic looks at the past 6 hours of data. It takes the average value of the most recent 3 hours and compares it against the previous 3 hours. 
+
+If the average decreases, a down arrow `⬇️` is displayed; if it increases, an up arrow `⬆️` is displayed. If there is no change, or if radio signal strength is not relevant to the current sensor, a neutral dash (`➖`) is displayed.
 
 ## Setup & Installation Guide
 ### 🛠️ Bill of Materials (BOM)

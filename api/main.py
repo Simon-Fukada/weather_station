@@ -120,6 +120,31 @@ async def get_current_reading(sensor_id: int, conn: sqlite3.Connection = Depends
     health_row = repository.get_sensor_health(conn, sensor_id)
     data["battery_ok"] = health_row["battery_ok"] if health_row else None
     
+    # NEW: Fetch the historical trend baselines
+    rf_trends = repository.get_rf_trend_data(conn, sensor_id)
+
+    # NEW: Bulletproof Trend Logic
+    def calc_trend(metric_key):
+        metric_data = rf_trends.get(metric_key)
+        if not metric_data or metric_data["current"] is None or metric_data["past"] is None:
+            return "➖"
+            
+        diff = metric_data["current"] - metric_data["past"]
+        
+
+        if diff > 0: 
+            return "⬆️"
+        elif diff < 0:
+            return "⬇️"
+        else:
+            return "➖" 
+
+
+    # Apply the math safely
+    data["rssi_trend"] = calc_trend("rssi_dbm")
+    data["noise_trend"] = calc_trend("noise_dbm")
+    data["snr_trend"] = calc_trend("snr_db")
+    
     return data
 
 @app.get("/api/fixed_sensors")

@@ -21,6 +21,7 @@
         <main class="hero-section">
             <h2 class="zone-title" id="ui-zone-name">Loading...</h2>
             <div class="hero-temp" id="ui-temp">--&deg;</div>
+            
             <div class="hero-context">
                 <span>L: <span id="ui-low">--&deg;</span></span>
                 <span class="divider">|</span>
@@ -30,6 +31,15 @@
                 <span class="divider">|</span>
                 <span>Dew Point: <span id="ui-dewpoint">--&deg;</span></span>
             </div>
+            
+            <div class="hero-context" style="font-size: 0.75rem; color: var(--text-secondary, #A0A0A0); margin-top: 4px;">
+                <span>RSSI: <span id="ui-rssi">--</span> <span id="ui-rssi-trend"></span></span>
+                <span class="divider">|</span>
+                <span>Noise: <span id="ui-noise">--</span> <span id="ui-noise-trend"></span></span>
+                <span class="divider">|</span>
+                <span>SNR: <span id="ui-snr">--</span> <span id="ui-snr-trend"></span></span>
+            </div>
+
             <div style="margin-top: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
                 <div id="sensor-read-time" style="color: var(--text-secondary); font-size: 0.9rem; display: none;">
                     Sensor read at: --:--
@@ -76,6 +86,6 @@
 
     </div>
     
-    <script src="app.js?v=2.0"></script>
+    <script src="app.js?v=3.2"></script>
 </body>
 </html>

@@ -128,6 +128,42 @@ async function updateSelectedSensorData(sensorId, friendlyName) {
         document.getElementById('ui-humidity').innerHTML = safeFallback(currentData.humidity_pct, '%');
         document.getElementById('ui-dewpoint').innerHTML = safeFallback(currentData.dew_point_c, '&deg;');
 
+// NEW: Stateless RF UI Update with Color Coding
+        if (currentData.snr_db !== undefined && currentData.snr_db !== null) {
+            document.getElementById('ui-rssi').innerText = currentData.rssi_dbm.toFixed(1);
+            document.getElementById('ui-rssi-trend').innerText = currentData.rssi_trend;
+
+            document.getElementById('ui-noise').innerText = currentData.noise_dbm.toFixed(1);
+            document.getElementById('ui-noise-trend').innerText = currentData.noise_trend;
+
+            const snrEl = document.getElementById('ui-snr');
+            snrEl.innerText = currentData.snr_db.toFixed(1);
+            
+            // The 3-Tier SNR Logic
+            if (currentData.snr_db < 10) {
+                snrEl.style.color = '#ff4444'; // Red (Danger: High risk of data loss)
+            } else if (currentData.snr_db < 20) {
+                snrEl.style.color = '#ffbb33'; // Yellow (Warning: Working, but low fade margin)
+            } else {
+                snrEl.style.color = '#00C851'; // Green (Excellent: Rock solid)
+            }
+
+            document.getElementById('ui-snr-trend').innerText = currentData.snr_trend;
+            
+        } else {
+            // Clear the UI if a hardwired sensor (like the BME280) is selected
+            document.getElementById('ui-rssi').innerText = '--';
+            document.getElementById('ui-rssi-trend').innerText = '';
+            document.getElementById('ui-noise').innerText = '--';
+            document.getElementById('ui-noise-trend').innerText = '';
+            
+            const snrEl = document.getElementById('ui-snr');
+            snrEl.innerText = '--';
+            snrEl.style.color = 'inherit'; // RESET the color back to gray!
+            document.getElementById('ui-snr-trend').innerText = '';
+        }
+
+
         const sensorReadTime = document.getElementById('sensor-read-time');
         sensorReadTime.style.display = 'block';
         sensorReadTime.style.color = 'var(--text-secondary)'; 
