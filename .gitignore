@@ -7,3 +7,4 @@ data/
 # Node
 node_modules/
 *.egg-info/
+migrate_db.py
