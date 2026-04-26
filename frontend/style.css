@@ -58,12 +58,6 @@ body {
     padding-bottom: 15px;
 }
 
-.sparkline-container {
-    flex: 1;
-    width: 100%;
-    position: relative; 
-}
-
 .hero-section {
     /* flex: 1;  */
     display: flex;
@@ -139,8 +133,7 @@ body {
 }
 
 .visualizer-section {
-    flex: 0 0 35%; 
-    min-height: 300px;
+    flex: 0 0 auto; /* Matches the pressure section */
     padding: 15px 0 5px 0;
     position: relative;
     display: flex;
@@ -149,8 +142,26 @@ body {
 
 .chart-container {
     position: relative;
-    flex: 1; /* Allow container to grow and fill section */
     width: 100%;
+    height: 17vh; /* Hard-lock the height */
+}
+
+.sparkline-container {
+    position: relative;
+    width: 100%;
+    height: 17vh; /* Hard-lock the height to match */
+}
+
+.wind-history-strip {
+    padding-left: 75px; /* matches Chart.js y-axis afterFit width */
+    height: 36px;
+    margin-bottom: 3px;
+}
+
+#ui-wind-history {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .global-telemetry {
@@ -158,10 +169,8 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 15px;
-    padding: 20px 0;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
-    margin: 20px 0;
 }
 
 .telemetry-block {

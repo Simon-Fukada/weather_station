@@ -1,218 +1,192 @@
-from fastapi import FastAPI, HTTPException, Depends
-from fastapi.staticfiles import StaticFiles
-import sqlite3
 import os
-import math
+import sqlite3
+from contextlib import asynccontextmanager
+from datetime import datetime, timezone
+
 from dotenv import load_dotenv
-from datetime import datetime, timedelta, timezone
-import sys
+from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.gzip import GZipMiddleware
+from fastapi.staticfiles import StaticFiles
 
-# Explicitly add the current 'api' directory to Python's system path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(current_dir)
-
-import repository
+import weather_math
+from api import transforms
+from config import DB_PATH, FRONTEND_PATH
+from db_access import reader
+from metrics import Metric
 
 load_dotenv()
 
-app = FastAPI(title="Weather Station API")
-
-# --- Constants ---
-DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'weather_data.db'))
-
-# Notice how clean this is now! Only the elevation remains.
 ELEVATION_M = float(os.getenv("STATION_ELEVATION", 0))
 
-METRIC_TEMP = 'temperature_c'
-METRIC_PRESSURE = 'pressure_hpa'
-METRIC_HUMIDITY = 'humidity_pct'
-METRIC_DEWPOINT = 'dew_point_c'
-METRIC_WIND = 'wind_kmh'
+# Populated once at startup — maps metric name string to its metric_types.id integer.
+# All reader calls that filter by metric type use these IDs, not string literals.
+METRIC_IDS: dict = {}
 
-# --- Database Dependency (With Threading Fix) ---
+
+def _load_metric_ids() -> None:
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    try:
+        stored = [(m.value,) for m in Metric if m is not Metric.DEW_POINT_C]
+        conn.executemany("INSERT OR IGNORE INTO metric_types (name) VALUES (?)", stored)
+        conn.commit()
+        rows = conn.execute("SELECT id, name FROM metric_types").fetchall()
+        METRIC_IDS.update({row["name"]: row["id"] for row in rows})
+    finally:
+        conn.close()
+
+
+def _epoch_to_iso(epoch: int) -> str:
+    """Converts a Unix epoch integer to a UTC ISO timestamp string for API responses."""
+    return datetime.fromtimestamp(epoch, tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    _load_metric_ids()
+    yield
+
+
+app = FastAPI(title="Weather Station API", lifespan=lifespan)
+app.add_middleware(GZipMiddleware, minimum_size=500)
+
+
 def get_db():
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
     try:
         yield conn
     finally:
         conn.close()
 
-# --- Business Logic & Math ---
-def calculate_mslp(abs_pressure_hpa: float, temp_c: float, elevation_m: float) -> float:
-    temp_component = temp_c + (0.0065 * elevation_m) + 273.15
-    base = 1 - ((0.0065 * elevation_m) / temp_component)
-    mslp = abs_pressure_hpa * math.pow(base, -5.257)
-    return round(mslp, 1)
 
-def calculate_dew_point(temp_c: float, humidity_pct: float) -> float:
-    a = 17.27
-    b = 237.3
-    if humidity_pct <= 0:
-        return 0.0
-    alpha = ((a * temp_c) / (b + temp_c)) + math.log(humidity_pct / 100.0)
-    dew_point = (b * alpha) / (a - alpha)
-    return round(dew_point, 1)
+def _rf_trend_arrow(rf_trends: dict, metric_key: str) -> str:
+    metric_data = rf_trends.get(metric_key)
+    if not metric_data or metric_data["current"] is None or metric_data["past"] is None:
+        return "➖"
 
-def get_quantized_grid(raw_rows, hours_back=72, interval_minutes=5):
-    now = datetime.now(timezone.utc)
-    end_minute = (now.minute // interval_minutes) * interval_minutes
-    end_time = now.replace(minute=end_minute, second=0, microsecond=0)
-    start_time = end_time - timedelta(hours=hours_back)
+    diff = metric_data["current"] - metric_data["past"]
+    if diff > 0:
+        return "⬆️"
+    if diff < 0:
+        return "⬇️"
+    return "➖"
 
-    grid = {}
-    current = start_time
-    while current <= end_time:
-        grid[current] = {}
-        current += timedelta(minutes=interval_minutes)
-
-    for row in raw_rows:
-        safe_iso_string = row["timestamp"].replace(" ", "T")
-        dt = datetime.fromisoformat(safe_iso_string).replace(tzinfo=timezone.utc)
-        if dt >= start_time:
-            snapped_minute = (dt.minute // interval_minutes) * interval_minutes
-            snapped_dt = dt.replace(minute=snapped_minute, second=0, microsecond=0)
-            
-            if snapped_dt > end_time:
-                snapped_dt = end_time
-
-            if snapped_dt in grid:
-                metric = row["metric_type"]
-                if metric not in grid[snapped_dt]:
-                    grid[snapped_dt][metric] = []
-                grid[snapped_dt][metric].append(row["value"])
-
-    averaged_grid = []
-    for current_time in sorted(grid.keys()):
-        time_str = current_time.strftime("%Y-%m-%d %H:%M:%S")
-        bucket = {"timestamp": time_str}
-        for metric, values in grid[current_time].items():
-            bucket[metric] = sum(values) / len(values) if values else None
-        averaged_grid.append(bucket)
-    return averaged_grid
-
-# --- API Endpoints ---
 
 @app.get("/api/sensors")
-async def get_all_sensors(conn: sqlite3.Connection = Depends(get_db)):
-    rows = repository.get_all_sensors(conn)
+def get_all_sensors(conn: sqlite3.Connection = Depends(get_db)):
+    rows = reader.get_all_sensors(conn)
     return [dict(row) for row in rows]
 
+
 @app.get("/api/readings/current/{sensor_id}")
-async def get_current_reading(sensor_id: int, conn: sqlite3.Connection = Depends(get_db)):
-    current_rows = repository.get_latest_sensor_readings(conn, sensor_id)
-    
+def get_current_reading(sensor_id: int, conn: sqlite3.Connection = Depends(get_db)):
+    current_rows = reader.get_latest_sensor_readings(conn, sensor_id)
+
     if not current_rows:
         raise HTTPException(status_code=404, detail="No readings found.")
-        
-    data = {"sensor_id": sensor_id, "timestamp": current_rows[0]["timestamp"]}
+
+    data = {
+        "sensor_id": sensor_id,
+        "timestamp": _epoch_to_iso(current_rows[0]["timestamp"]),
+    }
     for row in current_rows:
         data[row["metric_type"]] = round(row["value"], 1)
-    
-    if METRIC_TEMP in data and METRIC_HUMIDITY in data:
-        data[METRIC_DEWPOINT] = calculate_dew_point(data[METRIC_TEMP], data[METRIC_HUMIDITY])
-        
-    extremes = repository.get_24h_extremes(conn, sensor_id, METRIC_TEMP)
-    
-    data["temp_high_24h"] = round(extremes["high"], 1) if extremes and extremes["high"] else data.get("temperature_c")
-    data["temp_low_24h"] = round(extremes["low"], 1) if extremes and extremes["low"] else data.get("temperature_c")
-    
-    health_row = repository.get_sensor_health(conn, sensor_id)
+
+    if Metric.TEMPERATURE_C in data and Metric.HUMIDITY_PCT in data:
+        data[Metric.DEW_POINT_C] = weather_math.calculate_dew_point(
+            data[Metric.TEMPERATURE_C], data[Metric.HUMIDITY_PCT]
+        )
+
+    extremes = reader.get_24h_extremes(conn, sensor_id, METRIC_IDS[Metric.TEMPERATURE_C])
+    data["temp_high_24h"] = round(extremes["high"], 1) if extremes and extremes["high"] is not None else data.get(Metric.TEMPERATURE_C)
+    data["temp_low_24h"] = round(extremes["low"], 1) if extremes and extremes["low"] is not None else data.get(Metric.TEMPERATURE_C)
+
+    health_row = reader.get_sensor_health(conn, sensor_id)
     data["battery_ok"] = health_row["battery_ok"] if health_row else None
-    
-    # NEW: Fetch the historical trend baselines
-    rf_trends = repository.get_rf_trend_data(conn, sensor_id)
 
-    # NEW: Bulletproof Trend Logic
-    def calc_trend(metric_key):
-        metric_data = rf_trends.get(metric_key)
-        if not metric_data or metric_data["current"] is None or metric_data["past"] is None:
-            return "➖"
-            
-        diff = metric_data["current"] - metric_data["past"]
-        
+    rf_trends = reader.get_rf_trend_data(
+        conn, sensor_id,
+        METRIC_IDS[Metric.RSSI_DBM],
+        METRIC_IDS[Metric.NOISE_DBM],
+        METRIC_IDS[Metric.SNR_DB],
+    )
+    data["rssi_trend"] = _rf_trend_arrow(rf_trends, Metric.RSSI_DBM)
+    data["noise_trend"] = _rf_trend_arrow(rf_trends, Metric.NOISE_DBM)
+    data["snr_trend"] = _rf_trend_arrow(rf_trends, Metric.SNR_DB)
 
-        if diff > 0: 
-            return "⬆️"
-        elif diff < 0:
-            return "⬇️"
-        else:
-            return "➖" 
-
-
-    # Apply the math safely
-    data["rssi_trend"] = calc_trend("rssi_dbm")
-    data["noise_trend"] = calc_trend("noise_dbm")
-    data["snr_trend"] = calc_trend("snr_db")
-    
     return data
 
+
 @app.get("/api/fixed_sensors")
-async def get_fixed_sensor_data(sensor_id: int = 1, conn: sqlite3.Connection = Depends(get_db)):
-    
-    # 1. Grab the latest global data, ignoring specific sensor IDs
-    pressure_row = repository.get_latest_global_metric(conn, METRIC_PRESSURE)
-    current_pressure = pressure_row["value"] if pressure_row else 100.0
-    pressure_timestamp = pressure_row["timestamp"] if pressure_row else None
+def get_fixed_sensor_data(sensor_id: int = 1, conn: sqlite3.Connection = Depends(get_db)):
+    pressure_row = reader.get_latest_global_metric(conn, METRIC_IDS[Metric.PRESSURE_HPA])
+    current_pressure = pressure_row["value"] if pressure_row else None
+    pressure_timestamp = _epoch_to_iso(pressure_row["timestamp"]) if pressure_row else None
 
-    # We still fetch temperature for the specific UI zone to do the MSLP math correctly
-    temp_row = repository.get_latest_single_metric(conn, str(sensor_id), METRIC_TEMP)
-    current_temp = temp_row["value"] if temp_row else -9999
-            
-    # 2. Grab global trends and wind using the new repository functions
-    trend_rows = repository.get_global_historical_trend(conn, METRIC_PRESSURE, hours_back=72)
-    sustained_wind = repository.get_global_sustained_wind(conn, METRIC_WIND)
-    max_gust = repository.get_global_max_wind_gust(conn, METRIC_WIND)
+    temp_row = reader.get_latest_single_metric(conn, sensor_id, METRIC_IDS[Metric.TEMPERATURE_C])
+    current_temp = temp_row["value"] if temp_row else None
 
-    # Apply business logic
-    mslp = calculate_mslp(current_pressure, current_temp, ELEVATION_M)
-    averaged_grid = get_quantized_grid(trend_rows, hours_back=72)
-    
-    trend_data = []
-    valid_pressures = []
-    
-    for bucket in averaged_grid:
-        ts = bucket["timestamp"]
-        abs_pressure = bucket.get(METRIC_PRESSURE)
-        
-        if abs_pressure is not None:
-            mslp_val = calculate_mslp(abs_pressure, current_temp, ELEVATION_M)
-            valid_pressures.append(mslp_val)
-        else:
-            mslp_val = None
-            
-        trend_data.append({"timestamp": ts, "value": mslp_val})
-        
-    pressure_avg = sum(valid_pressures) / len(valid_pressures) if valid_pressures else mslp
-    
+    trend_rows = reader.get_pivoted_trend(
+        conn,
+        {Metric.PRESSURE_HPA: METRIC_IDS[Metric.PRESSURE_HPA],
+         Metric.RAIN_MM:      METRIC_IDS[Metric.RAIN_MM]},
+        hours_back=72,
+    )
+    raw_wind_72h = reader.get_recent_wind_vectors(
+        conn,
+        METRIC_IDS[Metric.WIND_KMH],
+        METRIC_IDS[Metric.WIND_DIR_DEG],
+        minutes_back=4320,
+    )
+    live_wind, wind_history     = transforms.process_wind_history(raw_wind_72h)
+    max_gust                    = reader.get_global_max_wind_gust(conn, METRIC_IDS[Metric.WIND_GUST_KMH])
+    rain_24h                    = reader.get_global_rain_total(conn, METRIC_IDS[Metric.RAIN_MM], hours_back=24)
+
+    mslp           = weather_math.calculate_mslp(current_pressure, current_temp, ELEVATION_M)
+    metric_grid    = transforms.build_metric_grid(trend_rows, hours_back=72)
+    trend_data, pressure_avg = transforms.process_pressure_trend(metric_grid, current_pressure)
+    wind_direction_history   = transforms.process_wind_direction_history(raw_wind_72h)
+    rain_trend_72h           = [bucket.get(Metric.RAIN_MM) for bucket in metric_grid]
+
+    for point in trend_data:
+        point["timestamp"] = _epoch_to_iso(point["timestamp"])
+
     return {
-        "mslp_hpa": mslp,
-        "pressure_trend_72h": trend_data,
-        "pressure_average_72h": round(pressure_avg, 1),
-        "pressure_timestamp": pressure_timestamp,
-        "wind_sustained_kmh": sustained_wind,
-        "wind_gust_kmh": max_gust
+        "mslp_hpa":                 mslp,
+        "pressure_trend_72h":       trend_data,
+        "pressure_average_72h":     pressure_avg,
+        "pressure_timestamp":       pressure_timestamp,
+        "wind_sustained_kmh":       live_wind["speed"],
+        "wind_cardinal":            live_wind["cardinal"],
+        "wind_direction_deg":       live_wind["direction"],
+        "wind_history":             wind_history,
+        "wind_gust_kmh":            max_gust,
+        "rain_24h_mm":              rain_24h,
+        "wind_direction_history_72h": wind_direction_history,
+        "rain_trend_72h":           rain_trend_72h,
     }
 
+
 @app.get("/api/readings/history/{sensor_id}")
-async def get_historical_readings(sensor_id: int, hours: int = 72, conn: sqlite3.Connection = Depends(get_db)):
-    rows = repository.get_multi_metric_history(conn, sensor_id, hours)
-    averaged_grid = get_quantized_grid(rows, hours_back=hours)
-    
-    final_history = []
-    for bucket in averaged_grid:
-        ts = bucket["timestamp"]
-        temp = bucket.get(METRIC_TEMP)
-        hum = bucket.get(METRIC_HUMIDITY)
-        
-        final_history.append({"timestamp": ts, "metric_type": METRIC_TEMP, "value": temp})
-            
-        dew_point = calculate_dew_point(temp, hum) if (temp is not None and hum is not None) else None
-        final_history.append({"timestamp": ts, "metric_type": METRIC_DEWPOINT, "value": dew_point})
+def get_historical_readings(sensor_id: int, hours: int = 72, conn: sqlite3.Connection = Depends(get_db)):
+    rows = reader.get_pivoted_trend(
+        conn,
+        {Metric.TEMPERATURE_C: METRIC_IDS[Metric.TEMPERATURE_C],
+         Metric.HUMIDITY_PCT:  METRIC_IDS[Metric.HUMIDITY_PCT]},
+        hours_back=hours,
+        sensor_id=sensor_id,
+    )
+    history_grid = transforms.build_metric_grid(rows, hours_back=hours)
+    history = transforms.process_historical_readings(history_grid)
 
-    return final_history
+    for point in history:
+        point["timestamp"] = _epoch_to_iso(point["timestamp"])
 
-FRONTEND_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend'))
+    return history
+
+
 app.mount("/", StaticFiles(directory=FRONTEND_PATH, html=True), name="frontend")
 
 if __name__ == "__main__":

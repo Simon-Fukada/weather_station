@@ -6,3 +6,4 @@ data/
 *.log
 # Node
 node_modules/
+*.egg-info/

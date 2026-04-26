@@ -62,7 +62,21 @@
             </div>
             <div class="telemetry-block">
                 <span class="telemetry-label">Wind Speed</span>
-                <span class="telemetry-value" id="ui-wind">-- km/h</span>
+                
+                <span class="telemetry-value" style="display: flex; align-items: center; justify-content: center;">
+                    <span id="ui-wind">-- km/h</span>
+                    
+                    <svg id="ui-wind-compass" width="2.3em" height="2.3em" viewBox="0 0 24 24" style="margin-left: 8px; display: none;">
+                        
+                        <circle cx="12" cy="12" r="11" stroke="var(--text-secondary)" stroke-width="1.5" fill="none" />
+                        
+                        <text x="12" y="5.5" font-size="5" fill="#ff4444" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-weight="bold">N</text>
+                        
+                        <g id="ui-wind-trail-container"></g>
+                        
+                    </svg>
+                </span>
+                
                 <span class="telemetry-sub">Avg. Last 15 min</span>
             </div>
             <div class="telemetry-block">
@@ -70,9 +84,17 @@
                 <span class="telemetry-value" id="ui-gust">-- km/h</span>
                 <span class="telemetry-sub">Max Last 1 hr</span>
             </div>
+            <div class="telemetry-block">
+                <span class="telemetry-label">Rain (24h)</span>
+                <span class="telemetry-value" id="ui-rain">-- mm</span>
+                <span class="telemetry-sub">Total Accumulation</span>
+            </div>
         </section>
 
         <section class="visualizer-section">
+            <div class="wind-history-strip">
+                <div id="ui-wind-history"></div>
+            </div>
             <div class="chart-container">
                 <canvas id="zone-chart"></canvas>
             </div>
@@ -86,6 +108,6 @@
 
     </div>
     
-    <script src="app.js?v=3.2"></script>
+    <script src="app.js?v=4.5"></script>
 </body>
 </html>

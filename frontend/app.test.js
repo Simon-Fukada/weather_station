@@ -5,11 +5,16 @@
 const fs = require('fs');
 const path = require('path');
 
-// Mocking global objects BEFORE loading app.js
+// --- Mocks (must be set up before eval'ing app.js) ---
+
 global.fetch = jest.fn().mockImplementation(() => Promise.resolve({
     json: () => Promise.resolve([])
 }));
 
+// Chart mock includes data/options shapes that the update path writes into.
+// Without these, drawZoneChart's "update existing instance" branch throws on
+// every test and the error is silently swallowed by the try/catch in the async
+// functions, producing confusing console.error noise.
 global.Chart = jest.fn().mockImplementation(() => ({
     destroy: jest.fn(),
     update: jest.fn(),
@@ -19,17 +24,25 @@ global.Chart = jest.fn().mockImplementation(() => ({
             data: [{ _model: { y: 50 } }]
         })
     },
+    data: {
+        labels: [],
+        datasets: [{ data: [] }, { data: [] }, { data: [] }, { data: [] }]
+    },
+    options: {
+        scales: {
+            yAxes: [{ ticks: { suggestedMin: 0, suggestedMax: 100 } }]
+        },
+        animation: { onComplete: null }
+    },
+    scales: { 'yTemp': { top: 0, bottom: 100 } },
+    rainTrend: [],
     width: 100,
     height: 100,
-    scales: {
-        'yTemp': { top: 0, bottom: 100 }
-    }
 }));
 global.Chart.helpers = {
     fontString: jest.fn().mockReturnValue('12px sans-serif')
 };
 
-// Mock Canvas getContext (jsdom doesn't implement it)
 HTMLCanvasElement.prototype.getContext = jest.fn().mockReturnValue({
     fillText: jest.fn(),
     measureText: jest.fn().mockReturnValue({ width: 0 }),
@@ -41,9 +54,9 @@ HTMLCanvasElement.prototype.getContext = jest.fn().mockReturnValue({
     moveTo: jest.fn(),
     lineTo: jest.fn(),
     stroke: jest.fn(),
+    fillRect: jest.fn(),
 });
 
-// Mock localStorage
 const localStorageMock = (function() {
     let store = {};
     return {
@@ -54,15 +67,17 @@ const localStorageMock = (function() {
 })();
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
-// Setup the DOM structure required by app.js
+// --- DOM shell ---
+
 document.body.innerHTML = `
     <div id="ui-pressure"></div>
     <div id="ui-wind"></div>
     <div id="ui-gust"></div>
+    <div id="ui-rain"></div>
     <div id="ui-pressure-time"></div>
     <div id="ui-time"></div>
     <canvas id="pressure-sparkline"></canvas>
-    
+
     <div id="ui-zone-name"></div>
     <div id="ui-temp"></div>
     <div id="ui-high"></div>
@@ -70,184 +85,377 @@ document.body.innerHTML = `
     <div id="ui-humidity"></div>
     <div id="ui-dewpoint"></div>
     <div id="sensor-read-time" style="display: none;"></div>
-    <div id="ui-stale-warning" style="display: none;"></div>
     <div id="ui-battery-warning" style="display: none;"></div>
     <canvas id="zone-chart"></canvas>
 
-    <div id="ui-humidity"></div>
-    <div id="ui-dewpoint"></div>
-    
     <div id="ui-rssi"></div><div id="ui-rssi-trend"></div>
     <div id="ui-noise"></div><div id="ui-noise-trend"></div>
     <div id="ui-snr"></div><div id="ui-snr-trend"></div>
-    
-    <div id="sensor-read-time" style="display: none;"></div>
-    
+
     <select id="sensor-dropdown"></select>
 `;
 
-// Load the app.js code
-const appJsCode = fs.readFileSync(path.resolve(__dirname, 'app.js'), 'utf8');
+eval(fs.readFileSync(path.resolve(__dirname, 'app.js'), 'utf8'));
 
-// Use eval in the global scope to define functions. 
-// We wrap it to handle the immediate execution of boot sequence safely.
-eval(appJsCode);
+// --- Tests ---
 
 describe('Weather Station Frontend (app.js)', () => {
-    
+
     beforeEach(() => {
         jest.clearAllMocks();
     });
 
+    // -------------------------------------------------------------------------
     describe('Pure Helper Functions', () => {
-        test('safeFallback returns value with unit if value exists', () => {
-            expect(safeFallback(25.5, '°C')).toBe('25.5°C');
-            expect(safeFallback(1013, ' hPa')).toBe('1013 hPa');
+
+        describe('safeFallback', () => {
+            test('returns value with unit when value is present', () => {
+                expect(safeFallback(25.5, '°C')).toBe('25.5°C');
+                expect(safeFallback(1013, ' hPa')).toBe('1013 hPa');
+            });
+
+            test('returns "--" for null or undefined', () => {
+                expect(safeFallback(null, '°C')).toBe('--');
+                expect(safeFallback(undefined, '°C')).toBe('--');
+            });
+
+            test('returns raw value when no unit is provided', () => {
+                expect(safeFallback(42)).toBe(42);
+                expect(safeFallback('text')).toBe('text');
+            });
+
+            test('treats zero as a valid value, not a fallback', () => {
+                // 0 is falsy — this guards against accidental `if (val)` style checks
+                expect(safeFallback(0, ' hPa')).toBe('0 hPa');
+            });
         });
 
-        test('safeFallback returns "--" for null or undefined', () => {
-            expect(safeFallback(null, '°C')).toBe('--');
-            expect(safeFallback(undefined, '°C')).toBe('--');
+        describe('parseUtcTimestamp', () => {
+            test('parses API timestamp string as UTC', () => {
+                const date = parseUtcTimestamp('2026-03-20 14:00:00');
+                expect(date).toBeInstanceOf(Date);
+                expect(date.getUTCFullYear()).toBe(2026);
+                expect(date.getUTCMonth()).toBe(2); // 0-indexed
+                expect(date.getUTCDate()).toBe(20);
+                expect(date.getUTCHours()).toBe(14);
+                expect(date.getUTCMinutes()).toBe(0);
+            });
+
+            test('midnight parses correctly without rolling back a day', () => {
+                const date = parseUtcTimestamp('2026-01-01 00:00:00');
+                expect(date.getUTCDate()).toBe(1);
+                expect(date.getUTCHours()).toBe(0);
+            });
         });
 
-        test('formatDateTime handles ISO-like strings and Date objects', () => {
-            const dateStr = '2026-03-20 14:00:00';
-            const formatted = formatDateTime(dateStr);
-            expect(formatted).not.toBe('--:--');
-            expect(formatted.length).toBeGreaterThan(5);
-            
-            const dateObj = new Date();
-            expect(formatDateTime(dateObj)).not.toBe('--:--');
+        describe('formatChartLabelTime', () => {
+            test('returns 24-hour HH:MM string', () => {
+                const label = formatChartLabelTime('2026-03-20 14:30:00');
+                // Only test the format — toLocaleTimeString produces local-timezone
+                // output, so the exact value is environment-dependent.
+                expect(label).toMatch(/^\d{2}:\d{2}$/);
+            });
         });
 
-        test('formatDateTime returns fallback for missing input', () => {
-            expect(formatDateTime(null)).toBe('--:--');
-            expect(formatDateTime('')).toBe('--:--');
+        describe('formatDateTime', () => {
+            test('handles API timestamp strings', () => {
+                const formatted = formatDateTime('2026-03-20 14:00:00');
+                expect(formatted).not.toBe('--:--');
+                expect(formatted.length).toBeGreaterThan(5);
+            });
+
+            test('handles live Date objects', () => {
+                expect(formatDateTime(new Date())).not.toBe('--:--');
+            });
+
+            test('returns "--:--" for null, undefined, and empty string', () => {
+                expect(formatDateTime(null)).toBe('--:--');
+                expect(formatDateTime(undefined)).toBe('--:--');
+                expect(formatDateTime('')).toBe('--:--');
+            });
         });
 
-        test('calculateChartBounds calculates correct min/max with buffer', () => {
-            const data = [10, 20, 30]; 
-            const bounds = calculateChartBounds(data, 5);
-            expect(bounds.suggestedMin).toBe(8.5);
-            expect(bounds.suggestedMax).toBe(31.5);
+        describe('windAngularDiff', () => {
+            test('returns absolute difference for simple cases', () => {
+                expect(windAngularDiff(0, 90)).toBe(90);
+                expect(windAngularDiff(180, 90)).toBe(90);
+            });
+
+            test('takes the short path across the 0/360 boundary', () => {
+                // 350° and 10° are only 20° apart via the wrap, not 340°
+                expect(windAngularDiff(350, 10)).toBe(20);
+                expect(windAngularDiff(10, 350)).toBe(20);
+            });
+
+            test('returns 0 for identical directions', () => {
+                expect(windAngularDiff(45, 45)).toBe(0);
+            });
+
+            test('returns 180 for opposite directions', () => {
+                expect(windAngularDiff(0, 180)).toBe(180);
+            });
         });
 
-        test('calculateChartBounds respects minSpan for tight data', () => {
-            const data = [20, 20.1]; 
-            const bounds = calculateChartBounds(data, 10);
-            expect(bounds.suggestedMax - bounds.suggestedMin).toBe(10);
+        describe('calculateChartBounds', () => {
+            test('calculates correct min/max with padding', () => {
+                const bounds = calculateChartBounds([10, 20, 30], 5);
+                expect(bounds.suggestedMin).toBe(8.5);
+                expect(bounds.suggestedMax).toBe(31.5);
+            });
+
+            test('enforces minSpan for tight data', () => {
+                const bounds = calculateChartBounds([20, 20.1], 10);
+                expect(bounds.suggestedMax - bounds.suggestedMin).toBe(10);
+            });
+
+            test('returns a safe default for empty input', () => {
+                const bounds = calculateChartBounds([], 5);
+                expect(bounds.suggestedMin).toBe(-10);
+                expect(bounds.suggestedMax).toBe(10);
+            });
+
+            test('returns a safe default for null input', () => {
+                const bounds = calculateChartBounds(null, 5);
+                expect(bounds.suggestedMin).toBe(-10);
+                expect(bounds.suggestedMax).toBe(10);
+            });
+        });
+
+        describe('splitPressureData', () => {
+            test('all normal when no alerts', () => {
+                const { normalData, slowAlertData, fastAlertData } = splitPressureData([
+                    { value: 1013, alert: 'none' },
+                    { value: 1012, alert: 'none' }
+                ]);
+                expect(normalData).toEqual([1013, 1012]);
+                expect(slowAlertData).toEqual([null, null]);
+                expect(fastAlertData).toEqual([null, null]);
+            });
+
+            test('returns three empty arrays for empty input', () => {
+                const { normalData, slowAlertData, fastAlertData } = splitPressureData([]);
+                expect(normalData).toEqual([]);
+                expect(slowAlertData).toEqual([]);
+                expect(fastAlertData).toEqual([]);
+            });
+
+            test('slow alert populates slowAlertData', () => {
+                const { normalData, slowAlertData, fastAlertData } = splitPressureData([
+                    { value: 1010, alert: 'slow' },
+                    { value: 1009, alert: 'slow' }
+                ]);
+                expect(normalData).toEqual([1010, null]);
+                expect(slowAlertData).toEqual([1010, 1009]);
+                expect(fastAlertData).toEqual([null, null]);
+            });
+
+            test('fast alert populates fastAlertData', () => {
+                const { normalData, slowAlertData, fastAlertData } = splitPressureData([
+                    { value: 1010, alert: 'fast' },
+                    { value: 1009, alert: 'fast' }
+                ]);
+                expect(normalData).toEqual([1010, null]);
+                expect(slowAlertData).toEqual([null, null]);
+                expect(fastAlertData).toEqual([1010, 1009]);
+            });
+
+            test('bridge point appears in both datasets at none-to-slow transition', () => {
+                const { normalData, slowAlertData, fastAlertData } = splitPressureData([
+                    { value: 1013, alert: 'none' },
+                    { value: 1010, alert: 'slow' },
+                    { value: 1009, alert: 'slow' }
+                ]);
+                expect(normalData).toEqual([1013, 1010, null]);   // 1010 is the bridge
+                expect(slowAlertData).toEqual([null, 1010, 1009]); // 1010 is the bridge
+                expect(fastAlertData).toEqual([null, null, null]);
+            });
+
+            test('bridge point appears in both datasets at slow-to-fast transition', () => {
+                const { normalData, slowAlertData, fastAlertData } = splitPressureData([
+                    { value: 1011, alert: 'slow' },
+                    { value: 1009, alert: 'fast' },
+                    { value: 1008, alert: 'fast' }
+                ]);
+                // NOTE: normalData[0] = 1011 because prev defaults to 'none' at i=0 —
+                // a series starting in an alert state leaks a solitary point into normalData.
+                // Harmless with pointRadius: 0 but arguably a bug. Flagged for follow-up.
+                expect(normalData).toEqual([1011, null, null]);
+                expect(slowAlertData).toEqual([1011, 1009, null]); // 1009 is the bridge out
+                expect(fastAlertData).toEqual([null, 1009, 1008]); // 1009 is the bridge in
+            });
+
+            test('treats missing or falsy alert field as none', () => {
+                const { normalData } = splitPressureData([
+                    { value: 1013 },
+                    { value: 1012, alert: false }
+                ]);
+                expect(normalData).toEqual([1013, 1012]);
+            });
         });
     });
 
-    describe('DOM Manipulation Functions', () => {
-        test('updateFixedSensorData updates pressure and wind UI', async () => {
-            const mockData = {
-                mslp_hpa: 1012.5,
-                wind_sustained_kmh: 12.0,
-                wind_gust_kmh: 18.5,
-                pressure_timestamp: '2026-03-20 12:00:00',
-                pressure_trend_72h: [{ timestamp: '2026-03-20 11:00:00', value: 1012 }],
-                pressure_average_72h: 1011.0
-            };
+    // -------------------------------------------------------------------------
+    describe('DOM Render Functions', () => {
 
-            fetch.mockResolvedValueOnce({
-                json: jest.fn().mockResolvedValue(mockData)
+        describe('renderWind', () => {
+            test('shows speed when wind data is present', () => {
+                renderWind({ wind_sustained_kmh: 15.3 });
+                expect(document.getElementById('ui-wind').textContent).toBe('15.3 km/h');
             });
 
-            await updateFixedSensorData();
+            test('shows dead-calm placeholder when wind data is null', () => {
+                renderWind({ wind_sustained_kmh: null });
+                expect(document.getElementById('ui-wind').textContent).toBe('-- km/h');
+            });
 
-            expect(document.getElementById('ui-pressure').innerText).toBe('1012.5 hPa');
-            expect(document.getElementById('ui-wind').innerText).toBe('12 km/h');
-            expect(document.getElementById('ui-gust').innerText).toBe('18.5 km/h');
-            expect(global.Chart).toHaveBeenCalled();
+            test('shows dead-calm placeholder when wind data is missing', () => {
+                renderWind({});
+                expect(document.getElementById('ui-wind').textContent).toBe('-- km/h');
+            });
         });
 
-        test('updateSelectedSensorData updates zone UI and handles battery warning', async () => {
-            const currentMock = {
-                temperature_c: 21.3,
-                temp_high_24h: 24.0,
-                temp_low_24h: 19.5,
-                humidity_pct: 55,
-                dew_point_c: 12.1,
-                timestamp: '2026-03-20 13:45:00',
-                battery_ok: 0 
-            };
-            const historyMock = [
-                { metric_type: 'temperature_c', value: 21, timestamp: '2026-03-20 13:00:00' },
-                { metric_type: 'dew_point_c', value: 12, timestamp: '2026-03-20 13:00:00' }
-            ];
+        describe('updateFixedSensorData', () => {
+            test('updates pressure, wind, and gust UI from API response', async () => {
+                fetch.mockResolvedValueOnce({
+                    json: jest.fn().mockResolvedValue({
+                        mslp_hpa: 1012.5,
+                        wind_sustained_kmh: 12.0,
+                        wind_gust_kmh: 18.5,
+                        rain_24h_mm: 3.2,
+                        pressure_timestamp: '2026-03-20 12:00:00',
+                        pressure_trend_72h: [{ timestamp: '2026-03-20 11:00:00', value: 1012, alert: 'none' }],
+                        pressure_average_72h: 1011.0
+                    })
+                });
 
-            fetch
-                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue(currentMock) }) 
-                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue(historyMock) }); 
+                await updateFixedSensorData();
 
-            await updateSelectedSensorData(1, 'Patio');
+                expect(document.getElementById('ui-pressure').textContent).toBe('1012.5 hPa');
+                expect(document.getElementById('ui-wind').textContent).toBe('12.0 km/h');
+                expect(document.getElementById('ui-gust').textContent).toBe('18.5 km/h');
+                expect(document.getElementById('ui-rain').textContent).toBe('3.2 mm');
+            });
 
-            expect(document.getElementById('ui-zone-name').innerText).toBe('Patio');
-            expect(document.getElementById('ui-temp').innerHTML).toBe('21.3°');
-            expect(document.getElementById('ui-humidity').innerHTML).toBe('55%');
-            
-            const batteryWarning = document.getElementById('ui-battery-warning');
-            expect(batteryWarning.style.display).toBe('block');
+            test('shows fallback placeholders when data is missing', async () => {
+                fetch.mockResolvedValueOnce({
+                    json: jest.fn().mockResolvedValue({})
+                });
+
+                await updateFixedSensorData();
+
+                expect(document.getElementById('ui-pressure').textContent).toBe('--');
+                expect(document.getElementById('ui-wind').textContent).toBe('-- km/h');
+            });
         });
 
-        test('updateSelectedSensorData hides battery warning if battery is OK', async () => {
-            const currentMock = {
-                temperature_c: 20.0,
-                battery_ok: 1 
-            };
-
-            fetch
-                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue(currentMock) })
-                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
-
-            await updateSelectedSensorData(1, 'Patio');
-
-            const batteryWarning = document.getElementById('ui-battery-warning');
-            expect(batteryWarning.style.display).toBe('none');
-        });
-
-        test('updateSelectedSensorData applies 3-tier SNR color coding correctly', async () => {
-            // Helper to dry up the test
-            const runColorTest = async (snrValue, expectedColor) => {
+        describe('updateSelectedSensorData', () => {
+            test('updates zone hero panel with sensor readings', async () => {
                 fetch
-                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({ snr_db: snrValue, rssi_dbm: -50, noise_dbm: -80 }) })
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({
+                        temperature_c: 21.3,
+                        temp_high_24h: 24.0,
+                        temp_low_24h: 19.5,
+                        humidity_pct: 55,
+                        dew_point_c: 12.1,
+                        timestamp: '2026-03-20 13:45:00',
+                        battery_ok: 1
+                    })})
                     .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
-                
-                await updateSelectedSensorData(1, 'Radio Sensor');
-                return document.getElementById('ui-snr').style.color;
-            };
 
-            // Test Red (< 10)
-            expect(await runColorTest(5.0, '#ff4444')).toBe('rgb(255, 68, 68)'); // jsdom converts hex to rgb
+                await updateSelectedSensorData(1, 'Patio');
 
-            // Test Yellow (10 to 19.9)
-            expect(await runColorTest(15.0, '#ffbb33')).toBe('rgb(255, 187, 51)');
+                expect(document.getElementById('ui-zone-name').textContent).toBe('Patio');
+                expect(document.getElementById('ui-temp').textContent).toBe('21.3°');
+                expect(document.getElementById('ui-high').textContent).toBe('24°');
+                expect(document.getElementById('ui-low').textContent).toBe('19.5°');
+                expect(document.getElementById('ui-humidity').textContent).toBe('55%');
+                expect(document.getElementById('ui-dewpoint').textContent).toBe('12.1°');
+            });
 
-            // Test Green (>= 20)
-            expect(await runColorTest(25.0, '#00c851')).toBe('rgb(0, 200, 81)');
+            test('shows battery warning when battery_ok === 0', async () => {
+                fetch
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({ temperature_c: 21.3, battery_ok: 0 }) })
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+
+                await updateSelectedSensorData(1, 'Patio');
+
+                expect(document.getElementById('ui-battery-warning').style.display).toBe('block');
+            });
+
+            test('hides battery warning when battery_ok === 1', async () => {
+                fetch
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({ temperature_c: 20.0, battery_ok: 1 }) })
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+
+                await updateSelectedSensorData(1, 'Patio');
+
+                expect(document.getElementById('ui-battery-warning').style.display).toBe('none');
+            });
+
+            test('applies 3-tier SNR colour coding', async () => {
+                const run = async (snr_db) => {
+                    fetch
+                        .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({ snr_db, rssi_dbm: -50, noise_dbm: -80 }) })
+                        .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+                    await updateSelectedSensorData(1, 'Radio');
+                    return document.getElementById('ui-snr').style.color;
+                };
+
+                expect(await run(5)).toBe('rgb(255, 68, 68)');    // danger  < 10
+                expect(await run(15)).toBe('rgb(255, 187, 51)');   // warning < 20
+                expect(await run(25)).toBe('rgb(0, 200, 81)');     // good   >= 20
+            });
+
+            test('clears RF fields for a wired sensor with no radio data', async () => {
+                fetch
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({ temperature_c: 20.0 }) })
+                    .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+
+                await updateSelectedSensorData(1, 'Pi Sensor');
+
+                expect(document.getElementById('ui-rssi').textContent).toBe('--');
+                expect(document.getElementById('ui-rssi-trend').textContent).toBe('');
+                const snrEl = document.getElementById('ui-snr');
+                expect(snrEl.textContent).toBe('--');
+                expect(snrEl.style.color).toBe('inherit');
+            });
         });
 
-        test('updateSelectedSensorData clears RF UI if radio data is missing', async () => {
-            // Mock a sensor payload that lacks any radio metrics (e.g., hardwired I2C sensor)
-            const wiredSensorMock = {
-                temperature_c: 20.0,
-                humidity_pct: 50.0
-            };
+        describe('initializeSensorDropdown', () => {
+            test('populates dropdown with sensors from API', async () => {
+                fetch.mockResolvedValueOnce({
+                    json: jest.fn().mockResolvedValue([
+                        { id: 1, location: 'Garden', friendly_name: 'Garden' },
+                        { id: 2, location: 'Bedroom', friendly_name: 'Bedroom' }
+                    ])
+                });
 
-            fetch
-                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue(wiredSensorMock) })
-                .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+                await initializeSensorDropdown();
 
-            await updateSelectedSensorData(1, 'Wired Pi Sensor');
+                const dropdown = document.getElementById('sensor-dropdown');
+                expect(dropdown.options.length).toBe(2);
+                expect(dropdown.options[0].text).toBe('Garden');
+                expect(dropdown.options[1].text).toBe('Bedroom');
+            });
 
-            // Verify the UI elements gracefully revert to the default empty state
-            expect(document.getElementById('ui-rssi').innerText).toBe('--');
-            expect(document.getElementById('ui-rssi-trend').innerText).toBe('');
-            
-            const snrEl = document.getElementById('ui-snr');
-            expect(snrEl.innerText).toBe('--');
-            expect(snrEl.style.color).toBe('inherit'); // Ensures a previous green/red state is wiped
+            test('pre-selects the sensor matching state.currentSensorId', async () => {
+                // state is a const in eval'd code — it does not leak into test scope,
+                // so we cannot mutate it here. State is initialized from localStorage
+                // once at eval time (localStorage was empty then), so currentSensorId
+                // defaults to DEFAULT_SENSOR_ID = 1. Verify that the dropdown reflects
+                // whichever sensor matches that initial state.
+                fetch.mockResolvedValueOnce({
+                    json: jest.fn().mockResolvedValue([
+                        { id: 1, location: 'Garden', friendly_name: 'Garden' },
+                        { id: 2, location: 'Bedroom', friendly_name: 'Bedroom' }
+                    ])
+                });
+
+                await initializeSensorDropdown();
+
+                // Should have selected sensor 1 (the default)
+                expect(document.getElementById('sensor-dropdown').value).toBe('1');
+            });
         });
     });
 });
