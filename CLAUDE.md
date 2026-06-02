@@ -22,6 +22,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 source venv/bin/activate
 
 # Install (editable, includes root-level modules weather_math.py and config.py)
+# Note: metrics.py has been removed — metric configuration now lives in db_access/metrics.py
 pip install -e .
 
 # Run the API server
@@ -64,19 +65,24 @@ hardware/sdr_reader.py     ──┤──► data/weather_data.db ──► api
 SQLite with WAL mode. Uses an EAV (Entity-Attribute-Value) schema: each row in `readings` stores a single metric (e.g. `temperature_c`, `wind_kmh`). This lets new sensors and metrics be added without schema changes.
 
 Key design decisions in `readings`:
-- `metric_type` is normalised to a `metric_type_id` integer FK into the `metric_types` lookup table. New metric types self-register on first write via `WeatherWriter._get_or_create_metric` — no manual migration needed.
+- `metric_type` is normalised to a `metric_type_id` integer FK into the `metric_types` lookup table. The `metric_types` table is the single source of truth for all metrics — seeded exclusively by `init_db.py`. To add a new metric, insert rows into `metric_types` (and `rtl_field_map` if it is an SDR field), re-run `init_db.py`, then restart the API and relevant hardware scripts.
+- `metric_types` has three key columns: `name` (the canonical DB string, e.g. `temperature_c`), `constant_name` (the Python identifier used to build the `Metric` enum, e.g. `TEMPERATURE_C`), and `is_stored` (0 for computed-only metrics like dew point that are never written to `readings`).
+- `rtl_field_map` maps RTL-433 JSON field names to `metric_types.name`, with an optional `conversion_func` name (resolved at startup via `getattr(weather_math, func_name)`). Multiple RTL-433 fields can map to the same metric (e.g. `temperature_C` and `temperature_F` both map to `temperature_c`).
 - `timestamp` is stored as a Unix epoch integer (not ISO text) for compact storage and fast arithmetic.
 - The table is `WITHOUT ROWID` with a composite `PRIMARY KEY (sensor_id, metric_type_id, timestamp)`. This makes the PK the clustered B-tree, eliminating a separate rowid index and enforcing uniqueness (one reading per sensor/metric/bucket).
 - `idx_sensor_metric_time` is intentionally absent — the WITHOUT ROWID PK covers per-sensor queries. Only `idx_metric_time` on `(metric_type_id, timestamp DESC)` is needed for global (cross-sensor) queries.
 
-`init_db.py` is the authoritative schema source; `schema.sql` mirrors it — keep them in sync.
+`init_db.py` is the authoritative schema source.
+
+> **Direct DB access:** When connecting via the `sqlite3` CLI, foreign key enforcement is off by default. Always run `PRAGMA foreign_keys = ON;` before making any changes, otherwise FK violations will silently succeed and leave the schema in an inconsistent state.
 
 Rain is stored as a **delta per bucket** (not a cumulative total). `SensorBuffer` maintains an odometer and writes only the increment each flush. Wind speed and direction are stored as two separate rows with the same timestamp and are reconstructed with a self-JOIN in `reader.get_recent_wind_vectors`.
 
 **DB access layer — `db_access/`**
 
 - `reader.py` — stateless functions, each accepts a `sqlite3.Connection`. Called by the API via FastAPI's `Depends(get_db)` pattern.
-- `writer.py` — `WeatherWriter` class. Opens and holds a connection. Used directly by hardware scripts.
+- `writer.py` — `WeatherWriter` class. Opens and holds a connection. Used directly by hardware scripts. `_get_metric_id` resolves metric name strings to their integer IDs (cached per connection lifetime); raises `ValueError` for unregistered metrics — run `init_db.py` first.
+- `metrics.py` — startup helpers: `build_metric_enum(conn)` builds a `Metric(str, Enum)` from the `metric_types` table (members have `.id` and `.is_stored` properties); `build_metric_dispatch(conn)` builds the RTL-433 field dispatch table from `rtl_field_map`.
 
 **API — `api/main.py`**
 
@@ -91,8 +97,7 @@ Business logic lives in `main.py`: MSLP calculation, dew-point formula, `get_qua
 **Shared utilities**
 
 - `config.py` — `DB_PATH` and `FRONTEND_PATH`, resolved relative to the project root.
-- `metrics.py` — `Metric(str, Enum)` — canonical source of truth for all metric name strings used across hardware scripts, the DB access layer, and the API. Use this instead of bare string literals. Note: `Metric.DEW_POINT_C` is calculated at the API layer and never stored in `readings`.
-- `weather_math.py` — pure functions: `calculate_vector_average` (true vector average from speed/direction tuples), plus unit-conversion helpers used by both the SDR dispatch table and the API.
+- `weather_math.py` — pure functions: `calculate_vector_average` (true vector average from speed/direction tuples), plus unit-conversion helpers (`convert_f_to_c`, `convert_mph_to_kmh`, `convert_inches_to_mm`) referenced by name in `rtl_field_map.conversion_func`.
 
 **Backend tests**
 

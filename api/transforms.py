@@ -1,6 +1,7 @@
 import time
 
 import weather_math
+from config import BUCKET_INTERVAL_MINUTES
 
 _FAST_LOOKBACK_BUCKETS = 36    # 3 h at 5-min resolution
 _FAST_THRESHOLD_HPA = -3.0     # sharp front: ≤ -3 hPa / 3 h
@@ -79,7 +80,7 @@ def process_wind_direction_history(raw_wind_rows: list, total_hours: int = 72, i
     return result
 
 
-def build_metric_grid(sql_rows, hours_back: int = 72, interval_minutes: int = 5) -> list:
+def build_metric_grid(sql_rows, hours_back: int = 72, interval_minutes: int = BUCKET_INTERVAL_MINUTES) -> list:
     """
     Builds a gap-filled time-series grid from pre-pivoted SQL rows (as returned by get_pivoted_trend).
     Each SQL row becomes a dict keyed by its columns; missing timestamps produce a row with only
@@ -147,17 +148,17 @@ def process_pressure_trend(metric_grid: list, fallback_pressure: float) -> tuple
     return trend_data, safe_avg
 
 
-def process_historical_readings(metric_grid: list) -> list:
+def process_historical_readings(metric_grid: list, Metric) -> list:
     """
     Extracts temperature and calculates dew point from a metric grid.
-    Expects buckets with 'timestamp', 'temperature_c', and 'humidity_pct' keys.
+    Expects buckets with 'timestamp', 'temperature_c', and 'relative_humidity_pct' keys.
     Returns a wide-format list of dicts for frontend charting.
     """
     final_history = []
 
     for bucket in metric_grid:
-        temp = bucket.get("temperature_c")
-        hum = bucket.get("humidity_pct")
+        temp = bucket.get(Metric.TEMPERATURE_C)
+        hum  = bucket.get(Metric.HUMIDITY_PCT)
         dew_point = weather_math.calculate_dew_point(temp, hum)
 
         final_history.append({

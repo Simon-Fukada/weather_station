@@ -18,43 +18,19 @@ def writer(db_connection):
 
 # --- Tests ---
 
-def test_get_or_create_sensor(writer, db_connection):
-    existing_id = writer.get_or_create_sensor("rtl_433_outdoor", "Outdoor Fence", "Backyard")
-    assert existing_id == 1
-
-    new_id = writer.get_or_create_sensor("BME280-01", "Patio Sensor", "Patio")
-    assert new_id == 2
-
-    count = db_connection.execute("SELECT COUNT(*) FROM sensors").fetchone()[0]
-    assert count == 2
-
-
-def test_get_sensor_map(writer):
-    writer.get_or_create_sensor("SDR-XYZ", "Ambient", "Roof")
+def test_get_sensor_map(writer, db_connection):
+    db_connection.execute(
+        "INSERT INTO sensors (machine_name, friendly_name, location) VALUES ('SDR-XYZ', 'Ambient', 'Roof')"
+    )
+    db_connection.commit()
     sensor_map = writer.get_sensor_map()
     assert sensor_map == {"rtl_433_outdoor": 1, "SDR-XYZ": 2}
-
-
-def test_insert_reading(writer, db_connection):
-    writer.insert_reading(1, "pressure_hpa", 1012.5, "2026-04-18 12:00:00")
-
-    row = db_connection.execute("""
-        SELECT r.sensor_id, mt.name AS metric_type, r.value, r.timestamp
-        FROM readings r
-        JOIN metric_types mt ON mt.id = r.metric_type_id
-        WHERE r.sensor_id = 1 AND mt.name = 'pressure_hpa'
-    """).fetchone()
-
-    assert row["sensor_id"]    == 1
-    assert row["metric_type"]  == "pressure_hpa"
-    assert row["value"]        == 1012.5
-    assert row["timestamp"]    == _iso_to_epoch("2026-04-18 12:00:00")
 
 
 def test_insert_readings_bulk(writer, db_connection):
     payload = [
         (1, "temperature_c", 15.0, "2026-04-18 12:00:00"),
-        (1, "humidity_pct",  50.0, "2026-04-18 12:00:00"),
+        (1, "relative_humidity_pct", 50.0, "2026-04-18 12:00:00"),
         (1, "pressure_hpa", 1010.0, "2026-04-18 12:00:00"),
     ]
     writer.insert_readings_bulk(payload)

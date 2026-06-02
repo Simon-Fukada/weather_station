@@ -32,15 +32,54 @@ body {
 
 .macro-banner {
     display: flex;
-    justify-content: center;
-    flex: 0 0 auto; 
+    align-items: center;
+    flex: 0 0 auto;
     padding-bottom: 15px;
 }
 
+.macro-banner-spacer {
+    flex: 0 0 140px;
+}
+
 .macro-block {
+    flex: 1;
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.macro-banner-actions {
+    flex: 0 0 140px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.download-icon-btn {
+    background: none;
+    border: 1px solid #444;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 7px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.download-icon-btn:hover {
+    border-color: var(--text-secondary);
+    color: var(--accent-blue);
+}
+
+.download-btn-text {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .macro-label {
@@ -84,13 +123,22 @@ body {
     .hero-temp {
         font-size: 6rem;
     }
-    
+
     .macro-value {
         font-size: 1.5rem;
     }
-    
+
     .hero-context {
         font-size: 1.1rem;
+    }
+
+    .download-btn-text {
+        display: none;
+    }
+
+    .macro-banner-spacer,
+    .macro-banner-actions {
+        flex: 0 0 44px;
     }
 
     .visualizer-section {
@@ -153,14 +201,31 @@ body {
 }
 
 .wind-history-strip {
-    padding-left: 75px; /* matches Chart.js y-axis afterFit width */
-    height: 36px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
     margin-bottom: 3px;
+}
+
+.wind-strip-label {
+    flex: 0 0 75px; /* matches Chart.js y-axis afterFit width */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.wind-strip-label span {
+    display: block;
+    transform: rotate(-90deg);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #888;
+    white-space: nowrap;
 }
 
 #ui-wind-history {
     position: relative;
-    width: 100%;
+    flex: 1 1 0;
     height: 100%;
 }
 
@@ -197,4 +262,158 @@ body {
     color: var(--text-secondary);
     font-size: 0.8rem;
     margin-top: 2px;
+}
+
+
+/* ─── Download Modal ─────────────────────────────────────────────────── */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: var(--panel-bg);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 420px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+}
+
+.modal-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 6px 8px;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-section {
+    margin-bottom: 24px;
+}
+
+.modal-section-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.modal-format-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+/* Preset chips */
+
+.preset-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.preset-chip {
+    background: #2a2a2a;
+    border: 1px solid #333;
+    color: var(--text-secondary);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: border-color 0.15s, color 0.15s;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.preset-chip.active {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* Custom date inputs */
+
+.custom-date-inputs {
+    display: none;
+    gap: 12px;
+}
+
+.date-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.date-label {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.date-input {
+    background: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.date-input.error {
+    border-color: #ff4444;
+}
+
+/* Download button */
+
+.modal-footer {
+    padding: 0 20px 20px 20px;
+}
+
+.download-csv-btn {
+    width: 100%;
+    background: var(--accent-blue);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }

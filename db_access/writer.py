@@ -22,17 +22,16 @@ class WeatherWriter:
             .timestamp()
         )
 
-    def _get_or_create_metric(self, name: str) -> int:
-        """Returns the metric_type_id for name, registering it in metric_types if new.
-        Results are cached for the lifetime of this connection — subsequent calls for
-        the same name are pure dict lookups with no SQL."""
+    def _get_metric_id(self, name: str) -> int:
+        """Returns the metric_type_id for name. Results are cached for the lifetime
+        of this connection — subsequent calls for the same name are pure dict lookups.
+        Raises ValueError for unrecognised metric names: run init_db.py to register new ones."""
         if name not in self._metric_cache:
-            self.conn.execute(
-                "INSERT OR IGNORE INTO metric_types (name) VALUES (?)", (name,)
-            )
             row = self.conn.execute(
                 "SELECT id FROM metric_types WHERE name = ?", (name,)
             ).fetchone()
+            if row is None:
+                raise ValueError(f"Unknown metric '{name}' — add it to init_db.py and re-run init_db.py.")
             self._metric_cache[name] = row["id"]
         return self._metric_cache[name]
 
@@ -42,39 +41,11 @@ class WeatherWriter:
         cursor.execute("SELECT id, machine_name FROM sensors")
         return {str(row["machine_name"]): row["id"] for row in cursor.fetchall()}
 
-    def get_or_create_sensor(self, machine_name: str, friendly_name: str, location: str) -> int:
-        """Returns the sensor ID for machine_name, creating the row if it does not exist."""
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT id FROM sensors WHERE machine_name = ?", (machine_name,))
-        result = cursor.fetchone()
-
-        if result is None:
-            cursor.execute(
-                "INSERT INTO sensors (machine_name, friendly_name, location) VALUES (?, ?, ?)",
-                (machine_name, friendly_name, location),
-            )
-            self.conn.commit()
-            return cursor.lastrowid
-
-        return result["id"]
-
-    def insert_reading(self, sensor_id: int, metric_type: str, value: float, timestamp: str):
-        """Inserts a single time-series reading.
-        Accepts a string metric name and an ISO timestamp — metric ID resolution
-        and epoch conversion are handled internally, so call sites are unchanged."""
-        metric_id = self._get_or_create_metric(metric_type)
-        self.conn.execute(
-            "INSERT OR IGNORE INTO readings (sensor_id, metric_type_id, timestamp, value) "
-            "VALUES (?, ?, ?, ?)",
-            (sensor_id, metric_id, self._to_epoch(timestamp), value),
-        )
-        self.conn.commit()
-
     def insert_readings_bulk(self, readings: List[Tuple[int, str, float, str]]):
         """Bulk insert for (sensor_id, metric_name, value, iso_timestamp) tuples.
         Metric ID resolution and epoch conversion are handled internally."""
         converted = [
-            (sid, self._get_or_create_metric(metric), self._to_epoch(ts), val)
+            (sid, self._get_metric_id(metric), self._to_epoch(ts), val)
             for sid, metric, val, ts in readings
         ]
         self.conn.executemany(

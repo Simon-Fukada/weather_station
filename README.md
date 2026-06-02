@@ -1,8 +1,8 @@
 # RTL-SDR Local Weather Station Dashboard on Raspberry Pi
 
-Thanks for checking out my project! I should emphasize this is a hobby project to track weather data from your own weather sensors. As such, please use the code at your own risk as there is no guarantee the code is stable or reliable. With that said, I have attempted to design the most robust and clean architecture possible. It has been a wonderful learning experience in many ways! 
+Thanks for checking out my project! I should emphasize this is a hobby project to track weather data from your own weather sensors. As such, please use the code at your own risk as there is no guarantee the code or any of the calculations or instructions in this readme are stable or reliable. With that said, I have attempted to design the most robust and clean architecture possible. It has been a wonderful learning experience in many ways! 
 
-Essentially, this is a self-hosted weather dashboard powered by a Raspberry Pi. The Pi acts as both your database and web server, logging sensor readings every 5 minutes to SQLite and serving the UI across your local network. You can access it from any browser in your network. I specifically engineered the frontend to be compatible with iOS 12 so I could repurpose an old iPad as a dedicated display. But by no means do you need an old iPad to view the application; it should work on any modern device as well. I have attempted to design the database so that you can dynamically add as many sensors as you would like. Currently, the dashboard tracks standard meteorological metrics (Temperature, Humidity, Dew Point, Pressure, and Wind Speed), alongside a small Radio Frequency dashboard to keep an eye on your wireless connection health.
+Essentially, this is a self-hosted weather dashboard powered by a Raspberry Pi. The Pi acts as both your database and web server, logging sensor readings every 5 minutes to SQLite and serving the UI across your local network. You can access it from any browser in your network. I specifically engineered the frontend to be compatible with iOS 12 so I could repurpose an old iPad as a dedicated display. But by no means do you need an old iPad to view the application; it should work on any modern device as well. I have attempted to design the database so that you can dynamically add as many sensors as you would like. Currently, the dashboard tracks standard meteorological metrics (Temperature, Humidity, Dew Point, Pressure, Rain, Wind Speed and Wind Direction), alongside a small Radio Frequency dashboard to keep an eye on your wireless connection health.
 
 <img src="images/Dashboard_image.png" alt="Desktop Dashboard Display" width="400">
 
@@ -27,34 +27,42 @@ graph TD
     end
 
     subgraph Persistent Storage
-        B -->|Write| E[(data/weather_data.db)]
-        D -->|Write| E
+        B -->|Write| W(db_access/writer.py)
+        D -->|Write| W
+        W -->|WAL SQLite| E[(data/weather_data.db)]
     end
 
     subgraph API Layer
-        E -->|Read| F(api/main.py & repository.py)
+        E -->|Read| F(db_access/reader.py)
+        F -->|Raw rows| H(api/main.py)
+        H -->|Shape| G(api/transforms.py)
+        H -.->|MSLP, dew point| M(weather_math.py)
+        G -.->|Vector avg, dew point| M
     end
 
     subgraph Client Presentation
-        G[frontend/app.js] -->|Fetch / 5-Min Heartbeat| F
-        F -->|JSON| G
+        I[frontend/app.js] -->|Fetch / 5-Min Heartbeat → JSON| H
+        I -->|CSV export request| H
     end
+
+    M ~~~ I
 ```
 1. Persistent Storage (The Heart)
 
-    The SQLite database sits at the center of the application (data/weather_data.db). Take a look at init_db.py to see the schema. The readings table utilizes an Entity-Attribute-Value (EAV) model (a narrow table format where each row records a single metric, like temperature or wind speed, rather than having a wide table with a column for every possible metric). This allows you to dynamically add an infinite number of new sensors to the system without ever needing to alter the database schema.
+    The SQLite database sits at the center of the application (data/weather_data.db). `init_db.py` is the authoritative schema source. The readings table utilizes an Entity-Attribute-Value (EAV) model (a narrow table format where each row records a single metric, like temperature or wind speed, rather than having a wide table with a column for every possible metric). This allows you to dynamically add an infinite number of new sensors to the system without ever needing to alter the database schema.
 
 2. Hardware Ingestion Layer (The Writers)
 
     The database is fed by hardware scripts located in the /hardware directory.
 
-- bme280_reader.py directly reads barometric pressure, temperature and humidity from a sensor wired to the Raspberry Pi.
+    - bme280_reader.py directly reads barometric pressure, temperature and humidity from a sensor wired to the Raspberry Pi.
 
-- sdr_reader.py listens to the 433MHz radio frequency to capture data transmitted wirelessly from your own outdoor sensors. This data is filtered through an in-memory throttle to prevent database bloat and is captured approximately every 5 minutes.
+    - `sdr_reader.py` listens to the 433MHz radio frequency to capture data transmitted wirelessly from your own outdoor sensors. 
+
 
 3. API Layer (The Readers)
 
-    The API layer exposes endpoints for the frontend to pull data. Located in the /api directory, the main.py file handles the routing and business logic (such as converting raw pressure to Mean Sea Level Pressure). All SQL queries are strictly decoupled into repository.py to allow for clean, isolated unit testing.
+    The API layer exposes endpoints for the frontend to pull data. Located in the /api directory, the main.py file handles the routing and business logic (such as converting raw pressure to Mean Sea Level Pressure).
 
 4. Client Presentation (The UI)
 
@@ -62,7 +70,7 @@ graph TD
 
 ### Radio Frequency (RF) Signal Health
 
-Because 433MHz wireless sensors are subject to environmental interference, battery degradation, and cross-polarization, the dashboard includes an RF monitoring layer. 
+Because 433MHz wireless sensors are subject to environmental interference and battery degradation the dashboard includes an RF monitoring layer. 
 
 The UI displays the three raw RF metrics calculated by the rtl_433 software: RSSI, Noise, and SNR. To make the Signal-to-Noise Ratio (SNR) easier to interpret at a glance, the values are colour-coded:
 
@@ -105,6 +113,41 @@ By default, the I2C hardware interface is turned off on a fresh Raspberry Pi. To
 `sudo raspi-config`
 Navigate to **Interface Options** -> **I2C** -> Select **Yes** to enable. You will need to reboot the Pi for this to take effect.
 
+**I2C Address:**
+Most BME280 modules ship with I2C address `0x76`, which is what the script expects. Some modules use `0x77` instead. If the sensor is wired correctly but not detected, open `hardware/bme280_reader.py` and change `BME280_ADDRESS = 0x76` to `BME280_ADDRESS = 0x77`.
+
+**Personalising the sensor:**
+Near the top of `hardware/bme280_reader.py` you will find the constant `SENSOR_MACHINE_NAME`. This is the lookup key the script uses to find its sensor row in the database — it must exactly match the `machine_name` value you insert during the database seeding step below. The friendly name and location are set in that SQL INSERT, not in the script.
+
+**Self-healing hardware recovery:**
+The BME280 script includes a three-tier recovery chain for I2C bus lockups: software retries with exponential backoff, a 9-clock-pulse hardware reset (I2C spec §3.1.16 via GPIO), and finally a kernel driver reset via `hardware/i2c_reset.sh`. Tiers one and two require no setup. Tier three (the kernel reset) is optional — if it is not configured, that step fails gracefully and the next cron invocation starts fresh.
+
+**Optional: Setting up the kernel driver reset (`hardware/i2c_reset.sh`):**
+
+This step is **disabled by default** because it resets the I2C-1 bus driver for all devices on the bus, not just the BME280. If you have other I2C devices wired to the same bus (a display, another sensor), they will briefly lose communication during the reset.
+
+To enable it, set `ENABLE_I2C_DRIVER_RESET = True` in `config.py`, then complete the following setup:
+
+Make the script executable:
+```bash
+chmod +x hardware/i2c_reset.sh
+```
+
+Allow it to run without a password prompt (required for cron — without this the step silently times out):
+```bash
+sudo visudo
+```
+Add this line, adjusting the path:
+```
+YOUR_USER ALL=(ALL) NOPASSWD: /home/YOUR_USER/weather_station/hardware/i2c_reset.sh
+```
+
+Verify the device address matches your hardware. The script contains `DEVICE="1f00074000.i2c"`, which is correct for the **Raspberry Pi 5**. To find the correct value for your model:
+```bash
+ls /sys/bus/platform/drivers/i2c_designware/
+```
+Copy the address ending in `.i2c` and update the `DEVICE` variable at the top of `hardware/i2c_reset.sh`.
+
 
 ### 1. System Dependencies
 
@@ -124,6 +167,8 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+All file paths (database, frontend) are resolved automatically relative to the repository root via `config.py` — no path configuration needed.
 
 ### 3. Discover Your Sensors (Airwave Sniffing)
 (Note: If you are only using the hardwired BME280 sensor, you can skip to Step 4).
@@ -145,49 +190,42 @@ Temperature: 1.7 C         Humidity  : 49 %
 Write down that id (e.g., 12345). Once you have it, press Ctrl + C to stop the listener.
 
 ### 4. Configuration & Database Seeding
-First, set up your Environment Variable:
-Copy the template file to create your active .env file.
-
-```bash
-cp .env.example .env
-nano .env
-```
-
-Inside the .env file, simply provide your physical station elevation in meters (used to calculate Mean Sea Level Pressure).
-
-```
-STATION_ELEVATION=1045
-```
-
-Second, initialize the Database:
+First, initialize the Database:
 This creates the .db file and builds the required schema. (Ensure you have the virtual environment activated)
 
 ```bash
 python init_db.py
 ```
 
-(Note: You do not need to manually register the BME280; the script is designed to auto-register itself into the database the first time it runs. So if you are not using any SDR sensors you don't need to do the following step). 
+> **If a hardware script fails with `ValueError: Unknown metric '...'`**, it means `init_db.py` either has not been run yet, or was run before a new metric was added. Re-run `init_db.py` and restart the affected script.
 
-Third, Register the Sensors in the Database:
-The system requires you to explicitly register your SDR sensors. If an unregistered radio ID flies through the air, the database will silently reject it.
-
-Open the SQLite terminal:
+Second, Register Your Sensors in the Database:
+All sensors must be explicitly registered before they will accept data. Open the SQLite terminal:
 
 ```bash
 sqlite3 data/weather_data.db
 ```
 
-Insert your sensors into the table. If you have multiple sensors, repeat the insert into step below for each one. 
-(Important: The machine_name you insert here must perfectly match the physical id you found in Step 3!) 
+Register each sensor you are using. The `machine_name` is the lookup key the hardware script uses — it must match exactly. Set `elevation_m` to your station's altitude in metres — this is used to calculate MSLP-corrected pressure. If omitted, the dashboard will still show a pressure reading but it will be the raw uncorrected value.
 
 ```sql
--- Example: Registering an outdoor SDR sensor (Physical ID 12345)
-INSERT INTO sensors (machine_name, friendly_name, location) 
-VALUES ('12345', 'Outside (Tree)', 'Backyard');
+-- If using the BME280 hardwired sensor:
+INSERT INTO sensors (machine_name, friendly_name, location, elevation_m)
+VALUES ('bme280_local', 'Living Room Sensor', 'Living Room', 1045);
+
+-- If using an SDR wireless sensor (replace 12345 with the physical ID from Step 3):
+INSERT INTO sensors (machine_name, friendly_name, location, elevation_m)
+VALUES ('12345', 'Outside (Tree)', 'Backyard', 1045);
 
 -- Type .exit and press Enter to leave the SQLite terminal
 .exit
 ```
+
+> **Optional columns:** `latitude`, `longitude`, and `timezone` can also be set on any sensor. These are not required for the dashboard to function, but `latitude` and `longitude` are included in CSV exports, and `timezone` is used to localise exported timestamps. Example:
+> ```sql
+> UPDATE sensors SET latitude = 51.5, longitude = -0.1, timezone = 'Europe/London'
+> WHERE machine_name = 'bme280_local';
+> ```
 
 ### 5. Running as Background Services (systemd)
 
@@ -250,6 +288,14 @@ Add this line to the bottom of the file (adjusting the paths):
 */5 * * * * /home/YOUR_USER/weather_station/venv/bin/python /home/YOUR_USER/weather_station/hardware/bme280_reader.py
 ```
 
+**How the data collection interval works:**
+All three components — the cron job, the SDR reader, and the API — must agree on the same collection interval. The interval is defined in one place: `BUCKET_INTERVAL_MINUTES` in `config.py` (default: `5`). Both hardware scripts read this value at startup to snap their timestamps to the correct bucket boundary. The API uses the same value to build its chart grids.
+
+If you want to change the interval (e.g. to 10 minutes), you need to update three things in sync:
+1. Set `BUCKET_INTERVAL_MINUTES = 10` in `config.py`
+2. Update the cron schedule to `*/10 * * * *`
+3. Restart the SDR reader and API services so they pick up the new value
+
 Run the following commands to start the services you created. (Note: If you didn't create the optional weather-sdr service, simply remove it from these commands).
 ```bash
 sudo systemctl daemon-reload
@@ -257,6 +303,7 @@ sudo systemctl enable weather-api weather-sdr
 sudo systemctl start weather-api weather-sdr
 ```
 You can now view your live dashboard at http://[YOUR_PI_IP]:8000.
+
 ## Running Tests
 The test suites are split between the Python backend and the JavaScript frontend.
 

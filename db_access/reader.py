@@ -6,11 +6,42 @@ def get_latest_global_metric(conn: sqlite3.Connection, metric_type_id: int):
     """Fetches the most recent reading for a metric, regardless of which sensor provided it."""
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT value, timestamp FROM readings
+        SELECT sensor_id, value, timestamp FROM readings
         WHERE metric_type_id = ?
         ORDER BY timestamp DESC LIMIT 1
     """, (metric_type_id,))
     return cursor.fetchone()
+
+
+def get_sensor_elevation(conn: sqlite3.Connection, sensor_id: int):
+    """Returns elevation_m for the given sensor, or None if not configured."""
+    row = conn.execute(
+        "SELECT elevation_m FROM sensors WHERE id = ?", (sensor_id,)
+    ).fetchone()
+    return row["elevation_m"] if row else None
+
+
+def get_export_readings(conn: sqlite3.Connection, ts_from: int, ts_to: int):
+    """Returns a cursor of denormalized readings for CSV export.
+    Caller is responsible for iterating and closing the connection."""
+    return conn.execute("""
+        SELECT
+            r.timestamp,
+            s.id           AS sensor_id,
+            s.machine_name AS sensor_name,
+            s.location,
+            s.latitude,
+            s.longitude,
+            s.elevation_m,
+            s.timezone,
+            mt.name        AS metric,
+            r.value
+        FROM readings r
+        JOIN sensors      s  ON s.id  = r.sensor_id
+        JOIN metric_types mt ON mt.id = r.metric_type_id
+        WHERE r.timestamp >= ? AND r.timestamp <= ?
+        ORDER BY r.timestamp ASC, s.id ASC, mt.name ASC
+    """, (ts_from, ts_to))
 
 
 def get_pivoted_trend(conn: sqlite3.Connection, metrics: dict, hours_back: int = 72, sensor_id: int = None):

@@ -33,6 +33,7 @@ const state = {
 const els = {
     // Macro banner
     pressure:           document.getElementById('ui-pressure'),
+    pressureLabel:      document.getElementById('ui-pressure-label'),
     pressureTime:       document.getElementById('ui-pressure-time'),
     wind:               document.getElementById('ui-wind'),
     windCompass:        document.getElementById('ui-wind-compass'),
@@ -219,6 +220,9 @@ async function fetchFixedSensors() {
 
 function renderMacroBanner(data) {
     els.pressure.textContent = safeFallback(data.mslp_hpa, ' hPa');
+    if (els.pressureLabel) {
+        els.pressureLabel.textContent = data.mslp_corrected ? 'Relative Pressure' : 'Station Pressure';
+    }
     if (els.gust) els.gust.textContent = safeFallback(data.wind_gust_kmh, ' km/h');
     if (els.rain) els.rain.textContent = safeFallback(data.rain_24h_mm, ' mm');
     if (els.pressureTime) els.pressureTime.textContent = formatDateTime(data.pressure_timestamp);
@@ -322,7 +326,7 @@ async function updateSelectedSensorData(sensorId, friendlyName) {
         els.temp.textContent     = safeFallback(currentData.temperature_c,  '°');
         els.high.textContent     = safeFallback(currentData.temp_high_24h,  '°');
         els.low.textContent      = safeFallback(currentData.temp_low_24h,   '°');
-        els.humidity.textContent = safeFallback(currentData.humidity_pct,   '%');
+        els.humidity.textContent = safeFallback(currentData.relative_humidity_pct, '%');
         els.dewpoint.textContent = safeFallback(currentData.dew_point_c,    '°');
 
         // Stateless RF UI update with 3-tier color coding
@@ -429,12 +433,19 @@ function drawWindDirectionHistory(historyData) {
         const point = data[i];
         const pct = ((i + 0.5) / count * 100).toFixed(1);
 
+        // Outer container: horizontally centred, stacks arrow + speed label
         const el = document.createElement('div');
         el.style.position = 'absolute';
-        el.style.left = `${pct}%`;
-        el.style.top = '50%';
-        el.style.marginLeft = '-10px';
-        el.style.marginTop = '-10px';
+        el.style.left = pct + '%';
+        el.style.top = '3px';
+        el.style.transform = 'translateX(-50%)';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+        el.style.alignItems = 'center';
+        el.style.gap = '2px';
+
+        // Arrow wrapper — rotation applied here so the speed label stays upright
+        const arrowEl = document.createElement('div');
 
         if (point.direction !== null && point.direction !== undefined) {
             const prevDir = i > 0 ? data[i - 1].direction : null;
@@ -442,18 +453,31 @@ function drawWindDirectionHistory(historyData) {
                 windAngularDiff(prevDir, point.direction) >= WIND_REVERSAL_THRESHOLD_DEG;
             const color = isReversal ? '#FF4444' : '#A0A0A0';
 
-            el.style.transform = `rotate(${point.direction}deg)`;
-            el.innerHTML =
-                `<svg width="20" height="20" viewBox="0 0 24 24">` +
-                    `<line x1="12" y1="6" x2="12" y2="17" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>` +
-                    `<polygon points="8.5,14 15.5,14 12,20" fill="${color}"/>` +
-                `</svg>`;
+            arrowEl.style.transform = 'rotate(' + point.direction + 'deg)';
+            arrowEl.innerHTML =
+                '<svg width="20" height="20" viewBox="0 0 24 24">' +
+                    '<line x1="12" y1="6" x2="12" y2="17" stroke="' + color + '" stroke-width="2.5" stroke-linecap="round"/>' +
+                    '<polygon points="8.5,14 15.5,14 12,20" fill="' + color + '"/>' +
+                '</svg>';
         } else {
-            el.innerHTML =
-                `<svg width="20" height="20" viewBox="0 0 24 24">` +
-                    `<circle cx="12" cy="12" r="2" fill="#444"/>` +
-                `</svg>`;
+            arrowEl.innerHTML =
+                '<svg width="20" height="20" viewBox="0 0 24 24">' +
+                    '<circle cx="12" cy="12" r="2" fill="#444"/>' +
+                '</svg>';
         }
+
+        el.appendChild(arrowEl);
+
+        // Speed label — always upright, shows rounded km/h average for the bucket
+        const speedEl = document.createElement('div');
+        speedEl.style.fontSize = '9px';
+        speedEl.style.color = '#888';
+        speedEl.style.lineHeight = '1';
+        speedEl.style.whiteSpace = 'nowrap';
+        speedEl.textContent = (point.speed !== null && point.speed !== undefined)
+            ? Math.round(point.speed)
+            : '--';
+        el.appendChild(speedEl);
 
         els.windHistory.appendChild(el);
     }
@@ -590,7 +614,7 @@ function drawPressureChart(trendArray, averageValue, rainTrend) {
                 xAxes: getSharedXAxis(),
                 yAxes: [{
                     display: true, position: 'left',
-                    scaleLabel: { display: true, labelString: 'Raw Press. (hPa)', fontColor: '#A0A0A0' },
+                    scaleLabel: { display: true, labelString: 'Station Press. (hPa)', fontColor: '#A0A0A0' },
                     ticks: { fontColor: '#A0A0A0' },
                     gridLines: { color: '#333333' },
                     afterFit: function(scaleInstance) { scaleInstance.width = 75; }
@@ -724,3 +748,70 @@ if (document.readyState === 'loading') {
 } else {
     init();
 }
+
+
+// --- 11. Download Modal ---
+
+(function() {
+    var overlay      = document.getElementById('download-modal-overlay');
+    var openBtn      = document.getElementById('download-btn');
+    var closeBtn     = document.getElementById('modal-close-btn');
+    var downloadBtn  = document.getElementById('download-csv-btn');
+    var presetChips  = document.querySelectorAll('.preset-chip');
+    var customDates  = document.getElementById('custom-date-inputs');
+    var dateFrom     = document.getElementById('date-from');
+    var dateTo       = document.getElementById('date-to');
+    var i;
+
+    function openModal() {
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    function buildExportUrl() {
+        var activeChip = document.querySelector('.preset-chip.active');
+        var preset = activeChip ? activeChip.dataset.preset : '7d';
+
+        if (preset === 'custom') {
+            var from = dateFrom.value;
+            var to   = dateTo.value;
+            dateFrom.classList.toggle('error', !from);
+            dateTo.classList.toggle('error', !to);
+            if (!from || !to) { return null; }
+            return '/api/export/csv?from_date=' + from + '&to_date=' + to;
+        }
+
+        return '/api/export/csv?range=' + preset;
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) { closeModal(); }
+    });
+
+    for (i = 0; i < presetChips.length; i++) {
+        presetChips[i].addEventListener('click', function() {
+            for (var j = 0; j < presetChips.length; j++) {
+                presetChips[j].classList.remove('active');
+            }
+            this.classList.add('active');
+            customDates.style.display = (this.dataset.preset === 'custom') ? 'flex' : 'none';
+        });
+    }
+
+    dateFrom.addEventListener('change', function() { dateFrom.classList.remove('error'); });
+    dateTo.addEventListener('change',   function() { dateTo.classList.remove('error'); });
+
+    downloadBtn.addEventListener('click', function() {
+        var url = buildExportUrl();
+        if (!url) { return; }
+        window.location.href = url;
+        closeModal();
+    });
+})();

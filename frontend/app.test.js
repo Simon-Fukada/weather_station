@@ -26,7 +26,8 @@ global.Chart = jest.fn().mockImplementation(() => ({
     },
     data: {
         labels: [],
-        datasets: [{ data: [] }, { data: [] }, { data: [] }, { data: [] }]
+        // 5 entries: normal, gradual-alert, slow-alert, fast-alert, average line
+        datasets: [{ data: [] }, { data: [] }, { data: [] }, { data: [] }, { data: [] }]
     },
     options: {
         scales: {
@@ -93,6 +94,18 @@ document.body.innerHTML = `
     <div id="ui-snr"></div><div id="ui-snr-trend"></div>
 
     <select id="sensor-dropdown"></select>
+
+    <!-- Download modal stubs — required so the IIFE in app.js can attach its
+         event listeners without crashing. These elements are not exercised by
+         any test; they merely keep the module from throwing at eval time. -->
+    <div id="download-modal-overlay"></div>
+    <button id="download-btn"></button>
+    <button id="modal-close-btn"></button>
+    <button id="download-csv-btn"></button>
+    <button class="preset-chip active" data-preset="7d"></button>
+    <div id="custom-date-inputs"></div>
+    <input type="date" id="date-from">
+    <input type="date" id="date-to">
 `;
 
 eval(fs.readFileSync(path.resolve(__dirname, 'app.js'), 'utf8'));
@@ -355,7 +368,7 @@ describe('Weather Station Frontend (app.js)', () => {
                         temperature_c: 21.3,
                         temp_high_24h: 24.0,
                         temp_low_24h: 19.5,
-                        humidity_pct: 55,
+                        relative_humidity_pct: 55,
                         dew_point_c: 12.1,
                         timestamp: '2026-03-20 13:45:00',
                         battery_ok: 1

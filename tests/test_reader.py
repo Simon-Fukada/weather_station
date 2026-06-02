@@ -3,7 +3,12 @@ import sqlite3
 import time
 
 from db_access import reader
-from metrics import Metric
+from db_access.metrics import build_metric_enum
+
+
+@pytest.fixture
+def Metric(db_connection):
+    return build_metric_enum(db_connection)
 
 
 def test_get_all_sensors(db_connection):
@@ -13,7 +18,7 @@ def test_get_all_sensors(db_connection):
     assert sensors[0]["friendly_name"] == "Outdoor Fence"
 
 
-def test_get_latest_sensor_readings(db_connection, metric_ids):
+def test_get_latest_sensor_readings(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     now = int(time.time())
 
@@ -28,10 +33,10 @@ def test_get_latest_sensor_readings(db_connection, metric_ids):
     assert len(readings) == 2
     metrics = {r["metric_type"]: r["value"] for r in readings}
     assert metrics["temperature_c"] == 10.5
-    assert metrics["humidity_pct"] == 60.2
+    assert metrics["relative_humidity_pct"] == 60.2
 
 
-def test_get_24h_extremes(db_connection, metric_ids):
+def test_get_24h_extremes(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     now = int(time.time())
     temp_id = metric_ids[Metric.TEMPERATURE_C]
@@ -50,7 +55,7 @@ def test_get_24h_extremes(db_connection, metric_ids):
     assert extremes["low"] == -15.5   # seeded in conftest, within 24 h
 
 
-def test_get_latest_single_metric(db_connection, metric_ids):
+def test_get_latest_single_metric(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     now = int(time.time())
     hum_id = metric_ids[Metric.HUMIDITY_PCT]
@@ -63,7 +68,7 @@ def test_get_latest_single_metric(db_connection, metric_ids):
     assert latest["value"] == 45.0
 
 
-def test_get_latest_global_metric(db_connection, metric_ids):
+def test_get_latest_global_metric(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     now = int(time.time())
     pressure_id = metric_ids[Metric.PRESSURE_HPA]
@@ -77,7 +82,7 @@ def test_get_latest_global_metric(db_connection, metric_ids):
     assert latest["value"] == 1015.0
 
 
-def test_get_global_max_wind_gust(db_connection, metric_ids):
+def test_get_global_max_wind_gust(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     now = int(time.time())
     gust_id = metric_ids[Metric.WIND_GUST_KMH]
@@ -90,7 +95,7 @@ def test_get_global_max_wind_gust(db_connection, metric_ids):
     assert max_gust == 30.1
 
 
-def test_get_pivoted_trend_per_sensor(db_connection, metric_ids):
+def test_get_pivoted_trend_per_sensor(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     ts = int(time.time()) - 1800
     temp_id = metric_ids[Metric.TEMPERATURE_C]
@@ -107,10 +112,10 @@ def test_get_pivoted_trend_per_sensor(db_connection, metric_ids):
     )
     assert len(rows) == 1
     assert rows[0]["temperature_c"] == 22.0
-    assert rows[0]["humidity_pct"]  == 55.0
+    assert rows[0]["relative_humidity_pct"] == 55.0
 
 
-def test_get_pivoted_trend_global(db_connection, metric_ids):
+def test_get_pivoted_trend_global(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     pressure_id = metric_ids[Metric.PRESSURE_HPA]
 
@@ -126,7 +131,7 @@ def test_get_pivoted_trend_global(db_connection, metric_ids):
     assert rows[0]["pressure_hpa"] == 1013.0
 
 
-def test_get_pivoted_trend_excludes_old_data(db_connection, metric_ids):
+def test_get_pivoted_trend_excludes_old_data(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     now = int(time.time())
     temp_id = metric_ids[Metric.TEMPERATURE_C]
@@ -153,7 +158,7 @@ def test_get_sensor_health_not_found(db_connection):
     assert reader.get_sensor_health(db_connection, 999) is None
 
 
-def test_get_rf_trend_data(db_connection, metric_ids):
+def test_get_rf_trend_data(db_connection, metric_ids, Metric):
     cursor = db_connection.cursor()
     now = int(time.time())
     snr_id = metric_ids[Metric.SNR_DB]
@@ -193,7 +198,7 @@ def test_get_latest_sensor_readings_no_data(db_connection):
     assert reader.get_latest_sensor_readings(db_connection, 999) == []
 
 
-def test_get_24h_extremes_no_data(db_connection, metric_ids):
+def test_get_24h_extremes_no_data(db_connection, metric_ids, Metric):
     extremes = reader.get_24h_extremes(db_connection, 1, metric_ids[Metric.WIND_KMH])
     assert extremes["high"] is None
     assert extremes["low"]  is None
@@ -207,11 +212,11 @@ def test_get_latest_global_metric_no_data(db_connection):
     assert reader.get_latest_global_metric(db_connection, 99999) is None
 
 
-def test_get_global_max_wind_gust_no_data(db_connection, metric_ids):
+def test_get_global_max_wind_gust_no_data(db_connection, metric_ids, Metric):
     assert reader.get_global_max_wind_gust(db_connection, metric_ids[Metric.WIND_GUST_KMH]) is None
 
 
-def test_get_pivoted_trend_no_data(db_connection, metric_ids):
+def test_get_pivoted_trend_no_data(db_connection, metric_ids, Metric):
     rows = reader.get_pivoted_trend(
         db_connection,
         {Metric.TEMPERATURE_C: metric_ids[Metric.TEMPERATURE_C],
@@ -221,7 +226,7 @@ def test_get_pivoted_trend_no_data(db_connection, metric_ids):
     assert rows == []
 
 
-def test_get_rf_trend_data_no_data(db_connection, metric_ids):
+def test_get_rf_trend_data_no_data(db_connection, metric_ids, Metric):
     results = reader.get_rf_trend_data(
         db_connection, 999,
         metric_ids[Metric.RSSI_DBM],

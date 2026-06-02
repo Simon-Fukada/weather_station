@@ -4,5 +4,5 @@ setup(
     name="weather_station",
     version="1.0.0",
     packages=find_packages(),
-    py_modules=["weather_math", "config", "metrics"],  # Explicitly include standalone root modules
+    py_modules=["weather_math", "config"],  # Explicitly include standalone root modules
 )

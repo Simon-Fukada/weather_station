@@ -1,7 +1,6 @@
 -e .
 fastapi
 uvicorn
-python-dotenv
 pytest
 httpx
 smbus2

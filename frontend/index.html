@@ -13,8 +13,19 @@
     <div class="dashboard-container">
         
         <header class="macro-banner">
+            <div class="macro-banner-spacer"></div>
             <div class="macro-block">
                 <span class="macro-label">Last Updated: <span id="ui-time">--:--</span></span>
+            </div>
+            <div class="macro-banner-actions">
+                <button class="download-icon-btn" id="download-btn" aria-label="Download data">
+                    <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <path d="M9 2v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M5.5 7.5L9 11l3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 14h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="download-btn-text">Download CSV</span>
+                </button>
             </div>
         </header>
 
@@ -56,7 +67,7 @@
 
         <section class="global-telemetry">
             <div class="telemetry-block">
-                <span class="telemetry-label">Relative Pressure</span>
+                <span class="telemetry-label" id="ui-pressure-label">Relative Pressure</span>
                 <span class="telemetry-value" id="ui-pressure">-- hPa</span>
                 <span class="telemetry-sub" id="ui-pressure-time">--:--</span>
             </div>
@@ -93,6 +104,7 @@
 
         <section class="visualizer-section">
             <div class="wind-history-strip">
+                <div class="wind-strip-label"><span>WIND</span></div>
                 <div id="ui-wind-history"></div>
             </div>
             <div class="chart-container">
@@ -108,6 +120,42 @@
 
     </div>
     
-    <script src="app.js?v=4.5"></script>
+    <!-- Download Modal -->
+    <div id="download-modal-overlay" class="modal-overlay">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-header">
+                <span class="modal-title" id="modal-title">Download Data</span>
+                <button class="modal-close-btn" id="modal-close-btn" aria-label="Close">&#10005;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-format-note">Un-pivoted CSV — one row per reading, with columns for sensor, metric, value, and timestamp.</p>
+                <div class="modal-section">
+                    <span class="modal-section-label">Date Range</span>
+                    <div class="preset-chips">
+                        <button class="preset-chip active" data-preset="24h">24h</button>
+                        <button class="preset-chip" data-preset="7d">7 days</button>
+                        <button class="preset-chip" data-preset="30d">30 days</button>
+                        <button class="preset-chip" data-preset="all">All time</button>
+                        <button class="preset-chip" data-preset="custom">Custom</button>
+                    </div>
+                    <div class="custom-date-inputs" id="custom-date-inputs">
+                        <div class="date-field">
+                            <label class="date-label" for="date-from">From</label>
+                            <input class="date-input" type="date" id="date-from">
+                        </div>
+                        <div class="date-field">
+                            <label class="date-label" for="date-to">To</label>
+                            <input class="date-input" type="date" id="date-to">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="download-csv-btn" id="download-csv-btn">Download CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=4.9"></script>
 </body>
 </html>
