@@ -8,3 +8,5 @@ data/
 node_modules/
 *.egg-info/
 migrate_db.py
+CLAUDE.md
+GEMINI.md
