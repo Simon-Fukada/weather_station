@@ -1,0 +1,16 @@
+{
+  "sensor_id": 5,
+  "timestamp": "2026-05-14 06:00:00",
+  "temperature_c": 10.3,
+  "relative_humidity_pct": 63.4,
+  "dew_point_c": 3.7,
+  "temp_high_24h": 24.3,
+  "temp_low_24h": 4.9,
+  "battery_ok": 1,
+  "rssi_dbm": -5.6,
+  "snr_db": 18.6,
+  "noise_dbm": -24.3,
+  "rssi_trend": "\u2b06\ufe0f",
+  "noise_trend": "\u2b07\ufe0f",
+  "snr_trend": "\u2b06\ufe0f"
+}

@@ -1,0 +1,6057 @@
+[
+  {
+    "timestamp": "2026-05-11 06:00:00",
+    "temperature_c": 15.43,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 864.55
+  },
+  {
+    "timestamp": "2026-05-11 06:05:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 864.69
+  },
+  {
+    "timestamp": "2026-05-11 06:10:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.54,
+    "pressure_hpa": 864.73
+  },
+  {
+    "timestamp": "2026-05-11 06:15:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.54,
+    "pressure_hpa": 864.77
+  },
+  {
+    "timestamp": "2026-05-11 06:20:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.54,
+    "pressure_hpa": 864.82
+  },
+  {
+    "timestamp": "2026-05-11 06:25:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 864.87
+  },
+  {
+    "timestamp": "2026-05-11 06:30:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 864.96
+  },
+  {
+    "timestamp": "2026-05-11 06:35:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.45,
+    "pressure_hpa": 864.86
+  },
+  {
+    "timestamp": "2026-05-11 06:40:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.51,
+    "pressure_hpa": 864.87
+  },
+  {
+    "timestamp": "2026-05-11 06:45:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.48,
+    "pressure_hpa": 864.86
+  },
+  {
+    "timestamp": "2026-05-11 06:50:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 864.9
+  },
+  {
+    "timestamp": "2026-05-11 06:55:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.57,
+    "pressure_hpa": 864.82
+  },
+  {
+    "timestamp": "2026-05-11 07:00:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.58,
+    "pressure_hpa": 864.83
+  },
+  {
+    "timestamp": "2026-05-11 07:05:00",
+    "temperature_c": 15.36,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.61,
+    "pressure_hpa": 864.92
+  },
+  {
+    "timestamp": "2026-05-11 07:10:00",
+    "temperature_c": 15.35,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 864.91
+  },
+  {
+    "timestamp": "2026-05-11 07:15:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.75,
+    "pressure_hpa": 864.92
+  },
+  {
+    "timestamp": "2026-05-11 07:20:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.65,
+    "pressure_hpa": 864.95
+  },
+  {
+    "timestamp": "2026-05-11 07:25:00",
+    "temperature_c": 15.31,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.65,
+    "pressure_hpa": 864.93
+  },
+  {
+    "timestamp": "2026-05-11 07:30:00",
+    "temperature_c": 15.31,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 864.93
+  },
+  {
+    "timestamp": "2026-05-11 07:35:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.67,
+    "pressure_hpa": 864.95
+  },
+  {
+    "timestamp": "2026-05-11 07:40:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.67,
+    "pressure_hpa": 864.99
+  },
+  {
+    "timestamp": "2026-05-11 07:45:00",
+    "temperature_c": 15.29,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.68,
+    "pressure_hpa": 865.03
+  },
+  {
+    "timestamp": "2026-05-11 07:50:00",
+    "temperature_c": 15.26,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.71,
+    "pressure_hpa": 864.92
+  },
+  {
+    "timestamp": "2026-05-11 07:55:00",
+    "temperature_c": 15.26,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.75,
+    "pressure_hpa": 864.86
+  },
+  {
+    "timestamp": "2026-05-11 08:00:00",
+    "temperature_c": 15.25,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.76,
+    "pressure_hpa": 865.01
+  },
+  {
+    "timestamp": "2026-05-11 08:05:00",
+    "temperature_c": 15.24,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.8,
+    "pressure_hpa": 864.99
+  },
+  {
+    "timestamp": "2026-05-11 08:10:00",
+    "temperature_c": 15.25,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.76,
+    "pressure_hpa": 864.93
+  },
+  {
+    "timestamp": "2026-05-11 08:15:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.81,
+    "pressure_hpa": 864.98
+  },
+  {
+    "timestamp": "2026-05-11 08:20:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.76,
+    "pressure_hpa": 865.01
+  },
+  {
+    "timestamp": "2026-05-11 08:25:00",
+    "temperature_c": 15.19,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.83,
+    "pressure_hpa": 864.98
+  },
+  {
+    "timestamp": "2026-05-11 08:30:00",
+    "temperature_c": 15.19,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.83,
+    "pressure_hpa": 864.97
+  },
+  {
+    "timestamp": "2026-05-11 08:35:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.86,
+    "pressure_hpa": 865.08
+  },
+  {
+    "timestamp": "2026-05-11 08:40:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.89,
+    "pressure_hpa": 864.99
+  },
+  {
+    "timestamp": "2026-05-11 08:45:00",
+    "temperature_c": 15.16,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.95,
+    "pressure_hpa": 864.92
+  },
+  {
+    "timestamp": "2026-05-11 08:50:00",
+    "temperature_c": 15.15,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.92,
+    "pressure_hpa": 865.0
+  },
+  {
+    "timestamp": "2026-05-11 08:55:00",
+    "temperature_c": 15.13,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.92,
+    "pressure_hpa": 865.01
+  },
+  {
+    "timestamp": "2026-05-11 09:00:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.99,
+    "pressure_hpa": 864.95
+  },
+  {
+    "timestamp": "2026-05-11 09:05:00",
+    "temperature_c": 15.1,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.01,
+    "pressure_hpa": 864.98
+  },
+  {
+    "timestamp": "2026-05-11 09:10:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.99,
+    "pressure_hpa": 865.04
+  },
+  {
+    "timestamp": "2026-05-11 09:15:00",
+    "temperature_c": 15.09,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.01,
+    "pressure_hpa": 865.04
+  },
+  {
+    "timestamp": "2026-05-11 09:20:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.09,
+    "pressure_hpa": 865.09
+  },
+  {
+    "timestamp": "2026-05-11 09:25:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.08,
+    "pressure_hpa": 865.11
+  },
+  {
+    "timestamp": "2026-05-11 09:30:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.1,
+    "pressure_hpa": 865.12
+  },
+  {
+    "timestamp": "2026-05-11 09:35:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.11,
+    "pressure_hpa": 865.22
+  },
+  {
+    "timestamp": "2026-05-11 09:40:00",
+    "temperature_c": 15.05,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.12,
+    "pressure_hpa": 865.44
+  },
+  {
+    "timestamp": "2026-05-11 09:45:00",
+    "temperature_c": 15.03,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 865.44
+  },
+  {
+    "timestamp": "2026-05-11 09:50:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 865.58
+  },
+  {
+    "timestamp": "2026-05-11 09:55:00",
+    "temperature_c": 15.01,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.17,
+    "pressure_hpa": 865.56
+  },
+  {
+    "timestamp": "2026-05-11 10:00:00",
+    "temperature_c": 14.99,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 865.6
+  },
+  {
+    "timestamp": "2026-05-11 10:05:00",
+    "temperature_c": 14.98,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 865.61
+  },
+  {
+    "timestamp": "2026-05-11 10:10:00",
+    "temperature_c": 14.99,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.14,
+    "pressure_hpa": 865.73
+  },
+  {
+    "timestamp": "2026-05-11 10:15:00",
+    "temperature_c": 14.98,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.1,
+    "pressure_hpa": 865.68
+  },
+  {
+    "timestamp": "2026-05-11 10:20:00",
+    "temperature_c": 14.97,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.1,
+    "pressure_hpa": 865.64
+  },
+  {
+    "timestamp": "2026-05-11 10:25:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.11,
+    "pressure_hpa": 865.79
+  },
+  {
+    "timestamp": "2026-05-11 10:30:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.1,
+    "pressure_hpa": 865.89
+  },
+  {
+    "timestamp": "2026-05-11 10:35:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.1,
+    "pressure_hpa": 865.89
+  },
+  {
+    "timestamp": "2026-05-11 10:40:00",
+    "temperature_c": 14.93,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.12,
+    "pressure_hpa": 865.88
+  },
+  {
+    "timestamp": "2026-05-11 10:45:00",
+    "temperature_c": 14.91,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.09,
+    "pressure_hpa": 865.91
+  },
+  {
+    "timestamp": "2026-05-11 10:50:00",
+    "temperature_c": 14.89,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 865.87
+  },
+  {
+    "timestamp": "2026-05-11 10:55:00",
+    "temperature_c": 14.89,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.14,
+    "pressure_hpa": 866.01
+  },
+  {
+    "timestamp": "2026-05-11 11:00:00",
+    "temperature_c": 14.87,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 865.98
+  },
+  {
+    "timestamp": "2026-05-11 11:05:00",
+    "temperature_c": 14.87,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.14,
+    "pressure_hpa": 866.08
+  },
+  {
+    "timestamp": "2026-05-11 11:10:00",
+    "temperature_c": 14.87,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.18,
+    "pressure_hpa": 866.03
+  },
+  {
+    "timestamp": "2026-05-11 11:15:00",
+    "temperature_c": 14.85,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.14,
+    "pressure_hpa": 866.12
+  },
+  {
+    "timestamp": "2026-05-11 11:20:00",
+    "temperature_c": 14.83,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.17,
+    "pressure_hpa": 866.15
+  },
+  {
+    "timestamp": "2026-05-11 11:25:00",
+    "temperature_c": 14.85,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.21,
+    "pressure_hpa": 866.24
+  },
+  {
+    "timestamp": "2026-05-11 11:30:00",
+    "temperature_c": 14.82,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.2,
+    "pressure_hpa": 866.34
+  },
+  {
+    "timestamp": "2026-05-11 11:35:00",
+    "temperature_c": 14.81,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.25,
+    "pressure_hpa": 866.36
+  },
+  {
+    "timestamp": "2026-05-11 11:40:00",
+    "temperature_c": 14.8,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.24,
+    "pressure_hpa": 866.42
+  },
+  {
+    "timestamp": "2026-05-11 11:45:00",
+    "temperature_c": 14.79,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 866.41
+  },
+  {
+    "timestamp": "2026-05-11 11:50:00",
+    "temperature_c": 14.78,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.3,
+    "pressure_hpa": 866.39
+  },
+  {
+    "timestamp": "2026-05-11 11:55:00",
+    "temperature_c": 14.77,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 866.52
+  },
+  {
+    "timestamp": "2026-05-11 12:00:00",
+    "temperature_c": 14.77,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 866.48
+  },
+  {
+    "timestamp": "2026-05-11 12:05:00",
+    "temperature_c": 14.75,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.34,
+    "pressure_hpa": 866.54
+  },
+  {
+    "timestamp": "2026-05-11 12:10:00",
+    "temperature_c": 14.75,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.3,
+    "pressure_hpa": 866.51
+  },
+  {
+    "timestamp": "2026-05-11 12:15:00",
+    "temperature_c": 14.75,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 866.56
+  },
+  {
+    "timestamp": "2026-05-11 12:20:00",
+    "temperature_c": 14.75,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.26,
+    "pressure_hpa": 866.51
+  },
+  {
+    "timestamp": "2026-05-11 12:25:00",
+    "temperature_c": 14.74,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.25,
+    "pressure_hpa": 866.57
+  },
+  {
+    "timestamp": "2026-05-11 12:30:00",
+    "temperature_c": 14.72,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.26,
+    "pressure_hpa": 866.52
+  },
+  {
+    "timestamp": "2026-05-11 12:35:00",
+    "temperature_c": 14.72,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.24,
+    "pressure_hpa": 866.6
+  },
+  {
+    "timestamp": "2026-05-11 12:40:00",
+    "temperature_c": 14.73,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.17,
+    "pressure_hpa": 866.62
+  },
+  {
+    "timestamp": "2026-05-11 12:45:00",
+    "temperature_c": 14.7,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.19,
+    "pressure_hpa": 866.84
+  },
+  {
+    "timestamp": "2026-05-11 12:50:00",
+    "temperature_c": 14.82,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.22,
+    "pressure_hpa": 866.84
+  },
+  {
+    "timestamp": "2026-05-11 12:55:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.26,
+    "pressure_hpa": 866.9
+  },
+  {
+    "timestamp": "2026-05-11 13:00:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.9,
+    "pressure_hpa": 867.1
+  },
+  {
+    "timestamp": "2026-05-11 13:05:00",
+    "temperature_c": 15.03,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.07,
+    "pressure_hpa": 867.15
+  },
+  {
+    "timestamp": "2026-05-11 13:10:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.04,
+    "pressure_hpa": 867.21
+  },
+  {
+    "timestamp": "2026-05-11 13:15:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.93,
+    "pressure_hpa": 867.26
+  },
+  {
+    "timestamp": "2026-05-11 13:20:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.79,
+    "pressure_hpa": 867.31
+  },
+  {
+    "timestamp": "2026-05-11 13:25:00",
+    "temperature_c": 15.03,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.62,
+    "pressure_hpa": 867.33
+  },
+  {
+    "timestamp": "2026-05-11 13:30:00",
+    "temperature_c": 15.03,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.7,
+    "pressure_hpa": 867.33
+  },
+  {
+    "timestamp": "2026-05-11 13:35:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.66,
+    "pressure_hpa": 867.31
+  },
+  {
+    "timestamp": "2026-05-11 13:40:00",
+    "temperature_c": 15.01,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.73,
+    "pressure_hpa": 867.38
+  },
+  {
+    "timestamp": "2026-05-11 13:45:00",
+    "temperature_c": 15.01,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.68,
+    "pressure_hpa": 867.41
+  },
+  {
+    "timestamp": "2026-05-11 13:50:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 867.38
+  },
+  {
+    "timestamp": "2026-05-11 13:55:00",
+    "temperature_c": 14.97,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.78,
+    "pressure_hpa": 867.45
+  },
+  {
+    "timestamp": "2026-05-11 14:00:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.79,
+    "pressure_hpa": 867.53
+  },
+  {
+    "timestamp": "2026-05-11 14:05:00",
+    "temperature_c": 14.95,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.9,
+    "pressure_hpa": 867.51
+  },
+  {
+    "timestamp": "2026-05-11 14:10:00",
+    "temperature_c": 14.93,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.9,
+    "pressure_hpa": 867.65
+  },
+  {
+    "timestamp": "2026-05-11 14:15:00",
+    "temperature_c": 14.93,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.88,
+    "pressure_hpa": 867.65
+  },
+  {
+    "timestamp": "2026-05-11 14:20:00",
+    "temperature_c": 14.93,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.86,
+    "pressure_hpa": 867.64
+  },
+  {
+    "timestamp": "2026-05-11 14:25:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.87,
+    "pressure_hpa": 867.77
+  },
+  {
+    "timestamp": "2026-05-11 14:30:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.9,
+    "pressure_hpa": 867.8
+  },
+  {
+    "timestamp": "2026-05-11 14:35:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.77,
+    "pressure_hpa": 867.8
+  },
+  {
+    "timestamp": "2026-05-11 14:40:00",
+    "temperature_c": 14.95,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.98,
+    "pressure_hpa": 867.75
+  },
+  {
+    "timestamp": "2026-05-11 14:45:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.95,
+    "pressure_hpa": 867.79
+  },
+  {
+    "timestamp": "2026-05-11 14:50:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.87,
+    "pressure_hpa": 867.8
+  },
+  {
+    "timestamp": "2026-05-11 14:55:00",
+    "temperature_c": 14.97,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.85,
+    "pressure_hpa": 867.92
+  },
+  {
+    "timestamp": "2026-05-11 15:00:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.73,
+    "pressure_hpa": 868.04
+  },
+  {
+    "timestamp": "2026-05-11 15:05:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.69,
+    "pressure_hpa": 868.04
+  },
+  {
+    "timestamp": "2026-05-11 15:10:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.61,
+    "pressure_hpa": 868.12
+  },
+  {
+    "timestamp": "2026-05-11 15:15:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 868.06
+  },
+  {
+    "timestamp": "2026-05-11 15:20:00",
+    "temperature_c": 14.91,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.56,
+    "pressure_hpa": 868.08
+  },
+  {
+    "timestamp": "2026-05-11 15:25:00",
+    "temperature_c": 14.91,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.56,
+    "pressure_hpa": 868.05
+  },
+  {
+    "timestamp": "2026-05-11 15:30:00",
+    "temperature_c": 14.9,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.59,
+    "pressure_hpa": 868.16
+  },
+  {
+    "timestamp": "2026-05-11 15:35:00",
+    "temperature_c": 14.97,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.35,
+    "pressure_hpa": 868.11
+  },
+  {
+    "timestamp": "2026-05-11 15:40:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.41,
+    "pressure_hpa": 868.16
+  },
+  {
+    "timestamp": "2026-05-11 15:45:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.19,
+    "pressure_hpa": 868.15
+  },
+  {
+    "timestamp": "2026-05-11 15:50:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.18,
+    "pressure_hpa": 868.13
+  },
+  {
+    "timestamp": "2026-05-11 15:55:00",
+    "temperature_c": 15.21,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.38,
+    "pressure_hpa": 868.21
+  },
+  {
+    "timestamp": "2026-05-11 16:00:00",
+    "temperature_c": 15.2,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.51,
+    "pressure_hpa": 868.24
+  },
+  {
+    "timestamp": "2026-05-11 16:05:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 868.32
+  },
+  {
+    "timestamp": "2026-05-11 16:10:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.82,
+    "pressure_hpa": 868.37
+  },
+  {
+    "timestamp": "2026-05-11 16:15:00",
+    "temperature_c": 15.15,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.04,
+    "pressure_hpa": 868.41
+  },
+  {
+    "timestamp": "2026-05-11 16:20:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.11,
+    "pressure_hpa": 868.45
+  },
+  {
+    "timestamp": "2026-05-11 16:25:00",
+    "temperature_c": 15.09,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.2,
+    "pressure_hpa": 868.54
+  },
+  {
+    "timestamp": "2026-05-11 16:30:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.15,
+    "pressure_hpa": 868.52
+  },
+  {
+    "timestamp": "2026-05-11 16:35:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.15,
+    "pressure_hpa": 868.61
+  },
+  {
+    "timestamp": "2026-05-11 16:40:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.17,
+    "pressure_hpa": 868.6
+  },
+  {
+    "timestamp": "2026-05-11 16:45:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.15,
+    "pressure_hpa": 868.66
+  },
+  {
+    "timestamp": "2026-05-11 16:50:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.11,
+    "pressure_hpa": 868.66
+  },
+  {
+    "timestamp": "2026-05-11 16:55:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.13,
+    "pressure_hpa": 868.74
+  },
+  {
+    "timestamp": "2026-05-11 17:00:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.14,
+    "pressure_hpa": 868.7
+  },
+  {
+    "timestamp": "2026-05-11 17:05:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.2,
+    "pressure_hpa": 868.67
+  },
+  {
+    "timestamp": "2026-05-11 17:10:00",
+    "temperature_c": 15.09,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.17,
+    "pressure_hpa": 868.65
+  },
+  {
+    "timestamp": "2026-05-11 17:15:00",
+    "temperature_c": 15.08,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.15,
+    "pressure_hpa": 868.77
+  },
+  {
+    "timestamp": "2026-05-11 17:20:00",
+    "temperature_c": 15.09,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.17,
+    "pressure_hpa": 868.97
+  },
+  {
+    "timestamp": "2026-05-11 17:25:00",
+    "temperature_c": 15.08,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.1,
+    "pressure_hpa": 868.87
+  },
+  {
+    "timestamp": "2026-05-11 17:30:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.06,
+    "pressure_hpa": 868.86
+  },
+  {
+    "timestamp": "2026-05-11 17:35:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.92,
+    "pressure_hpa": 868.94
+  },
+  {
+    "timestamp": "2026-05-11 17:40:00",
+    "temperature_c": 15.19,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.22,
+    "pressure_hpa": 869.04
+  },
+  {
+    "timestamp": "2026-05-11 17:45:00",
+    "temperature_c": 15.26,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 40.65,
+    "pressure_hpa": 869.04
+  },
+  {
+    "timestamp": "2026-05-11 17:50:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 40.72,
+    "pressure_hpa": 868.95
+  },
+  {
+    "timestamp": "2026-05-11 17:55:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.84,
+    "pressure_hpa": 869.04
+  },
+  {
+    "timestamp": "2026-05-11 18:00:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.91,
+    "pressure_hpa": 868.88
+  },
+  {
+    "timestamp": "2026-05-11 18:05:00",
+    "temperature_c": 15.36,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.78,
+    "pressure_hpa": 868.94
+  },
+  {
+    "timestamp": "2026-05-11 18:10:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.77,
+    "pressure_hpa": 869.0
+  },
+  {
+    "timestamp": "2026-05-11 18:15:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.84,
+    "pressure_hpa": 868.93
+  },
+  {
+    "timestamp": "2026-05-11 18:20:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.71,
+    "pressure_hpa": 868.95
+  },
+  {
+    "timestamp": "2026-05-11 18:25:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.89,
+    "pressure_hpa": 868.95
+  },
+  {
+    "timestamp": "2026-05-11 18:30:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 41.04,
+    "pressure_hpa": 868.84
+  },
+  {
+    "timestamp": "2026-05-11 18:35:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 41.01,
+    "pressure_hpa": 868.72
+  },
+  {
+    "timestamp": "2026-05-11 18:40:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 41.2,
+    "pressure_hpa": 868.74
+  },
+  {
+    "timestamp": "2026-05-11 18:45:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 41.15,
+    "pressure_hpa": 868.58
+  },
+  {
+    "timestamp": "2026-05-11 18:50:00",
+    "temperature_c": 15.36,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 41.16,
+    "pressure_hpa": 868.64
+  },
+  {
+    "timestamp": "2026-05-11 18:55:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 41.15,
+    "pressure_hpa": 868.6
+  },
+  {
+    "timestamp": "2026-05-11 19:00:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 41.13,
+    "pressure_hpa": 868.55
+  },
+  {
+    "timestamp": "2026-05-11 19:05:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 41.2,
+    "pressure_hpa": 868.4
+  },
+  {
+    "timestamp": "2026-05-11 19:10:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.99,
+    "pressure_hpa": 868.48
+  },
+  {
+    "timestamp": "2026-05-11 19:15:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.63,
+    "pressure_hpa": 868.45
+  },
+  {
+    "timestamp": "2026-05-11 19:20:00",
+    "temperature_c": 15.46,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 40.92,
+    "pressure_hpa": 868.52
+  },
+  {
+    "timestamp": "2026-05-11 19:25:00",
+    "temperature_c": 15.6,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 40.94,
+    "pressure_hpa": 868.43
+  },
+  {
+    "timestamp": "2026-05-11 19:30:00",
+    "temperature_c": 15.67,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 40.86,
+    "pressure_hpa": 868.44
+  },
+  {
+    "timestamp": "2026-05-11 19:35:00",
+    "temperature_c": 15.67,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 41.5,
+    "pressure_hpa": 868.41
+  },
+  {
+    "timestamp": "2026-05-11 19:40:00",
+    "temperature_c": 15.67,
+    "dew_point_c": 2.7,
+    "relative_humidity_pct": 41.62,
+    "pressure_hpa": 868.46
+  },
+  {
+    "timestamp": "2026-05-11 19:45:00",
+    "temperature_c": 15.66,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 41.51,
+    "pressure_hpa": 868.64
+  },
+  {
+    "timestamp": "2026-05-11 19:50:00",
+    "temperature_c": 15.66,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 41.09,
+    "pressure_hpa": 868.56
+  },
+  {
+    "timestamp": "2026-05-11 19:55:00",
+    "temperature_c": 15.71,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.85,
+    "pressure_hpa": 868.42
+  },
+  {
+    "timestamp": "2026-05-11 20:00:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.83,
+    "pressure_hpa": 868.42
+  },
+  {
+    "timestamp": "2026-05-11 20:05:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.67,
+    "pressure_hpa": 868.53
+  },
+  {
+    "timestamp": "2026-05-11 20:10:00",
+    "temperature_c": 15.81,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.66,
+    "pressure_hpa": 868.53
+  },
+  {
+    "timestamp": "2026-05-11 20:15:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.61,
+    "pressure_hpa": 868.61
+  },
+  {
+    "timestamp": "2026-05-11 20:20:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.6,
+    "pressure_hpa": 868.72
+  },
+  {
+    "timestamp": "2026-05-11 20:25:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.58,
+    "pressure_hpa": 868.8
+  },
+  {
+    "timestamp": "2026-05-11 20:30:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 40.82,
+    "pressure_hpa": 868.89
+  },
+  {
+    "timestamp": "2026-05-11 20:35:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 40.9,
+    "pressure_hpa": 869.06
+  },
+  {
+    "timestamp": "2026-05-11 20:40:00",
+    "temperature_c": 15.81,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 40.9,
+    "pressure_hpa": 869.01
+  },
+  {
+    "timestamp": "2026-05-11 20:45:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 40.93,
+    "pressure_hpa": 869.07
+  },
+  {
+    "timestamp": "2026-05-11 20:50:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 40.98,
+    "pressure_hpa": 869.1
+  },
+  {
+    "timestamp": "2026-05-11 20:55:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.93,
+    "pressure_hpa": 869.04
+  },
+  {
+    "timestamp": "2026-05-11 21:00:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.92,
+    "pressure_hpa": 869.16
+  },
+  {
+    "timestamp": "2026-05-11 21:05:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.93,
+    "pressure_hpa": 869.07
+  },
+  {
+    "timestamp": "2026-05-11 21:10:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.92,
+    "pressure_hpa": 869.07
+  },
+  {
+    "timestamp": "2026-05-11 21:15:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.9,
+    "pressure_hpa": 869.08
+  },
+  {
+    "timestamp": "2026-05-11 21:20:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.93,
+    "pressure_hpa": 869.17
+  },
+  {
+    "timestamp": "2026-05-11 21:25:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.93,
+    "pressure_hpa": 869.28
+  },
+  {
+    "timestamp": "2026-05-11 21:30:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.89,
+    "pressure_hpa": 869.21
+  },
+  {
+    "timestamp": "2026-05-11 21:35:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.88,
+    "pressure_hpa": 869.07
+  },
+  {
+    "timestamp": "2026-05-11 21:40:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.88,
+    "pressure_hpa": 869.13
+  },
+  {
+    "timestamp": "2026-05-11 21:45:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.92,
+    "pressure_hpa": 869.25
+  },
+  {
+    "timestamp": "2026-05-11 21:50:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.82,
+    "pressure_hpa": 869.28
+  },
+  {
+    "timestamp": "2026-05-11 21:55:00",
+    "temperature_c": 15.8,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.67,
+    "pressure_hpa": 869.17
+  },
+  {
+    "timestamp": "2026-05-11 22:00:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.56,
+    "pressure_hpa": 869.22
+  },
+  {
+    "timestamp": "2026-05-11 22:05:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.52,
+    "pressure_hpa": 869.23
+  },
+  {
+    "timestamp": "2026-05-11 22:10:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.39,
+    "pressure_hpa": 869.06
+  },
+  {
+    "timestamp": "2026-05-11 22:15:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.37,
+    "pressure_hpa": 869.23
+  },
+  {
+    "timestamp": "2026-05-11 22:20:00",
+    "temperature_c": 15.98,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.3,
+    "pressure_hpa": 869.19
+  },
+  {
+    "timestamp": "2026-05-11 22:25:00",
+    "temperature_c": 16.01,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.21,
+    "pressure_hpa": 869.16
+  },
+  {
+    "timestamp": "2026-05-11 22:30:00",
+    "temperature_c": 16.01,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.24,
+    "pressure_hpa": 869.24
+  },
+  {
+    "timestamp": "2026-05-11 22:35:00",
+    "temperature_c": 15.99,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.19,
+    "pressure_hpa": 869.42
+  },
+  {
+    "timestamp": "2026-05-11 22:40:00",
+    "temperature_c": 15.98,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 40.06,
+    "pressure_hpa": 869.27
+  },
+  {
+    "timestamp": "2026-05-11 22:45:00",
+    "temperature_c": 16.0,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.23,
+    "pressure_hpa": 869.38
+  },
+  {
+    "timestamp": "2026-05-11 22:50:00",
+    "temperature_c": 15.96,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.29,
+    "pressure_hpa": 869.41
+  },
+  {
+    "timestamp": "2026-05-11 22:55:00",
+    "temperature_c": 15.96,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.26,
+    "pressure_hpa": 869.49
+  },
+  {
+    "timestamp": "2026-05-11 23:00:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.33,
+    "pressure_hpa": 869.4
+  },
+  {
+    "timestamp": "2026-05-11 23:05:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.34,
+    "pressure_hpa": 869.42
+  },
+  {
+    "timestamp": "2026-05-11 23:10:00",
+    "temperature_c": 15.97,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.29,
+    "pressure_hpa": 869.51
+  },
+  {
+    "timestamp": "2026-05-11 23:15:00",
+    "temperature_c": 15.93,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.35,
+    "pressure_hpa": 869.61
+  },
+  {
+    "timestamp": "2026-05-11 23:20:00",
+    "temperature_c": 15.97,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.3,
+    "pressure_hpa": 869.58
+  },
+  {
+    "timestamp": "2026-05-11 23:25:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.4,
+    "pressure_hpa": 869.54
+  },
+  {
+    "timestamp": "2026-05-11 23:30:00",
+    "temperature_c": 15.9,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.4,
+    "pressure_hpa": 869.64
+  },
+  {
+    "timestamp": "2026-05-11 23:35:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.44,
+    "pressure_hpa": 869.65
+  },
+  {
+    "timestamp": "2026-05-11 23:40:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.48,
+    "pressure_hpa": 869.56
+  },
+  {
+    "timestamp": "2026-05-11 23:45:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 40.43,
+    "pressure_hpa": 869.67
+  },
+  {
+    "timestamp": "2026-05-11 23:50:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.38,
+    "pressure_hpa": 869.71
+  },
+  {
+    "timestamp": "2026-05-11 23:55:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.24,
+    "pressure_hpa": 869.67
+  },
+  {
+    "timestamp": "2026-05-12 00:00:00",
+    "temperature_c": 15.98,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.18,
+    "pressure_hpa": 869.63
+  },
+  {
+    "timestamp": "2026-05-12 00:05:00",
+    "temperature_c": 16.04,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 40.0,
+    "pressure_hpa": 869.78
+  },
+  {
+    "timestamp": "2026-05-12 00:10:00",
+    "temperature_c": 16.09,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 39.88,
+    "pressure_hpa": 869.69
+  },
+  {
+    "timestamp": "2026-05-12 00:15:00",
+    "temperature_c": 16.13,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 39.73,
+    "pressure_hpa": 869.73
+  },
+  {
+    "timestamp": "2026-05-12 00:20:00",
+    "temperature_c": 16.16,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 39.73,
+    "pressure_hpa": 869.74
+  },
+  {
+    "timestamp": "2026-05-12 00:25:00",
+    "temperature_c": 16.18,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 39.71,
+    "pressure_hpa": 869.85
+  },
+  {
+    "timestamp": "2026-05-12 00:30:00",
+    "temperature_c": 16.18,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 39.69,
+    "pressure_hpa": 869.77
+  },
+  {
+    "timestamp": "2026-05-12 00:35:00",
+    "temperature_c": 16.13,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 39.76,
+    "pressure_hpa": 869.78
+  },
+  {
+    "timestamp": "2026-05-12 00:40:00",
+    "temperature_c": 16.09,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 39.77,
+    "pressure_hpa": 869.8
+  },
+  {
+    "timestamp": "2026-05-12 00:45:00",
+    "temperature_c": 16.05,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 39.8,
+    "pressure_hpa": 869.87
+  },
+  {
+    "timestamp": "2026-05-12 00:50:00",
+    "temperature_c": 16.02,
+    "dew_point_c": 2.4,
+    "relative_humidity_pct": 39.8,
+    "pressure_hpa": 869.9
+  },
+  {
+    "timestamp": "2026-05-12 00:55:00",
+    "temperature_c": 15.99,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 39.79,
+    "pressure_hpa": 869.95
+  },
+  {
+    "timestamp": "2026-05-12 01:00:00",
+    "temperature_c": 15.97,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 39.77,
+    "pressure_hpa": 869.94
+  },
+  {
+    "timestamp": "2026-05-12 01:05:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 39.78,
+    "pressure_hpa": 869.98
+  },
+  {
+    "timestamp": "2026-05-12 01:10:00",
+    "temperature_c": 15.93,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 39.78,
+    "pressure_hpa": 869.96
+  },
+  {
+    "timestamp": "2026-05-12 01:15:00",
+    "temperature_c": 15.93,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 39.75,
+    "pressure_hpa": 870.04
+  },
+  {
+    "timestamp": "2026-05-12 01:20:00",
+    "temperature_c": 15.91,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 39.75,
+    "pressure_hpa": 870.01
+  },
+  {
+    "timestamp": "2026-05-12 01:25:00",
+    "temperature_c": 15.9,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.75,
+    "pressure_hpa": 870.07
+  },
+  {
+    "timestamp": "2026-05-12 01:30:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 870.11
+  },
+  {
+    "timestamp": "2026-05-12 01:35:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 870.04
+  },
+  {
+    "timestamp": "2026-05-12 01:40:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.54,
+    "pressure_hpa": 870.07
+  },
+  {
+    "timestamp": "2026-05-12 01:45:00",
+    "temperature_c": 15.84,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.58,
+    "pressure_hpa": 870.13
+  },
+  {
+    "timestamp": "2026-05-12 01:50:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.49,
+    "pressure_hpa": 870.1
+  },
+  {
+    "timestamp": "2026-05-12 01:55:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 870.04
+  },
+  {
+    "timestamp": "2026-05-12 02:00:00",
+    "temperature_c": 15.9,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.16,
+    "pressure_hpa": 870.07
+  },
+  {
+    "timestamp": "2026-05-12 02:05:00",
+    "temperature_c": 15.92,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.1,
+    "pressure_hpa": 870.03
+  },
+  {
+    "timestamp": "2026-05-12 02:10:00",
+    "temperature_c": 15.93,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.02,
+    "pressure_hpa": 870.17
+  },
+  {
+    "timestamp": "2026-05-12 02:15:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.07,
+    "pressure_hpa": 870.17
+  },
+  {
+    "timestamp": "2026-05-12 02:20:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 38.89,
+    "pressure_hpa": 870.11
+  },
+  {
+    "timestamp": "2026-05-12 02:25:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 38.93,
+    "pressure_hpa": 870.22
+  },
+  {
+    "timestamp": "2026-05-12 02:30:00",
+    "temperature_c": 15.92,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 38.91,
+    "pressure_hpa": 870.27
+  },
+  {
+    "timestamp": "2026-05-12 02:35:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.94,
+    "pressure_hpa": 870.28
+  },
+  {
+    "timestamp": "2026-05-12 02:40:00",
+    "temperature_c": 15.87,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.92,
+    "pressure_hpa": 870.23
+  },
+  {
+    "timestamp": "2026-05-12 02:45:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.91,
+    "pressure_hpa": 870.28
+  },
+  {
+    "timestamp": "2026-05-12 02:50:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.93,
+    "pressure_hpa": 870.29
+  },
+  {
+    "timestamp": "2026-05-12 02:55:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.98,
+    "pressure_hpa": 870.32
+  },
+  {
+    "timestamp": "2026-05-12 03:00:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.38,
+    "pressure_hpa": 870.31
+  },
+  {
+    "timestamp": "2026-05-12 03:05:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.72,
+    "pressure_hpa": 870.35
+  },
+  {
+    "timestamp": "2026-05-12 03:10:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.87,
+    "pressure_hpa": 870.48
+  },
+  {
+    "timestamp": "2026-05-12 03:15:00",
+    "temperature_c": 15.8,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.11,
+    "pressure_hpa": 870.49
+  },
+  {
+    "timestamp": "2026-05-12 03:20:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.21,
+    "pressure_hpa": 870.56
+  },
+  {
+    "timestamp": "2026-05-12 03:25:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.28,
+    "pressure_hpa": 870.69
+  },
+  {
+    "timestamp": "2026-05-12 03:30:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.31,
+    "pressure_hpa": 870.75
+  },
+  {
+    "timestamp": "2026-05-12 03:35:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 870.94
+  },
+  {
+    "timestamp": "2026-05-12 03:40:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.35,
+    "pressure_hpa": 870.93
+  },
+  {
+    "timestamp": "2026-05-12 03:45:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.33,
+    "pressure_hpa": 871.01
+  },
+  {
+    "timestamp": "2026-05-12 03:50:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.35,
+    "pressure_hpa": 871.14
+  },
+  {
+    "timestamp": "2026-05-12 03:55:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.42,
+    "pressure_hpa": 871.21
+  },
+  {
+    "timestamp": "2026-05-12 04:00:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.4,
+    "pressure_hpa": 871.27
+  },
+  {
+    "timestamp": "2026-05-12 04:05:00",
+    "temperature_c": 15.69,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.43,
+    "pressure_hpa": 871.37
+  },
+  {
+    "timestamp": "2026-05-12 04:10:00",
+    "temperature_c": 15.68,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.45,
+    "pressure_hpa": 871.44
+  },
+  {
+    "timestamp": "2026-05-12 04:15:00",
+    "temperature_c": 15.66,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.45,
+    "pressure_hpa": 871.51
+  },
+  {
+    "timestamp": "2026-05-12 04:20:00",
+    "temperature_c": 15.62,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 871.55
+  },
+  {
+    "timestamp": "2026-05-12 04:25:00",
+    "temperature_c": 15.6,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.33,
+    "pressure_hpa": 871.53
+  },
+  {
+    "timestamp": "2026-05-12 04:30:00",
+    "temperature_c": 15.57,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 871.62
+  },
+  {
+    "timestamp": "2026-05-12 04:35:00",
+    "temperature_c": 15.54,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.34,
+    "pressure_hpa": 871.65
+  },
+  {
+    "timestamp": "2026-05-12 04:40:00",
+    "temperature_c": 15.52,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.37,
+    "pressure_hpa": 871.71
+  },
+  {
+    "timestamp": "2026-05-12 04:45:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.37,
+    "pressure_hpa": 871.72
+  },
+  {
+    "timestamp": "2026-05-12 04:50:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.41,
+    "pressure_hpa": 871.84
+  },
+  {
+    "timestamp": "2026-05-12 04:55:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.34,
+    "pressure_hpa": 871.92
+  },
+  {
+    "timestamp": "2026-05-12 05:00:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.3,
+    "pressure_hpa": 871.89
+  },
+  {
+    "timestamp": "2026-05-12 05:05:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 871.84
+  },
+  {
+    "timestamp": "2026-05-12 05:10:00",
+    "temperature_c": 15.49,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.3,
+    "pressure_hpa": 871.96
+  },
+  {
+    "timestamp": "2026-05-12 05:15:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 871.92
+  },
+  {
+    "timestamp": "2026-05-12 05:20:00",
+    "temperature_c": 15.47,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.35,
+    "pressure_hpa": 872.0
+  },
+  {
+    "timestamp": "2026-05-12 05:25:00",
+    "temperature_c": 15.45,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.38,
+    "pressure_hpa": 872.01
+  },
+  {
+    "timestamp": "2026-05-12 05:30:00",
+    "temperature_c": 15.43,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.39,
+    "pressure_hpa": 872.0
+  },
+  {
+    "timestamp": "2026-05-12 05:35:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.41,
+    "pressure_hpa": 872.02
+  },
+  {
+    "timestamp": "2026-05-12 05:40:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.39,
+    "pressure_hpa": 872.08
+  },
+  {
+    "timestamp": "2026-05-12 05:45:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.45,
+    "pressure_hpa": 872.15
+  },
+  {
+    "timestamp": "2026-05-12 05:50:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.5,
+    "pressure_hpa": 872.23
+  },
+  {
+    "timestamp": "2026-05-12 05:55:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.54,
+    "pressure_hpa": 872.16
+  },
+  {
+    "timestamp": "2026-05-12 06:00:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.61,
+    "pressure_hpa": 872.2
+  },
+  {
+    "timestamp": "2026-05-12 06:05:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.54,
+    "pressure_hpa": 872.24
+  },
+  {
+    "timestamp": "2026-05-12 06:10:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.53,
+    "pressure_hpa": 872.24
+  },
+  {
+    "timestamp": "2026-05-12 06:15:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.57,
+    "pressure_hpa": 872.33
+  },
+  {
+    "timestamp": "2026-05-12 06:20:00",
+    "temperature_c": 15.35,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 872.36
+  },
+  {
+    "timestamp": "2026-05-12 06:25:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.59,
+    "pressure_hpa": 872.33
+  },
+  {
+    "timestamp": "2026-05-12 06:30:00",
+    "temperature_c": 15.33,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.57,
+    "pressure_hpa": 872.28
+  },
+  {
+    "timestamp": "2026-05-12 06:35:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 872.37
+  },
+  {
+    "timestamp": "2026-05-12 06:40:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.61,
+    "pressure_hpa": 872.4
+  },
+  {
+    "timestamp": "2026-05-12 06:45:00",
+    "temperature_c": 15.27,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.63,
+    "pressure_hpa": 872.38
+  },
+  {
+    "timestamp": "2026-05-12 06:50:00",
+    "temperature_c": 15.27,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.62,
+    "pressure_hpa": 872.46
+  },
+  {
+    "timestamp": "2026-05-12 06:55:00",
+    "temperature_c": 15.26,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 872.61
+  },
+  {
+    "timestamp": "2026-05-12 07:00:00",
+    "temperature_c": 15.25,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.66,
+    "pressure_hpa": 872.6
+  },
+  {
+    "timestamp": "2026-05-12 07:05:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.66,
+    "pressure_hpa": 872.51
+  },
+  {
+    "timestamp": "2026-05-12 07:10:00",
+    "temperature_c": 15.21,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.69,
+    "pressure_hpa": 872.51
+  },
+  {
+    "timestamp": "2026-05-12 07:15:00",
+    "temperature_c": 15.19,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.68,
+    "pressure_hpa": 872.53
+  },
+  {
+    "timestamp": "2026-05-12 07:20:00",
+    "temperature_c": 15.16,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.68,
+    "pressure_hpa": 872.55
+  },
+  {
+    "timestamp": "2026-05-12 07:25:00",
+    "temperature_c": 15.14,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.69,
+    "pressure_hpa": 872.46
+  },
+  {
+    "timestamp": "2026-05-12 07:30:00",
+    "temperature_c": 15.13,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.71,
+    "pressure_hpa": 872.56
+  },
+  {
+    "timestamp": "2026-05-12 07:35:00",
+    "temperature_c": 15.13,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.69,
+    "pressure_hpa": 872.6
+  },
+  {
+    "timestamp": "2026-05-12 07:40:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.68,
+    "pressure_hpa": 872.63
+  },
+  {
+    "timestamp": "2026-05-12 07:45:00",
+    "temperature_c": 15.09,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.67,
+    "pressure_hpa": 872.6
+  },
+  {
+    "timestamp": "2026-05-12 07:50:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 872.6
+  },
+  {
+    "timestamp": "2026-05-12 07:55:00",
+    "temperature_c": 15.06,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.63,
+    "pressure_hpa": 872.6
+  },
+  {
+    "timestamp": "2026-05-12 08:00:00",
+    "temperature_c": 15.04,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.61,
+    "pressure_hpa": 872.61
+  },
+  {
+    "timestamp": "2026-05-12 08:05:00",
+    "temperature_c": 15.03,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 872.65
+  },
+  {
+    "timestamp": "2026-05-12 08:10:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.59,
+    "pressure_hpa": 872.68
+  },
+  {
+    "timestamp": "2026-05-12 08:15:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.56,
+    "pressure_hpa": 872.68
+  },
+  {
+    "timestamp": "2026-05-12 08:20:00",
+    "temperature_c": 15.0,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.58,
+    "pressure_hpa": 872.63
+  },
+  {
+    "timestamp": "2026-05-12 08:25:00",
+    "temperature_c": 14.98,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.55,
+    "pressure_hpa": 872.71
+  },
+  {
+    "timestamp": "2026-05-12 08:30:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.52,
+    "pressure_hpa": 872.64
+  },
+  {
+    "timestamp": "2026-05-12 08:35:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.53,
+    "pressure_hpa": 872.7
+  },
+  {
+    "timestamp": "2026-05-12 08:40:00",
+    "temperature_c": 14.93,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.54,
+    "pressure_hpa": 872.73
+  },
+  {
+    "timestamp": "2026-05-12 08:45:00",
+    "temperature_c": 14.9,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.5,
+    "pressure_hpa": 872.77
+  },
+  {
+    "timestamp": "2026-05-12 08:50:00",
+    "temperature_c": 14.89,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.53,
+    "pressure_hpa": 872.76
+  },
+  {
+    "timestamp": "2026-05-12 08:55:00",
+    "temperature_c": 14.88,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.56,
+    "pressure_hpa": 872.74
+  },
+  {
+    "timestamp": "2026-05-12 09:00:00",
+    "temperature_c": 14.85,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.51,
+    "pressure_hpa": 872.7
+  },
+  {
+    "timestamp": "2026-05-12 09:05:00",
+    "temperature_c": 14.83,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.55,
+    "pressure_hpa": 872.73
+  },
+  {
+    "timestamp": "2026-05-12 09:10:00",
+    "temperature_c": 14.82,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.51,
+    "pressure_hpa": 872.77
+  },
+  {
+    "timestamp": "2026-05-12 09:15:00",
+    "temperature_c": 14.82,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.51,
+    "pressure_hpa": 872.71
+  },
+  {
+    "timestamp": "2026-05-12 09:20:00",
+    "temperature_c": 14.81,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.48,
+    "pressure_hpa": 872.8
+  },
+  {
+    "timestamp": "2026-05-12 09:25:00",
+    "temperature_c": 14.78,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.51,
+    "pressure_hpa": 872.73
+  },
+  {
+    "timestamp": "2026-05-12 09:30:00",
+    "temperature_c": 14.78,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.49,
+    "pressure_hpa": 872.67
+  },
+  {
+    "timestamp": "2026-05-12 09:35:00",
+    "temperature_c": 14.75,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.49,
+    "pressure_hpa": 872.82
+  },
+  {
+    "timestamp": "2026-05-12 09:40:00",
+    "temperature_c": 14.74,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.52,
+    "pressure_hpa": 872.75
+  },
+  {
+    "timestamp": "2026-05-12 09:45:00",
+    "temperature_c": 14.73,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.53,
+    "pressure_hpa": 872.74
+  },
+  {
+    "timestamp": "2026-05-12 09:50:00",
+    "temperature_c": 14.71,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.51,
+    "pressure_hpa": 872.76
+  },
+  {
+    "timestamp": "2026-05-12 09:55:00",
+    "temperature_c": 14.69,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.53,
+    "pressure_hpa": 872.73
+  },
+  {
+    "timestamp": "2026-05-12 10:00:00",
+    "temperature_c": 14.67,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.49,
+    "pressure_hpa": 872.75
+  },
+  {
+    "timestamp": "2026-05-12 10:05:00",
+    "temperature_c": 14.66,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.49,
+    "pressure_hpa": 872.87
+  },
+  {
+    "timestamp": "2026-05-12 10:10:00",
+    "temperature_c": 14.62,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.51,
+    "pressure_hpa": 872.9
+  },
+  {
+    "timestamp": "2026-05-12 10:15:00",
+    "temperature_c": 14.6,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 39.53,
+    "pressure_hpa": 872.95
+  },
+  {
+    "timestamp": "2026-05-12 10:20:00",
+    "temperature_c": 14.58,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 39.75,
+    "pressure_hpa": 872.97
+  },
+  {
+    "timestamp": "2026-05-12 10:25:00",
+    "temperature_c": 14.7,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 39.82,
+    "pressure_hpa": 872.94
+  },
+  {
+    "timestamp": "2026-05-12 10:30:00",
+    "temperature_c": 14.86,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 872.92
+  },
+  {
+    "timestamp": "2026-05-12 10:35:00",
+    "temperature_c": 15.0,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.42,
+    "pressure_hpa": 872.93
+  },
+  {
+    "timestamp": "2026-05-12 10:40:00",
+    "temperature_c": 15.13,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.76,
+    "pressure_hpa": 872.87
+  },
+  {
+    "timestamp": "2026-05-12 10:45:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.39,
+    "pressure_hpa": 873.04
+  },
+  {
+    "timestamp": "2026-05-12 10:50:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.2,
+    "pressure_hpa": 873.06
+  },
+  {
+    "timestamp": "2026-05-12 10:55:00",
+    "temperature_c": 15.15,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.3,
+    "pressure_hpa": 872.99
+  },
+  {
+    "timestamp": "2026-05-12 11:00:00",
+    "temperature_c": 15.14,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.31,
+    "pressure_hpa": 873.13
+  },
+  {
+    "timestamp": "2026-05-12 11:05:00",
+    "temperature_c": 15.1,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.31,
+    "pressure_hpa": 873.15
+  },
+  {
+    "timestamp": "2026-05-12 11:10:00",
+    "temperature_c": 15.06,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.27,
+    "pressure_hpa": 873.15
+  },
+  {
+    "timestamp": "2026-05-12 11:15:00",
+    "temperature_c": 15.01,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.36,
+    "pressure_hpa": 873.21
+  },
+  {
+    "timestamp": "2026-05-12 11:20:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.38,
+    "pressure_hpa": 873.19
+  },
+  {
+    "timestamp": "2026-05-12 11:25:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.38,
+    "pressure_hpa": 873.18
+  },
+  {
+    "timestamp": "2026-05-12 11:30:00",
+    "temperature_c": 14.91,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.34,
+    "pressure_hpa": 873.19
+  },
+  {
+    "timestamp": "2026-05-12 11:35:00",
+    "temperature_c": 14.9,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 40.33,
+    "pressure_hpa": 873.18
+  },
+  {
+    "timestamp": "2026-05-12 11:40:00",
+    "temperature_c": 14.88,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 40.31,
+    "pressure_hpa": 873.22
+  },
+  {
+    "timestamp": "2026-05-12 11:45:00",
+    "temperature_c": 14.87,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 40.33,
+    "pressure_hpa": 873.21
+  },
+  {
+    "timestamp": "2026-05-12 11:50:00",
+    "temperature_c": 14.85,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 40.3,
+    "pressure_hpa": 873.27
+  },
+  {
+    "timestamp": "2026-05-12 11:55:00",
+    "temperature_c": 14.83,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 40.3,
+    "pressure_hpa": 873.34
+  },
+  {
+    "timestamp": "2026-05-12 12:00:00",
+    "temperature_c": 14.82,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 40.28,
+    "pressure_hpa": 873.2
+  },
+  {
+    "timestamp": "2026-05-12 12:05:00",
+    "temperature_c": 14.79,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 40.27,
+    "pressure_hpa": 873.26
+  },
+  {
+    "timestamp": "2026-05-12 12:10:00",
+    "temperature_c": 14.79,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 40.25,
+    "pressure_hpa": 873.26
+  },
+  {
+    "timestamp": "2026-05-12 12:15:00",
+    "temperature_c": 14.77,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 40.23,
+    "pressure_hpa": 873.28
+  },
+  {
+    "timestamp": "2026-05-12 12:20:00",
+    "temperature_c": 14.75,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 40.2,
+    "pressure_hpa": 873.28
+  },
+  {
+    "timestamp": "2026-05-12 12:25:00",
+    "temperature_c": 14.71,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 40.18,
+    "pressure_hpa": 873.25
+  },
+  {
+    "timestamp": "2026-05-12 12:30:00",
+    "temperature_c": 14.72,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 40.15,
+    "pressure_hpa": 873.42
+  },
+  {
+    "timestamp": "2026-05-12 12:35:00",
+    "temperature_c": 14.69,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 40.15,
+    "pressure_hpa": 873.38
+  },
+  {
+    "timestamp": "2026-05-12 12:40:00",
+    "temperature_c": 14.66,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 40.14,
+    "pressure_hpa": 873.44
+  },
+  {
+    "timestamp": "2026-05-12 12:45:00",
+    "temperature_c": 14.65,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 40.14,
+    "pressure_hpa": 873.37
+  },
+  {
+    "timestamp": "2026-05-12 12:50:00",
+    "temperature_c": 14.62,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 40.13,
+    "pressure_hpa": 873.44
+  },
+  {
+    "timestamp": "2026-05-12 12:55:00",
+    "temperature_c": 14.61,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 40.12,
+    "pressure_hpa": 873.48
+  },
+  {
+    "timestamp": "2026-05-12 13:00:00",
+    "temperature_c": 14.59,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 40.07,
+    "pressure_hpa": 873.53
+  },
+  {
+    "timestamp": "2026-05-12 13:05:00",
+    "temperature_c": 14.56,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 40.08,
+    "pressure_hpa": 873.43
+  },
+  {
+    "timestamp": "2026-05-12 13:10:00",
+    "temperature_c": 14.55,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 40.06,
+    "pressure_hpa": 873.46
+  },
+  {
+    "timestamp": "2026-05-12 13:15:00",
+    "temperature_c": 14.58,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 40.04,
+    "pressure_hpa": 873.59
+  },
+  {
+    "timestamp": "2026-05-12 13:20:00",
+    "temperature_c": 14.67,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 40.06,
+    "pressure_hpa": 873.6
+  },
+  {
+    "timestamp": "2026-05-12 13:25:00",
+    "temperature_c": 14.82,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 40.07,
+    "pressure_hpa": 873.65
+  },
+  {
+    "timestamp": "2026-05-12 13:30:00",
+    "temperature_c": 14.99,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.97,
+    "pressure_hpa": 873.66
+  },
+  {
+    "timestamp": "2026-05-12 13:35:00",
+    "temperature_c": 15.08,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 40.28,
+    "pressure_hpa": 873.64
+  },
+  {
+    "timestamp": "2026-05-12 13:40:00",
+    "temperature_c": 15.1,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.63,
+    "pressure_hpa": 873.7
+  },
+  {
+    "timestamp": "2026-05-12 13:45:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.58,
+    "pressure_hpa": 873.68
+  },
+  {
+    "timestamp": "2026-05-12 13:50:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.55,
+    "pressure_hpa": 873.79
+  },
+  {
+    "timestamp": "2026-05-12 13:55:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.55,
+    "pressure_hpa": 873.65
+  },
+  {
+    "timestamp": "2026-05-12 14:00:00",
+    "temperature_c": 15.04,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.78,
+    "pressure_hpa": 873.63
+  },
+  {
+    "timestamp": "2026-05-12 14:05:00",
+    "temperature_c": 15.1,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.52,
+    "pressure_hpa": 873.51
+  },
+  {
+    "timestamp": "2026-05-12 14:10:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.21,
+    "pressure_hpa": 873.4
+  },
+  {
+    "timestamp": "2026-05-12 14:15:00",
+    "temperature_c": 15.19,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.68,
+    "pressure_hpa": 873.37
+  },
+  {
+    "timestamp": "2026-05-12 14:20:00",
+    "temperature_c": 15.2,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.69,
+    "pressure_hpa": 873.31
+  },
+  {
+    "timestamp": "2026-05-12 14:25:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.54,
+    "pressure_hpa": 873.2
+  },
+  {
+    "timestamp": "2026-05-12 14:30:00",
+    "temperature_c": 15.2,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.55,
+    "pressure_hpa": 873.22
+  },
+  {
+    "timestamp": "2026-05-12 14:35:00",
+    "temperature_c": 15.2,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.4,
+    "pressure_hpa": 873.12
+  },
+  {
+    "timestamp": "2026-05-12 14:40:00",
+    "temperature_c": 15.21,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.49,
+    "pressure_hpa": 873.03
+  },
+  {
+    "timestamp": "2026-05-12 14:45:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.42,
+    "pressure_hpa": 873.01
+  },
+  {
+    "timestamp": "2026-05-12 14:50:00",
+    "temperature_c": 15.27,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.31,
+    "pressure_hpa": 872.9
+  },
+  {
+    "timestamp": "2026-05-12 14:55:00",
+    "temperature_c": 15.29,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.12,
+    "pressure_hpa": 872.68
+  },
+  {
+    "timestamp": "2026-05-12 15:00:00",
+    "temperature_c": 15.31,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.04,
+    "pressure_hpa": 872.69
+  },
+  {
+    "timestamp": "2026-05-12 15:05:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 40.0,
+    "pressure_hpa": 872.63
+  },
+  {
+    "timestamp": "2026-05-12 15:10:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.85,
+    "pressure_hpa": 872.58
+  },
+  {
+    "timestamp": "2026-05-12 15:15:00",
+    "temperature_c": 15.65,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.38,
+    "pressure_hpa": 872.6
+  },
+  {
+    "timestamp": "2026-05-12 15:20:00",
+    "temperature_c": 18.88,
+    "dew_point_c": 2.5,
+    "relative_humidity_pct": 33.57,
+    "pressure_hpa": 872.44
+  },
+  {
+    "timestamp": "2026-05-12 15:25:00",
+    "temperature_c": 19.83,
+    "dew_point_c": 2.6,
+    "relative_humidity_pct": 31.78,
+    "pressure_hpa": 872.35
+  },
+  {
+    "timestamp": "2026-05-12 15:30:00",
+    "temperature_c": 21.86,
+    "dew_point_c": 3.0,
+    "relative_humidity_pct": 28.84,
+    "pressure_hpa": 872.2
+  },
+  {
+    "timestamp": "2026-05-12 15:35:00",
+    "temperature_c": 19.2,
+    "dew_point_c": 2.3,
+    "relative_humidity_pct": 32.39,
+    "pressure_hpa": 872.3
+  },
+  {
+    "timestamp": "2026-05-12 15:40:00",
+    "temperature_c": 17.36,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 35.36,
+    "pressure_hpa": 872.11
+  },
+  {
+    "timestamp": "2026-05-12 15:45:00",
+    "temperature_c": 16.66,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 36.74,
+    "pressure_hpa": 872.26
+  },
+  {
+    "timestamp": "2026-05-12 15:50:00",
+    "temperature_c": 16.26,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.57,
+    "pressure_hpa": 872.19
+  },
+  {
+    "timestamp": "2026-05-12 15:55:00",
+    "temperature_c": 16.0,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.1,
+    "pressure_hpa": 872.07
+  },
+  {
+    "timestamp": "2026-05-12 16:00:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.55,
+    "pressure_hpa": 872.09
+  },
+  {
+    "timestamp": "2026-05-12 16:05:00",
+    "temperature_c": 15.84,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.62,
+    "pressure_hpa": 871.94
+  },
+  {
+    "timestamp": "2026-05-12 16:10:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.72,
+    "pressure_hpa": 871.96
+  },
+  {
+    "timestamp": "2026-05-12 16:15:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.94,
+    "pressure_hpa": 871.83
+  },
+  {
+    "timestamp": "2026-05-12 16:20:00",
+    "temperature_c": 15.69,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.16,
+    "pressure_hpa": 871.8
+  },
+  {
+    "timestamp": "2026-05-12 16:25:00",
+    "temperature_c": 15.66,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.21,
+    "pressure_hpa": 871.81
+  },
+  {
+    "timestamp": "2026-05-12 16:30:00",
+    "temperature_c": 15.61,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 871.7
+  },
+  {
+    "timestamp": "2026-05-12 16:35:00",
+    "temperature_c": 15.56,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.43,
+    "pressure_hpa": 871.65
+  },
+  {
+    "timestamp": "2026-05-12 16:40:00",
+    "temperature_c": 15.49,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.52,
+    "pressure_hpa": 871.5
+  },
+  {
+    "timestamp": "2026-05-12 16:45:00",
+    "temperature_c": 15.45,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.59,
+    "pressure_hpa": 871.54
+  },
+  {
+    "timestamp": "2026-05-12 16:50:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.64,
+    "pressure_hpa": 871.4
+  },
+  {
+    "timestamp": "2026-05-12 16:55:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.71,
+    "pressure_hpa": 871.32
+  },
+  {
+    "timestamp": "2026-05-12 17:00:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 871.32
+  },
+  {
+    "timestamp": "2026-05-12 17:05:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 871.24
+  },
+  {
+    "timestamp": "2026-05-12 17:10:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.55,
+    "pressure_hpa": 871.11
+  },
+  {
+    "timestamp": "2026-05-12 17:15:00",
+    "temperature_c": 15.43,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.56,
+    "pressure_hpa": 871.0
+  },
+  {
+    "timestamp": "2026-05-12 17:20:00",
+    "temperature_c": 15.45,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.76,
+    "pressure_hpa": 871.06
+  },
+  {
+    "timestamp": "2026-05-12 17:25:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.81,
+    "pressure_hpa": 870.91
+  },
+  {
+    "timestamp": "2026-05-12 17:30:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.55,
+    "pressure_hpa": 870.78
+  },
+  {
+    "timestamp": "2026-05-12 17:35:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.5,
+    "pressure_hpa": 870.75
+  },
+  {
+    "timestamp": "2026-05-12 17:40:00",
+    "temperature_c": 15.52,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.55,
+    "pressure_hpa": 870.78
+  },
+  {
+    "timestamp": "2026-05-12 17:45:00",
+    "temperature_c": 15.52,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.65,
+    "pressure_hpa": 870.7
+  },
+  {
+    "timestamp": "2026-05-12 17:50:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.61,
+    "pressure_hpa": 870.62
+  },
+  {
+    "timestamp": "2026-05-12 17:55:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 870.53
+  },
+  {
+    "timestamp": "2026-05-12 18:00:00",
+    "temperature_c": 15.46,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.68,
+    "pressure_hpa": 870.66
+  },
+  {
+    "timestamp": "2026-05-12 18:05:00",
+    "temperature_c": 15.44,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.76,
+    "pressure_hpa": 870.41
+  },
+  {
+    "timestamp": "2026-05-12 18:10:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.83,
+    "pressure_hpa": 870.47
+  },
+  {
+    "timestamp": "2026-05-12 18:15:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.87,
+    "pressure_hpa": 870.39
+  },
+  {
+    "timestamp": "2026-05-12 18:20:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.88,
+    "pressure_hpa": 870.34
+  },
+  {
+    "timestamp": "2026-05-12 18:25:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.93,
+    "pressure_hpa": 870.25
+  },
+  {
+    "timestamp": "2026-05-12 18:30:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.95,
+    "pressure_hpa": 870.21
+  },
+  {
+    "timestamp": "2026-05-12 18:35:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.01,
+    "pressure_hpa": 870.18
+  },
+  {
+    "timestamp": "2026-05-12 18:40:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 40.0,
+    "pressure_hpa": 870.08
+  },
+  {
+    "timestamp": "2026-05-12 18:45:00",
+    "temperature_c": 15.44,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.99,
+    "pressure_hpa": 869.99
+  },
+  {
+    "timestamp": "2026-05-12 18:50:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 39.89,
+    "pressure_hpa": 869.91
+  },
+  {
+    "timestamp": "2026-05-12 18:55:00",
+    "temperature_c": 15.51,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.45,
+    "pressure_hpa": 869.76
+  },
+  {
+    "timestamp": "2026-05-12 19:00:00",
+    "temperature_c": 15.53,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.28,
+    "pressure_hpa": 869.71
+  },
+  {
+    "timestamp": "2026-05-12 19:05:00",
+    "temperature_c": 15.53,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 38.99,
+    "pressure_hpa": 869.63
+  },
+  {
+    "timestamp": "2026-05-12 19:10:00",
+    "temperature_c": 15.55,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.37,
+    "pressure_hpa": 869.52
+  },
+  {
+    "timestamp": "2026-05-12 19:15:00",
+    "temperature_c": 15.56,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.28,
+    "pressure_hpa": 869.41
+  },
+  {
+    "timestamp": "2026-05-12 19:20:00",
+    "temperature_c": 15.57,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.34,
+    "pressure_hpa": 869.36
+  },
+  {
+    "timestamp": "2026-05-12 19:25:00",
+    "temperature_c": 15.57,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.41,
+    "pressure_hpa": 869.32
+  },
+  {
+    "timestamp": "2026-05-12 19:30:00",
+    "temperature_c": 15.58,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.48,
+    "pressure_hpa": 869.33
+  },
+  {
+    "timestamp": "2026-05-12 19:35:00",
+    "temperature_c": 15.59,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.49,
+    "pressure_hpa": 869.24
+  },
+  {
+    "timestamp": "2026-05-12 19:40:00",
+    "temperature_c": 15.65,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.38,
+    "pressure_hpa": 869.27
+  },
+  {
+    "timestamp": "2026-05-12 19:45:00",
+    "temperature_c": 15.72,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.03,
+    "pressure_hpa": 869.21
+  },
+  {
+    "timestamp": "2026-05-12 19:50:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 37.93,
+    "pressure_hpa": 869.11
+  },
+  {
+    "timestamp": "2026-05-12 19:55:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 37.76,
+    "pressure_hpa": 869.05
+  },
+  {
+    "timestamp": "2026-05-12 20:00:00",
+    "temperature_c": 15.81,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 37.76,
+    "pressure_hpa": 869.04
+  },
+  {
+    "timestamp": "2026-05-12 20:05:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 37.6,
+    "pressure_hpa": 868.9
+  },
+  {
+    "timestamp": "2026-05-12 20:10:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 37.3,
+    "pressure_hpa": 868.81
+  },
+  {
+    "timestamp": "2026-05-12 20:15:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 37.17,
+    "pressure_hpa": 868.79
+  },
+  {
+    "timestamp": "2026-05-12 20:20:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 36.83,
+    "pressure_hpa": 868.64
+  },
+  {
+    "timestamp": "2026-05-12 20:25:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 36.58,
+    "pressure_hpa": 868.56
+  },
+  {
+    "timestamp": "2026-05-12 20:30:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 36.23,
+    "pressure_hpa": 868.55
+  },
+  {
+    "timestamp": "2026-05-12 20:35:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 36.17,
+    "pressure_hpa": 868.51
+  },
+  {
+    "timestamp": "2026-05-12 20:40:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 0.8,
+    "relative_humidity_pct": 36.08,
+    "pressure_hpa": 868.48
+  },
+  {
+    "timestamp": "2026-05-12 20:45:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 36.22,
+    "pressure_hpa": 868.61
+  },
+  {
+    "timestamp": "2026-05-12 20:50:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 0.7,
+    "relative_humidity_pct": 35.79,
+    "pressure_hpa": 868.53
+  },
+  {
+    "timestamp": "2026-05-12 20:55:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 0.8,
+    "relative_humidity_pct": 36.1,
+    "pressure_hpa": 868.41
+  },
+  {
+    "timestamp": "2026-05-12 21:00:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 0.8,
+    "relative_humidity_pct": 36.01,
+    "pressure_hpa": 868.37
+  },
+  {
+    "timestamp": "2026-05-12 21:05:00",
+    "temperature_c": 15.84,
+    "dew_point_c": 0.8,
+    "relative_humidity_pct": 35.95,
+    "pressure_hpa": 868.3
+  },
+  {
+    "timestamp": "2026-05-12 21:10:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 36.18,
+    "pressure_hpa": 868.32
+  },
+  {
+    "timestamp": "2026-05-12 21:15:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 36.06,
+    "pressure_hpa": 868.19
+  },
+  {
+    "timestamp": "2026-05-12 21:20:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 36.15,
+    "pressure_hpa": 868.15
+  },
+  {
+    "timestamp": "2026-05-12 21:25:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 36.23,
+    "pressure_hpa": 868.12
+  },
+  {
+    "timestamp": "2026-05-12 21:30:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 36.28,
+    "pressure_hpa": 868.04
+  },
+  {
+    "timestamp": "2026-05-12 21:35:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 36.33,
+    "pressure_hpa": 868.06
+  },
+  {
+    "timestamp": "2026-05-12 21:40:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 0.6,
+    "relative_humidity_pct": 35.36,
+    "pressure_hpa": 868.1
+  },
+  {
+    "timestamp": "2026-05-12 21:45:00",
+    "temperature_c": 15.9,
+    "dew_point_c": 0.3,
+    "relative_humidity_pct": 34.67,
+    "pressure_hpa": 868.12
+  },
+  {
+    "timestamp": "2026-05-12 21:50:00",
+    "temperature_c": 15.92,
+    "dew_point_c": 0.2,
+    "relative_humidity_pct": 34.19,
+    "pressure_hpa": 868.0
+  },
+  {
+    "timestamp": "2026-05-12 21:55:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 0.1,
+    "relative_humidity_pct": 33.86,
+    "pressure_hpa": 867.96
+  },
+  {
+    "timestamp": "2026-05-12 22:00:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 0.2,
+    "relative_humidity_pct": 34.19,
+    "pressure_hpa": 867.9
+  },
+  {
+    "timestamp": "2026-05-12 22:05:00",
+    "temperature_c": 15.97,
+    "dew_point_c": 0.1,
+    "relative_humidity_pct": 33.99,
+    "pressure_hpa": 867.77
+  },
+  {
+    "timestamp": "2026-05-12 22:10:00",
+    "temperature_c": 16.02,
+    "dew_point_c": 0.3,
+    "relative_humidity_pct": 34.3,
+    "pressure_hpa": 867.73
+  },
+  {
+    "timestamp": "2026-05-12 22:15:00",
+    "temperature_c": 16.07,
+    "dew_point_c": 0.3,
+    "relative_humidity_pct": 34.19,
+    "pressure_hpa": 867.7
+  },
+  {
+    "timestamp": "2026-05-12 22:20:00",
+    "temperature_c": 16.13,
+    "dew_point_c": 0.6,
+    "relative_humidity_pct": 34.71,
+    "pressure_hpa": 867.68
+  },
+  {
+    "timestamp": "2026-05-12 22:25:00",
+    "temperature_c": 16.17,
+    "dew_point_c": 0.6,
+    "relative_humidity_pct": 34.7,
+    "pressure_hpa": 867.63
+  },
+  {
+    "timestamp": "2026-05-12 22:30:00",
+    "temperature_c": 16.2,
+    "dew_point_c": 0.6,
+    "relative_humidity_pct": 34.62,
+    "pressure_hpa": 867.67
+  },
+  {
+    "timestamp": "2026-05-12 22:35:00",
+    "temperature_c": 16.23,
+    "dew_point_c": 0.6,
+    "relative_humidity_pct": 34.55,
+    "pressure_hpa": 867.61
+  },
+  {
+    "timestamp": "2026-05-12 22:40:00",
+    "temperature_c": 16.23,
+    "dew_point_c": 0.7,
+    "relative_humidity_pct": 34.71,
+    "pressure_hpa": 867.56
+  },
+  {
+    "timestamp": "2026-05-12 22:45:00",
+    "temperature_c": 16.27,
+    "dew_point_c": 0.7,
+    "relative_humidity_pct": 34.86,
+    "pressure_hpa": 867.57
+  },
+  {
+    "timestamp": "2026-05-12 22:50:00",
+    "temperature_c": 16.3,
+    "dew_point_c": 0.6,
+    "relative_humidity_pct": 34.5,
+    "pressure_hpa": 867.45
+  },
+  {
+    "timestamp": "2026-05-12 22:55:00",
+    "temperature_c": 16.38,
+    "dew_point_c": 0.8,
+    "relative_humidity_pct": 34.64,
+    "pressure_hpa": 867.43
+  },
+  {
+    "timestamp": "2026-05-12 23:00:00",
+    "temperature_c": 16.41,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 35.11,
+    "pressure_hpa": 867.43
+  },
+  {
+    "timestamp": "2026-05-12 23:05:00",
+    "temperature_c": 16.45,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 35.55,
+    "pressure_hpa": 867.46
+  },
+  {
+    "timestamp": "2026-05-12 23:10:00",
+    "temperature_c": 16.49,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 36.15,
+    "pressure_hpa": 867.41
+  },
+  {
+    "timestamp": "2026-05-12 23:15:00",
+    "temperature_c": 16.48,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.34,
+    "pressure_hpa": 867.29
+  },
+  {
+    "timestamp": "2026-05-12 23:20:00",
+    "temperature_c": 16.51,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.28,
+    "pressure_hpa": 867.22
+  },
+  {
+    "timestamp": "2026-05-12 23:25:00",
+    "temperature_c": 16.48,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.22,
+    "pressure_hpa": 867.13
+  },
+  {
+    "timestamp": "2026-05-12 23:30:00",
+    "temperature_c": 16.5,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.24,
+    "pressure_hpa": 867.2
+  },
+  {
+    "timestamp": "2026-05-12 23:35:00",
+    "temperature_c": 16.46,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.24,
+    "pressure_hpa": 867.21
+  },
+  {
+    "timestamp": "2026-05-12 23:40:00",
+    "temperature_c": 16.43,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.31,
+    "pressure_hpa": 867.18
+  },
+  {
+    "timestamp": "2026-05-12 23:45:00",
+    "temperature_c": 16.41,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 36.34,
+    "pressure_hpa": 867.18
+  },
+  {
+    "timestamp": "2026-05-12 23:50:00",
+    "temperature_c": 16.39,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.41,
+    "pressure_hpa": 867.15
+  },
+  {
+    "timestamp": "2026-05-12 23:55:00",
+    "temperature_c": 16.36,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 36.45,
+    "pressure_hpa": 867.11
+  },
+  {
+    "timestamp": "2026-05-13 00:00:00",
+    "temperature_c": 16.36,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.56,
+    "pressure_hpa": 867.05
+  },
+  {
+    "timestamp": "2026-05-13 00:05:00",
+    "temperature_c": 16.33,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 36.76,
+    "pressure_hpa": 867.06
+  },
+  {
+    "timestamp": "2026-05-13 00:10:00",
+    "temperature_c": 16.33,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 36.83,
+    "pressure_hpa": 867.11
+  },
+  {
+    "timestamp": "2026-05-13 00:15:00",
+    "temperature_c": 16.32,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 37.05,
+    "pressure_hpa": 867.01
+  },
+  {
+    "timestamp": "2026-05-13 00:20:00",
+    "temperature_c": 16.3,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 37.07,
+    "pressure_hpa": 866.91
+  },
+  {
+    "timestamp": "2026-05-13 00:25:00",
+    "temperature_c": 16.28,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.25,
+    "pressure_hpa": 866.77
+  },
+  {
+    "timestamp": "2026-05-13 00:30:00",
+    "temperature_c": 16.29,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 37.09,
+    "pressure_hpa": 866.87
+  },
+  {
+    "timestamp": "2026-05-13 00:35:00",
+    "temperature_c": 16.3,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.18,
+    "pressure_hpa": 866.87
+  },
+  {
+    "timestamp": "2026-05-13 00:40:00",
+    "temperature_c": 16.28,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.19,
+    "pressure_hpa": 866.76
+  },
+  {
+    "timestamp": "2026-05-13 00:45:00",
+    "temperature_c": 16.25,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 37.21,
+    "pressure_hpa": 866.78
+  },
+  {
+    "timestamp": "2026-05-13 00:50:00",
+    "temperature_c": 16.25,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.38,
+    "pressure_hpa": 866.72
+  },
+  {
+    "timestamp": "2026-05-13 00:55:00",
+    "temperature_c": 16.24,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 37.27,
+    "pressure_hpa": 866.71
+  },
+  {
+    "timestamp": "2026-05-13 01:00:00",
+    "temperature_c": 16.24,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.38,
+    "pressure_hpa": 866.65
+  },
+  {
+    "timestamp": "2026-05-13 01:05:00",
+    "temperature_c": 16.23,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.49,
+    "pressure_hpa": 866.63
+  },
+  {
+    "timestamp": "2026-05-13 01:10:00",
+    "temperature_c": 16.23,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.35,
+    "pressure_hpa": 866.63
+  },
+  {
+    "timestamp": "2026-05-13 01:15:00",
+    "temperature_c": 16.24,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.31,
+    "pressure_hpa": 866.65
+  },
+  {
+    "timestamp": "2026-05-13 01:20:00",
+    "temperature_c": 16.28,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.24,
+    "pressure_hpa": 866.65
+  },
+  {
+    "timestamp": "2026-05-13 01:25:00",
+    "temperature_c": 16.31,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.2,
+    "pressure_hpa": 866.54
+  },
+  {
+    "timestamp": "2026-05-13 01:30:00",
+    "temperature_c": 16.33,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 37.23,
+    "pressure_hpa": 866.57
+  },
+  {
+    "timestamp": "2026-05-13 01:35:00",
+    "temperature_c": 16.35,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.28,
+    "pressure_hpa": 866.41
+  },
+  {
+    "timestamp": "2026-05-13 01:40:00",
+    "temperature_c": 16.35,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.31,
+    "pressure_hpa": 866.52
+  },
+  {
+    "timestamp": "2026-05-13 01:45:00",
+    "temperature_c": 16.36,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.35,
+    "pressure_hpa": 866.53
+  },
+  {
+    "timestamp": "2026-05-13 01:50:00",
+    "temperature_c": 16.35,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.41,
+    "pressure_hpa": 866.5
+  },
+  {
+    "timestamp": "2026-05-13 01:55:00",
+    "temperature_c": 16.36,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.48,
+    "pressure_hpa": 866.45
+  },
+  {
+    "timestamp": "2026-05-13 02:00:00",
+    "temperature_c": 16.35,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.47,
+    "pressure_hpa": 866.41
+  },
+  {
+    "timestamp": "2026-05-13 02:05:00",
+    "temperature_c": 16.32,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.6,
+    "pressure_hpa": 866.4
+  },
+  {
+    "timestamp": "2026-05-13 02:10:00",
+    "temperature_c": 16.28,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.59,
+    "pressure_hpa": 866.36
+  },
+  {
+    "timestamp": "2026-05-13 02:15:00",
+    "temperature_c": 16.27,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.62,
+    "pressure_hpa": 866.37
+  },
+  {
+    "timestamp": "2026-05-13 02:20:00",
+    "temperature_c": 16.21,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.68,
+    "pressure_hpa": 866.22
+  },
+  {
+    "timestamp": "2026-05-13 02:25:00",
+    "temperature_c": 16.18,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.77,
+    "pressure_hpa": 866.27
+  },
+  {
+    "timestamp": "2026-05-13 02:30:00",
+    "temperature_c": 16.16,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.79,
+    "pressure_hpa": 866.35
+  },
+  {
+    "timestamp": "2026-05-13 02:35:00",
+    "temperature_c": 16.14,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.84,
+    "pressure_hpa": 866.32
+  },
+  {
+    "timestamp": "2026-05-13 02:40:00",
+    "temperature_c": 16.13,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.88,
+    "pressure_hpa": 866.33
+  },
+  {
+    "timestamp": "2026-05-13 02:45:00",
+    "temperature_c": 16.12,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.96,
+    "pressure_hpa": 866.28
+  },
+  {
+    "timestamp": "2026-05-13 02:50:00",
+    "temperature_c": 16.1,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 37.96,
+    "pressure_hpa": 866.23
+  },
+  {
+    "timestamp": "2026-05-13 02:55:00",
+    "temperature_c": 16.08,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.07,
+    "pressure_hpa": 866.25
+  },
+  {
+    "timestamp": "2026-05-13 03:00:00",
+    "temperature_c": 16.07,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.07,
+    "pressure_hpa": 866.23
+  },
+  {
+    "timestamp": "2026-05-13 03:05:00",
+    "temperature_c": 16.05,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.15,
+    "pressure_hpa": 866.13
+  },
+  {
+    "timestamp": "2026-05-13 03:10:00",
+    "temperature_c": 16.03,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.15,
+    "pressure_hpa": 866.13
+  },
+  {
+    "timestamp": "2026-05-13 03:15:00",
+    "temperature_c": 16.03,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.19,
+    "pressure_hpa": 866.06
+  },
+  {
+    "timestamp": "2026-05-13 03:20:00",
+    "temperature_c": 16.01,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.22,
+    "pressure_hpa": 866.07
+  },
+  {
+    "timestamp": "2026-05-13 03:25:00",
+    "temperature_c": 16.01,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.27,
+    "pressure_hpa": 866.12
+  },
+  {
+    "timestamp": "2026-05-13 03:30:00",
+    "temperature_c": 15.99,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.26,
+    "pressure_hpa": 866.28
+  },
+  {
+    "timestamp": "2026-05-13 03:35:00",
+    "temperature_c": 16.0,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.28,
+    "pressure_hpa": 866.32
+  },
+  {
+    "timestamp": "2026-05-13 03:40:00",
+    "temperature_c": 15.98,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.32,
+    "pressure_hpa": 866.21
+  },
+  {
+    "timestamp": "2026-05-13 03:45:00",
+    "temperature_c": 15.97,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.35,
+    "pressure_hpa": 866.22
+  },
+  {
+    "timestamp": "2026-05-13 03:50:00",
+    "temperature_c": 15.97,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.37,
+    "pressure_hpa": 866.25
+  },
+  {
+    "timestamp": "2026-05-13 03:55:00",
+    "temperature_c": 16.02,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.26,
+    "pressure_hpa": 866.19
+  },
+  {
+    "timestamp": "2026-05-13 04:00:00",
+    "temperature_c": 16.05,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.19,
+    "pressure_hpa": 866.2
+  },
+  {
+    "timestamp": "2026-05-13 04:05:00",
+    "temperature_c": 16.08,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.13,
+    "pressure_hpa": 866.17
+  },
+  {
+    "timestamp": "2026-05-13 04:10:00",
+    "temperature_c": 16.08,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.12,
+    "pressure_hpa": 866.07
+  },
+  {
+    "timestamp": "2026-05-13 04:15:00",
+    "temperature_c": 16.09,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.12,
+    "pressure_hpa": 866.05
+  },
+  {
+    "timestamp": "2026-05-13 04:20:00",
+    "temperature_c": 16.08,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.13,
+    "pressure_hpa": 866.0
+  },
+  {
+    "timestamp": "2026-05-13 04:25:00",
+    "temperature_c": 16.09,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.14,
+    "pressure_hpa": 866.05
+  },
+  {
+    "timestamp": "2026-05-13 04:30:00",
+    "temperature_c": 16.08,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.17,
+    "pressure_hpa": 865.82
+  },
+  {
+    "timestamp": "2026-05-13 04:35:00",
+    "temperature_c": 16.08,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.15,
+    "pressure_hpa": 865.71
+  },
+  {
+    "timestamp": "2026-05-13 04:40:00",
+    "temperature_c": 16.06,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.21,
+    "pressure_hpa": 865.84
+  },
+  {
+    "timestamp": "2026-05-13 04:45:00",
+    "temperature_c": 16.04,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.26,
+    "pressure_hpa": 865.86
+  },
+  {
+    "timestamp": "2026-05-13 04:50:00",
+    "temperature_c": 16.0,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.34,
+    "pressure_hpa": 865.84
+  },
+  {
+    "timestamp": "2026-05-13 04:55:00",
+    "temperature_c": 15.99,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.38,
+    "pressure_hpa": 865.9
+  },
+  {
+    "timestamp": "2026-05-13 05:00:00",
+    "temperature_c": 15.97,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.41,
+    "pressure_hpa": 865.89
+  },
+  {
+    "timestamp": "2026-05-13 05:05:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.46,
+    "pressure_hpa": 865.95
+  },
+  {
+    "timestamp": "2026-05-13 05:10:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.49,
+    "pressure_hpa": 865.99
+  },
+  {
+    "timestamp": "2026-05-13 05:15:00",
+    "temperature_c": 15.92,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 865.98
+  },
+  {
+    "timestamp": "2026-05-13 05:20:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.53,
+    "pressure_hpa": 865.91
+  },
+  {
+    "timestamp": "2026-05-13 05:25:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.57,
+    "pressure_hpa": 865.74
+  },
+  {
+    "timestamp": "2026-05-13 05:30:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.58,
+    "pressure_hpa": 865.78
+  },
+  {
+    "timestamp": "2026-05-13 05:35:00",
+    "temperature_c": 15.85,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.61,
+    "pressure_hpa": 865.71
+  },
+  {
+    "timestamp": "2026-05-13 05:40:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 865.7
+  },
+  {
+    "timestamp": "2026-05-13 05:45:00",
+    "temperature_c": 15.84,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.6,
+    "pressure_hpa": 865.7
+  },
+  {
+    "timestamp": "2026-05-13 05:50:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.67,
+    "pressure_hpa": 865.63
+  },
+  {
+    "timestamp": "2026-05-13 05:55:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.66,
+    "pressure_hpa": 865.61
+  },
+  {
+    "timestamp": "2026-05-13 06:00:00",
+    "temperature_c": 15.81,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.66,
+    "pressure_hpa": 865.65
+  },
+  {
+    "timestamp": "2026-05-13 06:05:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.65,
+    "pressure_hpa": 865.65
+  },
+  {
+    "timestamp": "2026-05-13 06:10:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 865.62
+  },
+  {
+    "timestamp": "2026-05-13 06:15:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.64,
+    "pressure_hpa": 865.49
+  },
+  {
+    "timestamp": "2026-05-13 06:20:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.66,
+    "pressure_hpa": 865.6
+  },
+  {
+    "timestamp": "2026-05-13 06:25:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.67,
+    "pressure_hpa": 865.51
+  },
+  {
+    "timestamp": "2026-05-13 06:30:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.66,
+    "pressure_hpa": 865.6
+  },
+  {
+    "timestamp": "2026-05-13 06:35:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.67,
+    "pressure_hpa": 865.61
+  },
+  {
+    "timestamp": "2026-05-13 06:40:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.68,
+    "pressure_hpa": 865.55
+  },
+  {
+    "timestamp": "2026-05-13 06:45:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 865.55
+  },
+  {
+    "timestamp": "2026-05-13 06:50:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.62,
+    "pressure_hpa": 865.45
+  },
+  {
+    "timestamp": "2026-05-13 06:55:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.6,
+    "pressure_hpa": 865.47
+  },
+  {
+    "timestamp": "2026-05-13 07:00:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.62,
+    "pressure_hpa": 865.47
+  },
+  {
+    "timestamp": "2026-05-13 07:05:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.58,
+    "pressure_hpa": 865.38
+  },
+  {
+    "timestamp": "2026-05-13 07:10:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.59,
+    "pressure_hpa": 865.44
+  },
+  {
+    "timestamp": "2026-05-13 07:15:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.59,
+    "pressure_hpa": 865.39
+  },
+  {
+    "timestamp": "2026-05-13 07:20:00",
+    "temperature_c": 15.72,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.61,
+    "pressure_hpa": 865.28
+  },
+  {
+    "timestamp": "2026-05-13 07:25:00",
+    "temperature_c": 15.72,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 865.3
+  },
+  {
+    "timestamp": "2026-05-13 07:30:00",
+    "temperature_c": 15.7,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 38.61,
+    "pressure_hpa": 865.3
+  },
+  {
+    "timestamp": "2026-05-13 07:35:00",
+    "temperature_c": 15.67,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 38.62,
+    "pressure_hpa": 865.12
+  },
+  {
+    "timestamp": "2026-05-13 07:40:00",
+    "temperature_c": 15.64,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 38.66,
+    "pressure_hpa": 865.21
+  },
+  {
+    "timestamp": "2026-05-13 07:45:00",
+    "temperature_c": 15.61,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 865.06
+  },
+  {
+    "timestamp": "2026-05-13 07:50:00",
+    "temperature_c": 15.59,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 38.68,
+    "pressure_hpa": 865.05
+  },
+  {
+    "timestamp": "2026-05-13 07:55:00",
+    "temperature_c": 15.56,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.54,
+    "pressure_hpa": 864.98
+  },
+  {
+    "timestamp": "2026-05-13 08:00:00",
+    "temperature_c": 15.55,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 864.91
+  },
+  {
+    "timestamp": "2026-05-13 08:05:00",
+    "temperature_c": 15.55,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 864.89
+  },
+  {
+    "timestamp": "2026-05-13 08:10:00",
+    "temperature_c": 15.54,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 864.81
+  },
+  {
+    "timestamp": "2026-05-13 08:15:00",
+    "temperature_c": 15.53,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 864.73
+  },
+  {
+    "timestamp": "2026-05-13 08:20:00",
+    "temperature_c": 15.54,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.53,
+    "pressure_hpa": 864.69
+  },
+  {
+    "timestamp": "2026-05-13 08:25:00",
+    "temperature_c": 15.54,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 864.57
+  },
+  {
+    "timestamp": "2026-05-13 08:30:00",
+    "temperature_c": 15.52,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.57,
+    "pressure_hpa": 864.68
+  },
+  {
+    "timestamp": "2026-05-13 08:35:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.48,
+    "pressure_hpa": 864.52
+  },
+  {
+    "timestamp": "2026-05-13 08:40:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 864.43
+  },
+  {
+    "timestamp": "2026-05-13 08:45:00",
+    "temperature_c": 15.49,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.48,
+    "pressure_hpa": 864.39
+  },
+  {
+    "timestamp": "2026-05-13 08:50:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 864.35
+  },
+  {
+    "timestamp": "2026-05-13 08:55:00",
+    "temperature_c": 15.46,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.44,
+    "pressure_hpa": 864.16
+  },
+  {
+    "timestamp": "2026-05-13 09:00:00",
+    "temperature_c": 15.47,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.46,
+    "pressure_hpa": 864.12
+  },
+  {
+    "timestamp": "2026-05-13 09:05:00",
+    "temperature_c": 15.45,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.44,
+    "pressure_hpa": 864.06
+  },
+  {
+    "timestamp": "2026-05-13 09:10:00",
+    "temperature_c": 15.44,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 864.16
+  },
+  {
+    "timestamp": "2026-05-13 09:15:00",
+    "temperature_c": 15.43,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 863.92
+  },
+  {
+    "timestamp": "2026-05-13 09:20:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.5,
+    "pressure_hpa": 863.95
+  },
+  {
+    "timestamp": "2026-05-13 09:25:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 863.91
+  },
+  {
+    "timestamp": "2026-05-13 09:30:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.48,
+    "pressure_hpa": 863.97
+  },
+  {
+    "timestamp": "2026-05-13 09:35:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.46,
+    "pressure_hpa": 863.97
+  },
+  {
+    "timestamp": "2026-05-13 09:40:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.48,
+    "pressure_hpa": 863.79
+  },
+  {
+    "timestamp": "2026-05-13 09:45:00",
+    "temperature_c": 15.36,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.5,
+    "pressure_hpa": 863.79
+  },
+  {
+    "timestamp": "2026-05-13 09:50:00",
+    "temperature_c": 15.36,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 863.87
+  },
+  {
+    "timestamp": "2026-05-13 09:55:00",
+    "temperature_c": 15.35,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.57,
+    "pressure_hpa": 863.9
+  },
+  {
+    "timestamp": "2026-05-13 10:00:00",
+    "temperature_c": 15.35,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.57,
+    "pressure_hpa": 863.85
+  },
+  {
+    "timestamp": "2026-05-13 10:05:00",
+    "temperature_c": 15.35,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 863.77
+  },
+  {
+    "timestamp": "2026-05-13 10:10:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.57,
+    "pressure_hpa": 863.87
+  },
+  {
+    "timestamp": "2026-05-13 10:15:00",
+    "temperature_c": 15.31,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 863.91
+  },
+  {
+    "timestamp": "2026-05-13 10:20:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.54,
+    "pressure_hpa": 863.75
+  },
+  {
+    "timestamp": "2026-05-13 10:25:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.53,
+    "pressure_hpa": 863.8
+  },
+  {
+    "timestamp": "2026-05-13 10:30:00",
+    "temperature_c": 15.28,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.49,
+    "pressure_hpa": 863.7
+  },
+  {
+    "timestamp": "2026-05-13 10:35:00",
+    "temperature_c": 15.27,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 863.65
+  },
+  {
+    "timestamp": "2026-05-13 10:40:00",
+    "temperature_c": 15.26,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 863.51
+  },
+  {
+    "timestamp": "2026-05-13 10:45:00",
+    "temperature_c": 15.24,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.5,
+    "pressure_hpa": 863.58
+  },
+  {
+    "timestamp": "2026-05-13 10:50:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.51,
+    "pressure_hpa": 863.27
+  },
+  {
+    "timestamp": "2026-05-13 10:55:00",
+    "temperature_c": 15.21,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 863.52
+  },
+  {
+    "timestamp": "2026-05-13 11:00:00",
+    "temperature_c": 15.2,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.52,
+    "pressure_hpa": 863.74
+  },
+  {
+    "timestamp": "2026-05-13 11:05:00",
+    "temperature_c": 15.19,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.48,
+    "pressure_hpa": 863.53
+  },
+  {
+    "timestamp": "2026-05-13 11:10:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 863.06
+  },
+  {
+    "timestamp": "2026-05-13 11:15:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.41,
+    "pressure_hpa": 863.1
+  },
+  {
+    "timestamp": "2026-05-13 11:20:00",
+    "temperature_c": 15.15,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.44,
+    "pressure_hpa": 862.8
+  },
+  {
+    "timestamp": "2026-05-13 11:25:00",
+    "temperature_c": 15.15,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.41,
+    "pressure_hpa": 862.99
+  },
+  {
+    "timestamp": "2026-05-13 11:30:00",
+    "temperature_c": 15.14,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.36,
+    "pressure_hpa": 862.71
+  },
+  {
+    "timestamp": "2026-05-13 11:35:00",
+    "temperature_c": 15.13,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.36,
+    "pressure_hpa": 862.39
+  },
+  {
+    "timestamp": "2026-05-13 11:40:00",
+    "temperature_c": 15.1,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.39,
+    "pressure_hpa": 862.27
+  },
+  {
+    "timestamp": "2026-05-13 11:45:00",
+    "temperature_c": 15.09,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.38,
+    "pressure_hpa": 862.22
+  },
+  {
+    "timestamp": "2026-05-13 11:50:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.4,
+    "pressure_hpa": 862.11
+  },
+  {
+    "timestamp": "2026-05-13 11:55:00",
+    "temperature_c": 15.07,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.4,
+    "pressure_hpa": 862.0
+  },
+  {
+    "timestamp": "2026-05-13 12:00:00",
+    "temperature_c": 15.04,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.4,
+    "pressure_hpa": 861.79
+  },
+  {
+    "timestamp": "2026-05-13 12:05:00",
+    "temperature_c": 15.02,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.38,
+    "pressure_hpa": 861.69
+  },
+  {
+    "timestamp": "2026-05-13 12:10:00",
+    "temperature_c": 15.04,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.38,
+    "pressure_hpa": 861.63
+  },
+  {
+    "timestamp": "2026-05-13 12:15:00",
+    "temperature_c": 15.01,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.38,
+    "pressure_hpa": 861.56
+  },
+  {
+    "timestamp": "2026-05-13 12:20:00",
+    "temperature_c": 15.01,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.4,
+    "pressure_hpa": 861.73
+  },
+  {
+    "timestamp": "2026-05-13 12:25:00",
+    "temperature_c": 15.0,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 38.35,
+    "pressure_hpa": 861.76
+  },
+  {
+    "timestamp": "2026-05-13 12:30:00",
+    "temperature_c": 14.99,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.4,
+    "pressure_hpa": 861.91
+  },
+  {
+    "timestamp": "2026-05-13 12:35:00",
+    "temperature_c": 14.98,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 38.4,
+    "pressure_hpa": 862.11
+  },
+  {
+    "timestamp": "2026-05-13 12:40:00",
+    "temperature_c": 14.96,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 38.46,
+    "pressure_hpa": 862.25
+  },
+  {
+    "timestamp": "2026-05-13 12:45:00",
+    "temperature_c": 14.97,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 38.44,
+    "pressure_hpa": 862.06
+  },
+  {
+    "timestamp": "2026-05-13 12:50:00",
+    "temperature_c": 14.94,
+    "dew_point_c": 0.9,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 861.89
+  },
+  {
+    "timestamp": "2026-05-13 12:55:00",
+    "temperature_c": 14.99,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.46,
+    "pressure_hpa": 861.71
+  },
+  {
+    "timestamp": "2026-05-13 13:00:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.44,
+    "pressure_hpa": 861.25
+  },
+  {
+    "timestamp": "2026-05-13 13:05:00",
+    "temperature_c": 15.14,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.58,
+    "pressure_hpa": 860.99
+  },
+  {
+    "timestamp": "2026-05-13 13:10:00",
+    "temperature_c": 15.13,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.47,
+    "pressure_hpa": 860.9
+  },
+  {
+    "timestamp": "2026-05-13 13:15:00",
+    "temperature_c": 15.12,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.46,
+    "pressure_hpa": 860.85
+  },
+  {
+    "timestamp": "2026-05-13 13:20:00",
+    "temperature_c": 15.11,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.5,
+    "pressure_hpa": 860.77
+  },
+  {
+    "timestamp": "2026-05-13 13:25:00",
+    "temperature_c": 15.1,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.51,
+    "pressure_hpa": 860.74
+  },
+  {
+    "timestamp": "2026-05-13 13:30:00",
+    "temperature_c": 15.08,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.55,
+    "pressure_hpa": 860.63
+  },
+  {
+    "timestamp": "2026-05-13 13:35:00",
+    "temperature_c": 15.06,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 860.72
+  },
+  {
+    "timestamp": "2026-05-13 13:40:00",
+    "temperature_c": 15.06,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 860.55
+  },
+  {
+    "timestamp": "2026-05-13 13:45:00",
+    "temperature_c": 15.05,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.58,
+    "pressure_hpa": 860.86
+  },
+  {
+    "timestamp": "2026-05-13 13:50:00",
+    "temperature_c": 15.04,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.56,
+    "pressure_hpa": 860.98
+  },
+  {
+    "timestamp": "2026-05-13 13:55:00",
+    "temperature_c": 15.0,
+    "dew_point_c": 1.0,
+    "relative_humidity_pct": 38.59,
+    "pressure_hpa": 860.68
+  },
+  {
+    "timestamp": "2026-05-13 14:00:00",
+    "temperature_c": 15.06,
+    "dew_point_c": 1.1,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 861.04
+  },
+  {
+    "timestamp": "2026-05-13 14:05:00",
+    "temperature_c": 15.16,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.6,
+    "pressure_hpa": 861.05
+  },
+  {
+    "timestamp": "2026-05-13 14:10:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.8,
+    "pressure_hpa": 861.33
+  },
+  {
+    "timestamp": "2026-05-13 14:15:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.71,
+    "pressure_hpa": 861.46
+  },
+  {
+    "timestamp": "2026-05-13 14:20:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.68,
+    "pressure_hpa": 861.44
+  },
+  {
+    "timestamp": "2026-05-13 14:25:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.66,
+    "pressure_hpa": 861.25
+  },
+  {
+    "timestamp": "2026-05-13 14:30:00",
+    "temperature_c": 15.15,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.66,
+    "pressure_hpa": 860.66
+  },
+  {
+    "timestamp": "2026-05-13 14:35:00",
+    "temperature_c": 15.16,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.72,
+    "pressure_hpa": 860.48
+  },
+  {
+    "timestamp": "2026-05-13 14:40:00",
+    "temperature_c": 15.16,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.85,
+    "pressure_hpa": 860.51
+  },
+  {
+    "timestamp": "2026-05-13 14:45:00",
+    "temperature_c": 15.15,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.77,
+    "pressure_hpa": 860.3
+  },
+  {
+    "timestamp": "2026-05-13 14:50:00",
+    "temperature_c": 15.18,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.72,
+    "pressure_hpa": 860.19
+  },
+  {
+    "timestamp": "2026-05-13 14:55:00",
+    "temperature_c": 15.17,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.77,
+    "pressure_hpa": 859.88
+  },
+  {
+    "timestamp": "2026-05-13 15:00:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.69,
+    "pressure_hpa": 859.94
+  },
+  {
+    "timestamp": "2026-05-13 15:05:00",
+    "temperature_c": 15.25,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.65,
+    "pressure_hpa": 859.94
+  },
+  {
+    "timestamp": "2026-05-13 15:10:00",
+    "temperature_c": 15.24,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.58,
+    "pressure_hpa": 859.8
+  },
+  {
+    "timestamp": "2026-05-13 15:15:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.2,
+    "relative_humidity_pct": 38.63,
+    "pressure_hpa": 859.45
+  },
+  {
+    "timestamp": "2026-05-13 15:20:00",
+    "temperature_c": 15.58,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 37.83,
+    "pressure_hpa": 859.38
+  },
+  {
+    "timestamp": "2026-05-13 15:25:00",
+    "temperature_c": 16.4,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 36.34,
+    "pressure_hpa": 859.29
+  },
+  {
+    "timestamp": "2026-05-13 15:30:00",
+    "temperature_c": 16.19,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 37.1,
+    "pressure_hpa": 859.3
+  },
+  {
+    "timestamp": "2026-05-13 15:35:00",
+    "temperature_c": 15.9,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 37.6,
+    "pressure_hpa": 859.06
+  },
+  {
+    "timestamp": "2026-05-13 15:40:00",
+    "temperature_c": 15.63,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.17,
+    "pressure_hpa": 858.88
+  },
+  {
+    "timestamp": "2026-05-13 15:45:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.43,
+    "pressure_hpa": 858.65
+  },
+  {
+    "timestamp": "2026-05-13 15:50:00",
+    "temperature_c": 15.44,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.54,
+    "pressure_hpa": 858.51
+  },
+  {
+    "timestamp": "2026-05-13 15:55:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.59,
+    "pressure_hpa": 858.32
+  },
+  {
+    "timestamp": "2026-05-13 16:00:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.65,
+    "pressure_hpa": 858.14
+  },
+  {
+    "timestamp": "2026-05-13 16:05:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.7,
+    "pressure_hpa": 858.01
+  },
+  {
+    "timestamp": "2026-05-13 16:10:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.73,
+    "pressure_hpa": 857.89
+  },
+  {
+    "timestamp": "2026-05-13 16:15:00",
+    "temperature_c": 15.35,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.87,
+    "pressure_hpa": 857.84
+  },
+  {
+    "timestamp": "2026-05-13 16:20:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.91,
+    "pressure_hpa": 857.79
+  },
+  {
+    "timestamp": "2026-05-13 16:25:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.01,
+    "pressure_hpa": 857.71
+  },
+  {
+    "timestamp": "2026-05-13 16:30:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.99,
+    "pressure_hpa": 857.66
+  },
+  {
+    "timestamp": "2026-05-13 16:35:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.02,
+    "pressure_hpa": 857.52
+  },
+  {
+    "timestamp": "2026-05-13 16:40:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.0,
+    "pressure_hpa": 857.41
+  },
+  {
+    "timestamp": "2026-05-13 16:45:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.01,
+    "pressure_hpa": 857.31
+  },
+  {
+    "timestamp": "2026-05-13 16:50:00",
+    "temperature_c": 15.32,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.02,
+    "pressure_hpa": 857.3
+  },
+  {
+    "timestamp": "2026-05-13 16:55:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.05,
+    "pressure_hpa": 857.36
+  },
+  {
+    "timestamp": "2026-05-13 17:00:00",
+    "temperature_c": 15.29,
+    "dew_point_c": 1.3,
+    "relative_humidity_pct": 38.75,
+    "pressure_hpa": 857.28
+  },
+  {
+    "timestamp": "2026-05-13 17:05:00",
+    "temperature_c": 15.3,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.9,
+    "pressure_hpa": 857.22
+  },
+  {
+    "timestamp": "2026-05-13 17:10:00",
+    "temperature_c": 15.27,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.04,
+    "pressure_hpa": 857.13
+  },
+  {
+    "timestamp": "2026-05-13 17:15:00",
+    "temperature_c": 15.27,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.07,
+    "pressure_hpa": 857.07
+  },
+  {
+    "timestamp": "2026-05-13 17:20:00",
+    "temperature_c": 15.27,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.08,
+    "pressure_hpa": 856.93
+  },
+  {
+    "timestamp": "2026-05-13 17:25:00",
+    "temperature_c": 15.26,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.07,
+    "pressure_hpa": 856.7
+  },
+  {
+    "timestamp": "2026-05-13 17:30:00",
+    "temperature_c": 15.24,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.11,
+    "pressure_hpa": 856.75
+  },
+  {
+    "timestamp": "2026-05-13 17:35:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 856.66
+  },
+  {
+    "timestamp": "2026-05-13 17:40:00",
+    "temperature_c": 15.22,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 856.65
+  },
+  {
+    "timestamp": "2026-05-13 17:45:00",
+    "temperature_c": 15.21,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.17,
+    "pressure_hpa": 856.57
+  },
+  {
+    "timestamp": "2026-05-13 17:50:00",
+    "temperature_c": 15.21,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.15,
+    "pressure_hpa": 856.44
+  },
+  {
+    "timestamp": "2026-05-13 17:55:00",
+    "temperature_c": 15.21,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.17,
+    "pressure_hpa": 856.2
+  },
+  {
+    "timestamp": "2026-05-13 18:00:00",
+    "temperature_c": 15.2,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.19,
+    "pressure_hpa": 856.12
+  },
+  {
+    "timestamp": "2026-05-13 18:05:00",
+    "temperature_c": 15.19,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.2,
+    "pressure_hpa": 855.84
+  },
+  {
+    "timestamp": "2026-05-13 18:10:00",
+    "temperature_c": 15.23,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.13,
+    "pressure_hpa": 855.93
+  },
+  {
+    "timestamp": "2026-05-13 18:15:00",
+    "temperature_c": 15.26,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 39.09,
+    "pressure_hpa": 855.62
+  },
+  {
+    "timestamp": "2026-05-13 18:20:00",
+    "temperature_c": 15.31,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.94,
+    "pressure_hpa": 855.5
+  },
+  {
+    "timestamp": "2026-05-13 18:25:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.9,
+    "pressure_hpa": 855.6
+  },
+  {
+    "timestamp": "2026-05-13 18:30:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.91,
+    "pressure_hpa": 855.38
+  },
+  {
+    "timestamp": "2026-05-13 18:35:00",
+    "temperature_c": 15.34,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.89,
+    "pressure_hpa": 855.25
+  },
+  {
+    "timestamp": "2026-05-13 18:40:00",
+    "temperature_c": 15.36,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.83,
+    "pressure_hpa": 855.14
+  },
+  {
+    "timestamp": "2026-05-13 18:45:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.95,
+    "pressure_hpa": 855.07
+  },
+  {
+    "timestamp": "2026-05-13 18:50:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.88,
+    "pressure_hpa": 854.9
+  },
+  {
+    "timestamp": "2026-05-13 18:55:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.82,
+    "pressure_hpa": 854.74
+  },
+  {
+    "timestamp": "2026-05-13 19:00:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.83,
+    "pressure_hpa": 854.45
+  },
+  {
+    "timestamp": "2026-05-13 19:05:00",
+    "temperature_c": 15.4,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.83,
+    "pressure_hpa": 854.11
+  },
+  {
+    "timestamp": "2026-05-13 19:10:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.87,
+    "pressure_hpa": 854.21
+  },
+  {
+    "timestamp": "2026-05-13 19:15:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.93,
+    "pressure_hpa": 853.99
+  },
+  {
+    "timestamp": "2026-05-13 19:20:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.97,
+    "pressure_hpa": 854.01
+  },
+  {
+    "timestamp": "2026-05-13 19:25:00",
+    "temperature_c": 15.37,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 38.98,
+    "pressure_hpa": 853.8
+  },
+  {
+    "timestamp": "2026-05-13 19:30:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.02,
+    "pressure_hpa": 853.54
+  },
+  {
+    "timestamp": "2026-05-13 19:35:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.03,
+    "pressure_hpa": 853.6
+  },
+  {
+    "timestamp": "2026-05-13 19:40:00",
+    "temperature_c": 15.39,
+    "dew_point_c": 1.5,
+    "relative_humidity_pct": 39.06,
+    "pressure_hpa": 853.46
+  },
+  {
+    "timestamp": "2026-05-13 19:45:00",
+    "temperature_c": 15.38,
+    "dew_point_c": 1.4,
+    "relative_humidity_pct": 38.7,
+    "pressure_hpa": 853.6
+  },
+  {
+    "timestamp": "2026-05-13 19:50:00",
+    "temperature_c": 15.41,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.04,
+    "pressure_hpa": 853.54
+  },
+  {
+    "timestamp": "2026-05-13 19:55:00",
+    "temperature_c": 15.42,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.11,
+    "pressure_hpa": 853.38
+  },
+  {
+    "timestamp": "2026-05-13 20:00:00",
+    "temperature_c": 15.43,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.18,
+    "pressure_hpa": 853.24
+  },
+  {
+    "timestamp": "2026-05-13 20:05:00",
+    "temperature_c": 15.43,
+    "dew_point_c": 1.6,
+    "relative_humidity_pct": 39.2,
+    "pressure_hpa": 853.16
+  },
+  {
+    "timestamp": "2026-05-13 20:10:00",
+    "temperature_c": 15.43,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 853.41
+  },
+  {
+    "timestamp": "2026-05-13 20:15:00",
+    "temperature_c": 15.45,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.3,
+    "pressure_hpa": 853.56
+  },
+  {
+    "timestamp": "2026-05-13 20:20:00",
+    "temperature_c": 15.45,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.31,
+    "pressure_hpa": 853.19
+  },
+  {
+    "timestamp": "2026-05-13 20:25:00",
+    "temperature_c": 15.46,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 853.2
+  },
+  {
+    "timestamp": "2026-05-13 20:30:00",
+    "temperature_c": 15.47,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.41,
+    "pressure_hpa": 853.06
+  },
+  {
+    "timestamp": "2026-05-13 20:35:00",
+    "temperature_c": 15.49,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 853.09
+  },
+  {
+    "timestamp": "2026-05-13 20:40:00",
+    "temperature_c": 15.56,
+    "dew_point_c": 1.7,
+    "relative_humidity_pct": 39.2,
+    "pressure_hpa": 853.08
+  },
+  {
+    "timestamp": "2026-05-13 20:45:00",
+    "temperature_c": 15.63,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.05,
+    "pressure_hpa": 852.92
+  },
+  {
+    "timestamp": "2026-05-13 20:50:00",
+    "temperature_c": 15.68,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 39.01,
+    "pressure_hpa": 852.91
+  },
+  {
+    "timestamp": "2026-05-13 20:55:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.98,
+    "pressure_hpa": 852.76
+  },
+  {
+    "timestamp": "2026-05-13 21:00:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 1.8,
+    "relative_humidity_pct": 38.96,
+    "pressure_hpa": 852.55
+  },
+  {
+    "timestamp": "2026-05-13 21:05:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.97,
+    "pressure_hpa": 852.66
+  },
+  {
+    "timestamp": "2026-05-13 21:10:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.88,
+    "pressure_hpa": 852.52
+  },
+  {
+    "timestamp": "2026-05-13 21:15:00",
+    "temperature_c": 15.84,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.86,
+    "pressure_hpa": 852.36
+  },
+  {
+    "timestamp": "2026-05-13 21:20:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.85,
+    "pressure_hpa": 852.44
+  },
+  {
+    "timestamp": "2026-05-13 21:25:00",
+    "temperature_c": 15.89,
+    "dew_point_c": 1.9,
+    "relative_humidity_pct": 38.85,
+    "pressure_hpa": 852.32
+  },
+  {
+    "timestamp": "2026-05-13 21:30:00",
+    "temperature_c": 15.91,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 38.9,
+    "pressure_hpa": 852.27
+  },
+  {
+    "timestamp": "2026-05-13 21:35:00",
+    "temperature_c": 15.92,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 38.9,
+    "pressure_hpa": 852.31
+  },
+  {
+    "timestamp": "2026-05-13 21:40:00",
+    "temperature_c": 15.9,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 38.98,
+    "pressure_hpa": 852.14
+  },
+  {
+    "timestamp": "2026-05-13 21:45:00",
+    "temperature_c": 15.86,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.09,
+    "pressure_hpa": 852.17
+  },
+  {
+    "timestamp": "2026-05-13 21:50:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.25,
+    "pressure_hpa": 851.98
+  },
+  {
+    "timestamp": "2026-05-13 21:55:00",
+    "temperature_c": 15.8,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.32,
+    "pressure_hpa": 851.97
+  },
+  {
+    "timestamp": "2026-05-13 22:00:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.34,
+    "pressure_hpa": 852.1
+  },
+  {
+    "timestamp": "2026-05-13 22:05:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.34,
+    "pressure_hpa": 851.92
+  },
+  {
+    "timestamp": "2026-05-13 22:10:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.35,
+    "pressure_hpa": 851.86
+  },
+  {
+    "timestamp": "2026-05-13 22:15:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.38,
+    "pressure_hpa": 851.78
+  },
+  {
+    "timestamp": "2026-05-13 22:20:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.43,
+    "pressure_hpa": 851.5
+  },
+  {
+    "timestamp": "2026-05-13 22:25:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.41,
+    "pressure_hpa": 851.52
+  },
+  {
+    "timestamp": "2026-05-13 22:30:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.41,
+    "pressure_hpa": 851.47
+  },
+  {
+    "timestamp": "2026-05-13 22:35:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.4,
+    "pressure_hpa": 851.27
+  },
+  {
+    "timestamp": "2026-05-13 22:40:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.37,
+    "pressure_hpa": 851.24
+  },
+  {
+    "timestamp": "2026-05-13 22:45:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.42,
+    "pressure_hpa": 851.21
+  },
+  {
+    "timestamp": "2026-05-13 22:50:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.41,
+    "pressure_hpa": 851.08
+  },
+  {
+    "timestamp": "2026-05-13 22:55:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.43,
+    "pressure_hpa": 851.19
+  },
+  {
+    "timestamp": "2026-05-13 23:00:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.42,
+    "pressure_hpa": 851.16
+  },
+  {
+    "timestamp": "2026-05-13 23:05:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.45,
+    "pressure_hpa": 851.12
+  },
+  {
+    "timestamp": "2026-05-13 23:10:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.48,
+    "pressure_hpa": 851.05
+  },
+  {
+    "timestamp": "2026-05-13 23:15:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.56,
+    "pressure_hpa": 850.99
+  },
+  {
+    "timestamp": "2026-05-13 23:20:00",
+    "temperature_c": 15.71,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.58,
+    "pressure_hpa": 851.11
+  },
+  {
+    "timestamp": "2026-05-13 23:25:00",
+    "temperature_c": 15.7,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.6,
+    "pressure_hpa": 851.21
+  },
+  {
+    "timestamp": "2026-05-13 23:30:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.54,
+    "pressure_hpa": 851.15
+  },
+  {
+    "timestamp": "2026-05-13 23:35:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.57,
+    "pressure_hpa": 851.28
+  },
+  {
+    "timestamp": "2026-05-13 23:40:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.61,
+    "pressure_hpa": 851.46
+  },
+  {
+    "timestamp": "2026-05-13 23:45:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 39.49,
+    "pressure_hpa": 851.49
+  },
+  {
+    "timestamp": "2026-05-13 23:50:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.4,
+    "pressure_hpa": 851.45
+  },
+  {
+    "timestamp": "2026-05-13 23:55:00",
+    "temperature_c": 15.87,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.33,
+    "pressure_hpa": 851.36
+  },
+  {
+    "timestamp": "2026-05-14 00:00:00",
+    "temperature_c": 15.88,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.3,
+    "pressure_hpa": 851.31
+  },
+  {
+    "timestamp": "2026-05-14 00:05:00",
+    "temperature_c": 15.91,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.29,
+    "pressure_hpa": 851.45
+  },
+  {
+    "timestamp": "2026-05-14 00:10:00",
+    "temperature_c": 15.91,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.27,
+    "pressure_hpa": 851.38
+  },
+  {
+    "timestamp": "2026-05-14 00:15:00",
+    "temperature_c": 15.92,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.26,
+    "pressure_hpa": 851.3
+  },
+  {
+    "timestamp": "2026-05-14 00:20:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.23,
+    "pressure_hpa": 851.39
+  },
+  {
+    "timestamp": "2026-05-14 00:25:00",
+    "temperature_c": 15.93,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.22,
+    "pressure_hpa": 851.35
+  },
+  {
+    "timestamp": "2026-05-14 00:30:00",
+    "temperature_c": 15.94,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.23,
+    "pressure_hpa": 851.33
+  },
+  {
+    "timestamp": "2026-05-14 00:35:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.23,
+    "pressure_hpa": 851.27
+  },
+  {
+    "timestamp": "2026-05-14 00:40:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.26,
+    "pressure_hpa": 851.25
+  },
+  {
+    "timestamp": "2026-05-14 00:45:00",
+    "temperature_c": 15.95,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.28,
+    "pressure_hpa": 851.19
+  },
+  {
+    "timestamp": "2026-05-14 00:50:00",
+    "temperature_c": 15.93,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.34,
+    "pressure_hpa": 851.29
+  },
+  {
+    "timestamp": "2026-05-14 00:55:00",
+    "temperature_c": 15.9,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.45,
+    "pressure_hpa": 851.22
+  },
+  {
+    "timestamp": "2026-05-14 01:00:00",
+    "temperature_c": 15.87,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.54,
+    "pressure_hpa": 851.26
+  },
+  {
+    "timestamp": "2026-05-14 01:05:00",
+    "temperature_c": 15.83,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.61,
+    "pressure_hpa": 851.45
+  },
+  {
+    "timestamp": "2026-05-14 01:10:00",
+    "temperature_c": 15.82,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.64,
+    "pressure_hpa": 851.34
+  },
+  {
+    "timestamp": "2026-05-14 01:15:00",
+    "temperature_c": 15.81,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.66,
+    "pressure_hpa": 851.27
+  },
+  {
+    "timestamp": "2026-05-14 01:20:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.73,
+    "pressure_hpa": 851.19
+  },
+  {
+    "timestamp": "2026-05-14 01:25:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.76,
+    "pressure_hpa": 851.14
+  },
+  {
+    "timestamp": "2026-05-14 01:30:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.81,
+    "pressure_hpa": 850.91
+  },
+  {
+    "timestamp": "2026-05-14 01:35:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.81,
+    "pressure_hpa": 850.77
+  },
+  {
+    "timestamp": "2026-05-14 01:40:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.86,
+    "pressure_hpa": 850.94
+  },
+  {
+    "timestamp": "2026-05-14 01:45:00",
+    "temperature_c": 15.74,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 39.86,
+    "pressure_hpa": 851.21
+  },
+  {
+    "timestamp": "2026-05-14 01:50:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.91,
+    "pressure_hpa": 851.14
+  },
+  {
+    "timestamp": "2026-05-14 01:55:00",
+    "temperature_c": 15.73,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.95,
+    "pressure_hpa": 851.19
+  },
+  {
+    "timestamp": "2026-05-14 02:00:00",
+    "temperature_c": 15.71,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.0,
+    "pressure_hpa": 851.19
+  },
+  {
+    "timestamp": "2026-05-14 02:05:00",
+    "temperature_c": 15.71,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.02,
+    "pressure_hpa": 851.21
+  },
+  {
+    "timestamp": "2026-05-14 02:10:00",
+    "temperature_c": 15.7,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.02,
+    "pressure_hpa": 851.32
+  },
+  {
+    "timestamp": "2026-05-14 02:15:00",
+    "temperature_c": 15.69,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.04,
+    "pressure_hpa": 851.4
+  },
+  {
+    "timestamp": "2026-05-14 02:20:00",
+    "temperature_c": 15.69,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.05,
+    "pressure_hpa": 851.65
+  },
+  {
+    "timestamp": "2026-05-14 02:25:00",
+    "temperature_c": 15.68,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.07,
+    "pressure_hpa": 851.99
+  },
+  {
+    "timestamp": "2026-05-14 02:30:00",
+    "temperature_c": 15.67,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.09,
+    "pressure_hpa": 852.03
+  },
+  {
+    "timestamp": "2026-05-14 02:35:00",
+    "temperature_c": 15.67,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.12,
+    "pressure_hpa": 852.19
+  },
+  {
+    "timestamp": "2026-05-14 02:40:00",
+    "temperature_c": 15.71,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.04,
+    "pressure_hpa": 852.38
+  },
+  {
+    "timestamp": "2026-05-14 02:45:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.97,
+    "pressure_hpa": 852.54
+  },
+  {
+    "timestamp": "2026-05-14 02:50:00",
+    "temperature_c": 15.76,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.92,
+    "pressure_hpa": 852.43
+  },
+  {
+    "timestamp": "2026-05-14 02:55:00",
+    "temperature_c": 15.77,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.91,
+    "pressure_hpa": 852.52
+  },
+  {
+    "timestamp": "2026-05-14 03:00:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.85,
+    "pressure_hpa": 852.58
+  },
+  {
+    "timestamp": "2026-05-14 03:05:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.88,
+    "pressure_hpa": 852.43
+  },
+  {
+    "timestamp": "2026-05-14 03:10:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.94,
+    "pressure_hpa": 852.34
+  },
+  {
+    "timestamp": "2026-05-14 03:15:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.89,
+    "pressure_hpa": 852.26
+  },
+  {
+    "timestamp": "2026-05-14 03:20:00",
+    "temperature_c": 15.79,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.89,
+    "pressure_hpa": 852.28
+  },
+  {
+    "timestamp": "2026-05-14 03:25:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.92,
+    "pressure_hpa": 852.05
+  },
+  {
+    "timestamp": "2026-05-14 03:30:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.93,
+    "pressure_hpa": 852.0
+  },
+  {
+    "timestamp": "2026-05-14 03:35:00",
+    "temperature_c": 15.78,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 39.93,
+    "pressure_hpa": 851.94
+  },
+  {
+    "timestamp": "2026-05-14 03:40:00",
+    "temperature_c": 15.75,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.02,
+    "pressure_hpa": 851.9
+  },
+  {
+    "timestamp": "2026-05-14 03:45:00",
+    "temperature_c": 15.72,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.08,
+    "pressure_hpa": 851.85
+  },
+  {
+    "timestamp": "2026-05-14 03:50:00",
+    "temperature_c": 15.71,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.11,
+    "pressure_hpa": 851.9
+  },
+  {
+    "timestamp": "2026-05-14 03:55:00",
+    "temperature_c": 15.68,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.19,
+    "pressure_hpa": 851.91
+  },
+  {
+    "timestamp": "2026-05-14 04:00:00",
+    "temperature_c": 15.67,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.2,
+    "pressure_hpa": 851.81
+  },
+  {
+    "timestamp": "2026-05-14 04:05:00",
+    "temperature_c": 15.66,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.25,
+    "pressure_hpa": 851.71
+  },
+  {
+    "timestamp": "2026-05-14 04:10:00",
+    "temperature_c": 15.64,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.31,
+    "pressure_hpa": 851.68
+  },
+  {
+    "timestamp": "2026-05-14 04:15:00",
+    "temperature_c": 15.63,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.34,
+    "pressure_hpa": 851.8
+  },
+  {
+    "timestamp": "2026-05-14 04:20:00",
+    "temperature_c": 15.61,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.35,
+    "pressure_hpa": 851.77
+  },
+  {
+    "timestamp": "2026-05-14 04:25:00",
+    "temperature_c": 15.59,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.45,
+    "pressure_hpa": 851.8
+  },
+  {
+    "timestamp": "2026-05-14 04:30:00",
+    "temperature_c": 15.58,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.45,
+    "pressure_hpa": 851.79
+  },
+  {
+    "timestamp": "2026-05-14 04:35:00",
+    "temperature_c": 15.56,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.51,
+    "pressure_hpa": 851.83
+  },
+  {
+    "timestamp": "2026-05-14 04:40:00",
+    "temperature_c": 15.56,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.5,
+    "pressure_hpa": 851.83
+  },
+  {
+    "timestamp": "2026-05-14 04:45:00",
+    "temperature_c": 15.55,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.52,
+    "pressure_hpa": 851.9
+  },
+  {
+    "timestamp": "2026-05-14 04:50:00",
+    "temperature_c": 15.53,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.5,
+    "pressure_hpa": 851.93
+  },
+  {
+    "timestamp": "2026-05-14 04:55:00",
+    "temperature_c": 15.53,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.53,
+    "pressure_hpa": 851.88
+  },
+  {
+    "timestamp": "2026-05-14 05:00:00",
+    "temperature_c": 15.52,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.54,
+    "pressure_hpa": 851.96
+  },
+  {
+    "timestamp": "2026-05-14 05:05:00",
+    "temperature_c": 15.5,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.55,
+    "pressure_hpa": 851.9
+  },
+  {
+    "timestamp": "2026-05-14 05:10:00",
+    "temperature_c": 15.49,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.52,
+    "pressure_hpa": 852.01
+  },
+  {
+    "timestamp": "2026-05-14 05:15:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.57,
+    "pressure_hpa": 852.15
+  },
+  {
+    "timestamp": "2026-05-14 05:20:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.54,
+    "pressure_hpa": 852.15
+  },
+  {
+    "timestamp": "2026-05-14 05:25:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.54,
+    "pressure_hpa": 852.2
+  },
+  {
+    "timestamp": "2026-05-14 05:30:00",
+    "temperature_c": 15.46,
+    "dew_point_c": 2.0,
+    "relative_humidity_pct": 40.24,
+    "pressure_hpa": 852.18
+  },
+  {
+    "timestamp": "2026-05-14 05:35:00",
+    "temperature_c": 15.48,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.34,
+    "pressure_hpa": 852.12
+  },
+  {
+    "timestamp": "2026-05-14 05:40:00",
+    "temperature_c": 15.51,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.35,
+    "pressure_hpa": 852.14
+  },
+  {
+    "timestamp": "2026-05-14 05:45:00",
+    "temperature_c": 15.53,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.19,
+    "pressure_hpa": 852.28
+  },
+  {
+    "timestamp": "2026-05-14 05:50:00",
+    "temperature_c": 15.55,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.17,
+    "pressure_hpa": 852.2
+  },
+  {
+    "timestamp": "2026-05-14 05:55:00",
+    "temperature_c": 15.57,
+    "dew_point_c": 2.1,
+    "relative_humidity_pct": 40.26,
+    "pressure_hpa": 852.42
+  },
+  {
+    "timestamp": "2026-05-14 06:00:00",
+    "temperature_c": 15.58,
+    "dew_point_c": 2.2,
+    "relative_humidity_pct": 40.31,
+    "pressure_hpa": 852.47
+  }
+]

@@ -1,0 +1,699 @@
+:root {
+    --bg-color: #121212;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0A0;
+    --accent-blue: #4DA8DA;
+    --accent-orange: #E27D60;
+    --panel-bg: #1E1E1E;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.macro-banner {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    padding-bottom: 15px;
+}
+
+.macro-banner-spacer {
+    flex: 0 0 140px;
+}
+
+.macro-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.macro-banner-actions {
+    flex: 0 0 140px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.download-icon-btn {
+    background: none;
+    border: 1px solid #444;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 7px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.download-icon-btn:hover {
+    border-color: var(--text-secondary);
+    color: var(--accent-blue);
+}
+
+.download-btn-text {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.macro-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.pressure-trend-section {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.hero-section {
+    /* flex: 1;  */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.zone-title {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.hero-temp {
+    font-size: 11rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+@media (max-width: 600px) {
+    .hero-temp {
+        font-size: 6rem;
+    }
+
+    .macro-value {
+        font-size: 1.5rem;
+    }
+
+    .hero-context {
+        font-size: 1.1rem;
+    }
+
+    .download-btn-text {
+        display: none;
+    }
+
+    .macro-banner-spacer,
+    .macro-banner-actions {
+        flex: 0 0 44px;
+    }
+
+    .visualizer-section {
+        flex: 0 0 300px; /* Fixed height on small screens to ensure visibility */
+        margin-bottom: 20px;
+    }
+}
+
+.hero-context {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    font-size: 1.5rem; 
+    font-weight: 500; 
+    color: var(--text-secondary);
+}
+
+.divider {
+    color: #444;
+}
+
+.zone-dropdown-container {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+#sensor-dropdown {
+    background-color: var(--panel-bg);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    width: 80%;
+    max-width: 400px;
+    appearance: none;
+    text-align: center;
+}
+
+.visualizer-section {
+    flex: 0 0 auto; /* Matches the pressure section */
+    padding: 15px 0 5px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 17vh; /* Hard-lock the height */
+}
+
+.sparkline-container {
+    position: relative;
+    width: 100%;
+    height: 17vh; /* Hard-lock the height to match */
+}
+
+.wind-history-strip {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    margin-bottom: 3px;
+}
+
+.wind-strip-label {
+    flex: 0 0 75px; /* matches Chart.js y-axis afterFit width */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.wind-strip-label span {
+    display: block;
+    transform: rotate(-90deg);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #888;
+    white-space: nowrap;
+}
+
+#ui-wind-history {
+    position: relative;
+    flex: 1 1 0;
+    height: 100%;
+}
+
+.global-telemetry {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.telemetry-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.telemetry-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.telemetry-value {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.telemetry-sub {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+
+/* ─── Download Modal ─────────────────────────────────────────────────── */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: var(--panel-bg);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 420px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+}
+
+.modal-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 6px 8px;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-section {
+    margin-bottom: 24px;
+}
+
+.modal-section-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.modal-format-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+/* Preset chips */
+
+.preset-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.preset-chip {
+    background: #2a2a2a;
+    border: 1px solid #333;
+    color: var(--text-secondary);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: border-color 0.15s, color 0.15s;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.preset-chip.active {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* Custom date inputs */
+
+.custom-date-inputs {
+    display: none;
+    gap: 12px;
+}
+
+.date-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.date-label {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.date-input {
+    background: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.date-input.error {
+    border-color: #ff4444;
+}
+
+/* Download button */
+
+.modal-footer {
+    padding: 0 20px 20px 20px;
+}
+
+.download-csv-btn {
+    width: 100%;
+    background: var(--accent-blue);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ── Site Nav ─────────────────────────────────────────────────────────────── */
+
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 20px;
+    height: 56px;
+}
+
+.site-nav-brand {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.site-nav-center {
+    display: flex;
+    justify-content: center;
+}
+
+.site-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.site-nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: color 0.15s;
+}
+
+.site-nav-link:hover {
+    color: var(--text-primary);
+}
+
+.site-nav-tour {
+    background: var(--accent-blue);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* Offset anchor targets so the sticky nav doesn't cover them */
+#architecture,
+#about {
+    scroll-margin-top: 56px;
+}
+
+
+/* ── Architecture Section ─────────────────────────────────────────────────── */
+
+.site-section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.site-section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.arch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.arch-card {
+    background: var(--panel-bg);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.arch-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.arch-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.arch-card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.arch-demo-note {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* ── About Section ────────────────────────────────────────────────────────── */
+
+#about {
+    border-top: 1px solid #2a2a2a;
+}
+
+.about-body {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.about-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.about-github-btn {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    background: var(--accent-blue);
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    .site-nav {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .site-nav-brand {
+        display: none;
+    }
+
+    .site-nav-tour {
+        font-size: 0.875rem;
+        padding: 7px 14px;
+    }
+
+    .arch-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+    .arch-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ── Tour button glow pulse ───────────────────────────────────────────────── */
+
+@keyframes tour-glow {
+    0%, 100% { box-shadow: 0 0 6px 2px rgba(77, 168, 218, 0.3); }
+    50%       { box-shadow: 0 0 28px 10px rgba(77, 168, 218, 0.75), 0 0 6px 2px rgba(77, 168, 218, 0.4); }
+}
+
+.site-nav-tour {
+    animation: tour-glow 2.2s ease-in-out infinite;
+}
+
+.site-nav-tour:hover {
+    animation: none;
+    box-shadow: 0 0 32px 12px rgba(77, 168, 218, 0.85), 0 0 8px 3px rgba(77, 168, 218, 0.5);
+}
+
+
+/* ── Arch card fade-up animation ─────────────────────────────────────────── */
+
+.arch-animate {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.arch-animate.arch-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger each card slightly */
+.arch-animate:nth-child(2) { transition-delay: 0.07s; }
+.arch-animate:nth-child(3) { transition-delay: 0.14s; }
+.arch-animate:nth-child(4) { transition-delay: 0.21s; }
+.arch-animate:nth-child(5) { transition-delay: 0.28s; }
+.arch-animate:nth-child(6) { transition-delay: 0.35s; }
+
+
+/* ── Driver.js theme overrides ───────────────────────────────────────────── */
+
+#driver-popover-content {
+    background: #1e1e1e;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 360px;
+    padding: 16px;
+}
+
+#driver-popover-title {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+#driver-popover-description {
+    color: #d8d8d8;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+#driver-popover-navigation-btns button {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 7px 14px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+#driver-popover-navigation-btns button:hover {
+    background: #333;
+}
+
+#driver-popover-next-btn {
+    background: var(--accent-blue) !important;
+    border-color: var(--accent-blue) !important;
+    color: #000 !important;
+    font-weight: 700 !important;
+}
+
+#driver-popover-close-btn {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.driver-popover-arrow-side-top.driver-popover-arrow::after    { border-top-color:    #2a2a2a; }
+.driver-popover-arrow-side-bottom.driver-popover-arrow::after { border-bottom-color: #2a2a2a; }
+.driver-popover-arrow-side-left.driver-popover-arrow::after   { border-left-color:   #2a2a2a; }
+.driver-popover-arrow-side-right.driver-popover-arrow::after  { border-right-color:  #2a2a2a; }

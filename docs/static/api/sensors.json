@@ -1,0 +1,5 @@
+[
+    {"id":1,"machine_name":"bme280_local","friendly_name":"bme280","location":"Downstairs","latitude":51.1715,"longitude":-114.01,"elevation_m":1350.0,"timezone":"America/Edmonton"},
+    {"id":4,"machine_name":"8865","friendly_name":"Greenhouse","location":"Greenhouse","latitude":51.1715,"longitude":-114.01,"elevation_m":1350.0,"timezone":"America/Edmonton"},
+    {"id":5,"machine_name":"2130","friendly_name":"Backyard","location":"Outside (Fence)","latitude":51.1715,"longitude":-114.01,"elevation_m":1350.0,"timezone":"America/Edmonton"}
+]
