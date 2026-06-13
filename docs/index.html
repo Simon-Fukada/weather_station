@@ -260,9 +260,10 @@
  
         <h2 class="site-section-title">How It Works</h2>
                    <div class="arch-demo-note">
-    This demo shows 72 hours of real data captured from a live Pi installation.
-    On your own Pi, the dashboard updates approximately every five minutes with live sensor readings.
-    </div>
+                This demo runs on a static 72-hour snapshot of real data 
+                recorded from a live Pi installation. On your own Pi, the 
+                dashboard polls your local database every five minutes and  shows your latest readings.
+                    </div>
 
         <!-- Data flow diagram -->
         <div class="arch-flow arch-animate">
@@ -311,7 +312,7 @@
             </div>
             <div class="arch-card arch-animate">
                 <div class="arch-card-icon">🗄️</div>
-                <h3>SQLite + EAV Schema</h3>
+                <h3>SQLite + Entity-Attribute-Value Schema</h3>
                 <p>Each reading is stored as a single row: sensor_id, metric type, timestamp, value. New sensors once added to the database require no changes to any table structures.</p>
             </div>
             <div class="arch-card arch-animate">

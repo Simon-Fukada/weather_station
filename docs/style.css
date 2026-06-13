@@ -539,6 +539,7 @@ body {
     color: var(--text-secondary);
     text-align: center;
     font-style: italic;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -563,6 +564,7 @@ body {
 .about-github-btn {
     display: block;
     width: fit-content;
+    margin-top: 2rem;
     margin-left: auto;
     background: var(--accent-blue);
     color: #000;

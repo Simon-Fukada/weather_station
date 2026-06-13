@@ -15,7 +15,7 @@ var driverObj = driver({
             element: '#download-btn',
             popover: {
                 title: 'Your data, your way',
-                description: 'Every reading logged on the Pi is exportable as an unpivoted CSV — one row per observation across every sensor, ready for Python, R, or Excel. This demo downloads 72 hours of real data from a live installation. In the full app you can export any date range, including everything collected since day one.',
+                description: 'This demo downloads a static 72-hour snapshot of real data recorded from a live Pi installation. In the full app you can export any date range from your live database, including everything you\'ve collected since day one.',
                 side: 'bottom',
                 align: 'end'
             }
@@ -24,7 +24,7 @@ var driverObj = driver({
             element: '.zone-dropdown-container',
             popover: {
                 title: 'Multiple sensors, one dashboard',
-                description: 'Add multiple sensors and switch between them here. The EAV database schema means a new sensor never requires a change to table structure. The demo shows three different sensors.',
+                description: 'Add multiple sensors and switch between them here. The Entity-Attribute-Value (EAV) database schema means a new sensor never requires a change to table structure. The demo shows three different sensors.',
                 side: 'bottom',
                 align: 'center'
             }

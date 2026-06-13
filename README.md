@@ -1,5 +1,7 @@
 # RTL-SDR Local Weather Station Dashboard on Raspberry Pi
 
+<a href="https://simon-fukada.github.io/weather_station/">Link to demo website here</a>
+
 Thanks for checking out my project! I should emphasize this is a hobby project to track weather data from your own weather sensors. As such, please use the code at your own risk as there is no guarantee the code or any of the calculations or instructions in this readme are stable or reliable. With that said, I have attempted to design the most robust and clean architecture possible. It has been a wonderful learning experience in many ways! 
 
 Essentially, this is a self-hosted weather dashboard powered by a Raspberry Pi. The Pi acts as both your database and web server, logging sensor readings every 5 minutes to SQLite and serving the UI across your local network. You can access it from any browser in your network. I specifically engineered the frontend to be compatible with iOS 12 so I could repurpose an old iPad as a dedicated display. But by no means do you need an old iPad to view the application; it should work on any modern device as well. I have attempted to design the database so that you can dynamically add as many sensors as you would like. Currently, the dashboard tracks the following metrics (Temperature, Humidity, Dew Point, Pressure, Rain, Wind Speed and Wind Direction), alongside a small Radio Frequency dashboard to keep an eye on your wireless connection health.
