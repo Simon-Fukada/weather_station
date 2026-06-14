@@ -9,11 +9,10 @@ Essentially, this is a self-hosted weather dashboard powered by a Raspberry Pi. 
 <img src="images/Dashboard_image.png" alt="Desktop Dashboard Display" width="400">
 
 
-I want to accomplish three things with this README:
+I want to accomplish two things with this README:
 
 1. Clearly explain the **System Architecture & Data Flow** so you can understand the code.
 2. Clearly explain the **Setup & Installation** so you can set this up yourself.
-3. Clearly explain **How to Run the Tests**.
 
 ---
 
@@ -305,24 +304,3 @@ sudo systemctl enable weather-api weather-sdr
 sudo systemctl start weather-api weather-sdr
 ```
 You can now view your live dashboard at http://[YOUR_PI_IP]:8000.
-
-## Running Tests
-The test suites are split between the Python backend and the JavaScript frontend.
-
-Backend Tests (Python/FastAPI):
-The backend utilizes pytest with in-memory SQLite databases to prevent polluting your production data.
-```bash
-source venv/bin/activate
-pytest tests/
-```
-
-Frontend Tests (JavaScript/DOM):
-The frontend logic is tested using the Jest framework. You will need Node.js installed on your machine to run these.
-```bash
-# First, install the necessary node modules
-cd frontend
-npm install
-
-# Run the test suite
-npx jest app.test.js
-```
