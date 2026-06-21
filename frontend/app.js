@@ -475,7 +475,7 @@ function drawWindDirectionHistory(historyData) {
         speedEl.style.lineHeight = '1';
         speedEl.style.whiteSpace = 'nowrap';
         speedEl.textContent = (point.speed !== null && point.speed !== undefined)
-            ? Math.round(point.speed)
+            ? point.speed.toFixed(1)
             : '--';
         el.appendChild(speedEl);
 
