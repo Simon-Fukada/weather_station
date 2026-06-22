@@ -99,6 +99,7 @@ document.body.innerHTML = `
          event listeners without crashing. These elements are not exercised by
          any test; they merely keep the module from throwing at eval time. -->
     <div id="download-modal-overlay"></div>
+    <button id="unit-toggle-btn"></button>
     <button id="download-btn"></button>
     <button id="modal-close-btn"></button>
     <button id="download-csv-btn"></button>
@@ -305,6 +306,51 @@ describe('Weather Station Frontend (app.js)', () => {
                 expect(normalData).toEqual([1013, 1012]);
             });
         });
+
+        describe('fmtVal', () => {
+            test('converts and formats a valid value', () => {
+                expect(fmtVal(10, function(x) { return x * 2; }, 1, ' x')).toBe('20.0 x');
+            });
+
+            test('applies the decimal precision argument', () => {
+                expect(fmtVal(3.14159, function(x) { return x; }, 2, ' x')).toBe('3.14 x');
+            });
+
+            test('returns "--" for null', () => {
+                expect(fmtVal(null, function(x) { return x; }, 1, ' x')).toBe('--');
+            });
+
+            test('returns "--" for undefined', () => {
+                expect(fmtVal(undefined, function(x) { return x; }, 1, ' x')).toBe('--');
+            });
+
+            test('treats 0 as a valid value, not a fallback', () => {
+                expect(fmtVal(0, function(x) { return x; }, 1, ' x')).toBe('0.0 x');
+            });
+        });
+
+        describe('fmtTemp (metric)', () => {
+            test('shows one decimal when fractional part is non-zero', () => {
+                expect(fmtTemp(21.3)).toBe('21.3°');
+            });
+
+            test('drops decimal when fractional part is zero', () => {
+                expect(fmtTemp(24.0)).toBe('24°');
+            });
+
+            test('handles negative temperatures', () => {
+                expect(fmtTemp(-5.0)).toBe('-5°');
+                expect(fmtTemp(-5.5)).toBe('-5.5°');
+            });
+
+            test('returns "--" for null', () => {
+                expect(fmtTemp(null)).toBe('--');
+            });
+
+            test('returns "--" for undefined', () => {
+                expect(fmtTemp(undefined)).toBe('--');
+            });
+        });
     });
 
     // -------------------------------------------------------------------------
@@ -431,6 +477,88 @@ describe('Weather Station Frontend (app.js)', () => {
                 const snrEl = document.getElementById('ui-snr');
                 expect(snrEl.textContent).toBe('--');
                 expect(snrEl.style.color).toBe('inherit');
+            });
+        });
+
+        describe('Imperial unit mode', () => {
+            // Click the toggle once before these tests to switch to imperial,
+            // then restore metric afterwards so later tests are unaffected.
+            beforeAll(async () => {
+                document.getElementById('unit-toggle-btn').click();
+                await new Promise(function(resolve) { setTimeout(resolve, 0); });
+            });
+
+            afterAll(async () => {
+                document.getElementById('unit-toggle-btn').click();
+                await new Promise(function(resolve) { setTimeout(resolve, 0); });
+            });
+
+            describe('fmtTemp (imperial)', () => {
+                test('converts °C to °F and drops decimal when zero', () => {
+                    expect(fmtTemp(20.0)).toBe('68°');
+                });
+
+                test('converts °C to °F and keeps one decimal when non-zero', () => {
+                    expect(fmtTemp(20.5)).toBe('68.9°');
+                });
+            });
+
+            describe('renderWind (imperial)', () => {
+                test('shows speed in mph', () => {
+                    renderWind({ wind_sustained_kmh: 15.3 });
+                    expect(document.getElementById('ui-wind').textContent).toBe('9.5 mph');
+                });
+
+                test('shows placeholder in mph when data is null', () => {
+                    renderWind({ wind_sustained_kmh: null });
+                    expect(document.getElementById('ui-wind').textContent).toBe('-- mph');
+                });
+            });
+
+            describe('updateFixedSensorData (imperial)', () => {
+                test('converts pressure, gust, and rain to imperial units', async () => {
+                    fetch.mockResolvedValueOnce({
+                        json: jest.fn().mockResolvedValue({
+                            mslp_hpa: 1012.5,
+                            wind_sustained_kmh: 12.0,
+                            wind_gust_kmh: 18.5,
+                            rain_24h_mm: 3.2,
+                            pressure_timestamp: '2026-03-20 12:00:00',
+                            pressure_trend_72h: [],
+                            pressure_average_72h: 1011.0
+                        })
+                    });
+
+                    await updateFixedSensorData();
+
+                    expect(document.getElementById('ui-pressure').textContent).toBe('29.90 inHg');
+                    expect(document.getElementById('ui-gust').textContent).toBe('11.5 mph');
+                    expect(document.getElementById('ui-rain').textContent).toBe('0.1 in');
+                });
+            });
+
+            describe('updateSelectedSensorData (imperial)', () => {
+                test('converts and displays temperature values in °F', async () => {
+                    fetch
+                        .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue({
+                            temperature_c: 21.3,
+                            temp_high_24h: 24.0,
+                            temp_low_24h: 19.5,
+                            relative_humidity_pct: 55,
+                            dew_point_c: 12.1,
+                            timestamp: '2026-03-20 13:45:00',
+                            battery_ok: 1
+                        })})
+                        .mockResolvedValueOnce({ json: jest.fn().mockResolvedValue([]) });
+
+                    await updateSelectedSensorData(1, 'Patio');
+
+                    expect(document.getElementById('ui-temp').textContent).toBe('70.3°');
+                    expect(document.getElementById('ui-high').textContent).toBe('75.2°');
+                    expect(document.getElementById('ui-low').textContent).toBe('67.1°');
+                    expect(document.getElementById('ui-humidity').textContent).toBe('55%');
+                    expect(document.getElementById('ui-dewpoint').textContent).toBe('53.8°');
+                });
             });
         });
 

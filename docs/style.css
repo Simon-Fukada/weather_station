@@ -39,6 +39,8 @@ body {
 
 .macro-banner-spacer {
     flex: 0 0 140px;
+    display: flex;
+    align-items: center;
 }
 
 .macro-block {
@@ -80,6 +82,30 @@ body {
     font-size: 0.8rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
+}
+
+.unit-toggle-btn {
+    background: none;
+    border: 1px solid #444;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-transition: border-color 0.2s;
+    transition: border-color 0.2s;
+}
+
+.unit-toggle-btn:hover {
+    border-color: var(--text-secondary);
+}
+
+.unit-toggle-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
 }
 
 .macro-label {
@@ -136,7 +162,10 @@ body {
         display: none;
     }
 
-    .macro-banner-spacer,
+    .macro-banner-spacer {
+        flex: 0 0 44px;
+    }
+
     .macro-banner-actions {
         flex: 0 0 44px;
     }

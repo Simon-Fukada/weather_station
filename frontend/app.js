@@ -24,6 +24,7 @@ const state = {
     pressureChart:     null,
     zoneChart:         null,
     rainTrend:         [],
+    units:             localStorage.getItem('units') || 'metric',
 };
 
 
@@ -68,6 +69,56 @@ const els = {
 };
 
 
+// --- 2c. Unit System ---
+// Conversion functions and label strings are assigned once by applyUnitSystem()
+// and read at render time — no per-value branching in the hot path.
+let cvtTemp, unitTemp, unitTempLabel;
+let cvtWind, unitWind;
+let cvtRain, unitRain;
+let cvtPressure, unitPressure, dpPressure;
+let minTempSpan;
+
+function applyUnitSystem() {
+    if (state.units === 'metric') {
+        cvtTemp       = function(x) { return x; };
+        unitTemp      = '°';
+        unitTempLabel = '°C';
+        cvtWind       = function(x) { return x; };
+        unitWind      = 'km/h';
+        cvtRain       = function(x) { return x; };
+        unitRain      = 'mm';
+        cvtPressure   = function(x) { return x; };
+        unitPressure  = 'hPa';
+        dpPressure    = 1;
+        minTempSpan   = 10;
+    } else {
+        cvtTemp       = function(x) { return x * 9 / 5 + 32; };
+        unitTemp      = '°';
+        unitTempLabel = '°F';
+        cvtWind      = function(x) { return x * 0.621371; };
+        unitWind     = 'mph';
+        cvtRain      = function(x) { return x * 0.0393701; };
+        unitRain     = 'in';
+        cvtPressure  = function(x) { return x * 0.02953; };
+        unitPressure = 'inHg';
+        dpPressure   = 2;
+        minTempSpan  = 18;
+    }
+}
+
+function updateUnitToggle() {
+    var btn = document.getElementById('unit-toggle-btn');
+    if (!btn) return;
+    if (state.units === 'metric') {
+        btn.innerHTML = '<span style="color:var(--text-primary)">°C</span><span style="color:#555"> | °F</span>';
+    } else {
+        btn.innerHTML = '<span style="color:#555">°C | </span><span style="color:var(--text-primary)">°F</span>';
+    }
+}
+
+applyUnitSystem();
+
+
 // --- 3. Formatting & Chart Helpers ---
 
 /**
@@ -81,6 +132,16 @@ function safeFallback(val, unit) {
         return unit ? val + unit : val;
     }
     return '--';
+}
+
+function fmtVal(val, cvtFn, dp, unit) {
+    return val !== null && val !== undefined ? cvtFn(val).toFixed(dp) + unit : '--';
+}
+
+function fmtTemp(val) {
+    if (val === null || val === undefined) return '--';
+    var t = Math.round(cvtTemp(val) * 10) / 10;
+    return (t % 1 === 0 ? String(Math.round(t)) : t.toFixed(1)) + unitTemp;
 }
 
 /**
@@ -219,12 +280,12 @@ async function fetchFixedSensors() {
 }
 
 function renderMacroBanner(data) {
-    els.pressure.textContent = safeFallback(data.mslp_hpa, ' hPa');
+    els.pressure.textContent = fmtVal(data.mslp_hpa, cvtPressure, dpPressure, ' ' + unitPressure);
     if (els.pressureLabel) {
         els.pressureLabel.textContent = data.mslp_corrected ? 'Relative Pressure' : 'Station Pressure';
     }
-    if (els.gust) els.gust.textContent = safeFallback(data.wind_gust_kmh, ' km/h');
-    if (els.rain) els.rain.textContent = safeFallback(data.rain_24h_mm, ' mm');
+    if (els.gust) els.gust.textContent = fmtVal(data.wind_gust_kmh, cvtWind, 1, ' ' + unitWind);
+    if (els.rain) els.rain.textContent = fmtVal(data.rain_24h_mm, cvtRain, 1, ' ' + unitRain);
     if (els.pressureTime) els.pressureTime.textContent = formatDateTime(data.pressure_timestamp);
     els.time.textContent = formatDateTime(new Date());
 }
@@ -267,12 +328,12 @@ function renderWind(data) {
     if (!els.wind) return;
 
     if (data.wind_sustained_kmh === null || data.wind_sustained_kmh === undefined) {
-        els.wind.textContent = '-- km/h';
+        els.wind.textContent = '-- ' + unitWind;
         if (els.windCompass) els.windCompass.style.display = 'none';
         return;
     }
 
-    els.wind.textContent = `${data.wind_sustained_kmh.toFixed(1)} km/h`;
+    els.wind.textContent = cvtWind(data.wind_sustained_kmh).toFixed(1) + ' ' + unitWind;
     if (els.windCompass && els.windTrailContainer && data.wind_history) {
         renderWindTrail(data.wind_history);
     }
@@ -323,11 +384,11 @@ async function updateSelectedSensorData(sensorId, friendlyName) {
             historyRes.json()
         ]);
 
-        els.temp.textContent     = safeFallback(currentData.temperature_c,  '°');
-        els.high.textContent     = safeFallback(currentData.temp_high_24h,  '°');
-        els.low.textContent      = safeFallback(currentData.temp_low_24h,   '°');
+        els.temp.textContent     = fmtTemp(currentData.temperature_c);
+        els.high.textContent     = fmtTemp(currentData.temp_high_24h);
+        els.low.textContent      = fmtTemp(currentData.temp_low_24h);
         els.humidity.textContent = safeFallback(currentData.relative_humidity_pct, '%');
-        els.dewpoint.textContent = safeFallback(currentData.dew_point_c,    '°');
+        els.dewpoint.textContent = fmtTemp(currentData.dew_point_c);
 
         // Stateless RF UI update with 3-tier color coding
         if (currentData.snr_db !== undefined && currentData.snr_db !== null) {
@@ -475,7 +536,7 @@ function drawWindDirectionHistory(historyData) {
         speedEl.style.lineHeight = '1';
         speedEl.style.whiteSpace = 'nowrap';
         speedEl.textContent = (point.speed !== null && point.speed !== undefined)
-            ? point.speed.toFixed(1)
+            ? cvtWind(point.speed).toFixed(1)
             : '--';
         el.appendChild(speedEl);
 
@@ -545,7 +606,7 @@ function makePressureAnnotation(averageValue) {
         if (lastPoint && averageValue !== undefined && averageValue !== null) {
             ctx.textAlign = 'right';
             ctx.fillStyle = '#4DA8DA';
-            ctx.fillText(`mean: ${averageValue} hPa`, chartInstance.width, lastPoint._model.y - 5);
+            ctx.fillText('mean: ' + averageValue.toFixed(dpPressure) + ' ' + unitPressure, chartInstance.width, lastPoint._model.y - 5);
         }
     };
 }
@@ -561,13 +622,24 @@ function drawPressureChart(trendArray, averageValue, rainTrend) {
     const ctx = els.pressureCanvas.getContext('2d');
     const safeTrendArray = trendArray || [];
 
+    const convertedTrend = safeTrendArray.map(function(p) {
+        return {
+            value: p.value !== null && p.value !== undefined ? cvtPressure(p.value) : p.value,
+            alert: p.alert,
+            timestamp: p.timestamp
+        };
+    });
+    const averageConverted = averageValue !== null && averageValue !== undefined
+        ? cvtPressure(averageValue)
+        : averageValue;
+
     const labels = [];
     const averageLineData = [];
-    const split = splitPressureData(safeTrendArray);
+    const split = splitPressureData(convertedTrend);
 
-    for (let i = 0; i < safeTrendArray.length; i++) {
-        labels.push(formatChartLabelTime(safeTrendArray[i].timestamp));
-        averageLineData.push(averageValue);
+    for (let i = 0; i < convertedTrend.length; i++) {
+        labels.push(formatChartLabelTime(convertedTrend[i].timestamp));
+        averageLineData.push(averageConverted);
     }
 
     if (state.pressureChart) {
@@ -578,10 +650,12 @@ function drawPressureChart(trendArray, averageValue, rainTrend) {
         state.pressureChart.data.datasets[2].data = split.slowAlertData;
         state.pressureChart.data.datasets[3].data = split.fastAlertData;
         state.pressureChart.data.datasets[4].data = averageLineData;
-        state.pressureChart.options.animation.onComplete = makePressureAnnotation(averageValue);
+        state.pressureChart.options.animation.onComplete = makePressureAnnotation(averageConverted);
         state.pressureChart.update();
         return;
     }
+
+    const pressureLabel = 'Pressure (' + unitPressure + ')';
 
     state.pressureChart = new Chart(ctx, {
         type: 'line',
@@ -589,11 +663,11 @@ function drawPressureChart(trendArray, averageValue, rainTrend) {
         data: {
             labels: labels,
             datasets: [
-                { label: 'Pressure (hPa)', data: split.normalData,        borderColor: '#A0A0A0', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
-                { label: 'Pressure (hPa)', data: split.gradualAlertData,  borderColor: '#FFD700', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
-                { label: 'Pressure (hPa)', data: split.slowAlertData,     borderColor: '#FF8800', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
-                { label: 'Pressure (hPa)', data: split.fastAlertData,     borderColor: '#FF4444', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
-                { label: 'Average (hPa)', data: averageLineData,           borderColor: '#4DA8DA', borderWidth: 1, borderDash: [5, 5], fill: false, pointRadius: 0 }
+                { label: pressureLabel, data: split.normalData,        borderColor: '#A0A0A0', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
+                { label: pressureLabel, data: split.gradualAlertData,  borderColor: '#FFD700', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
+                { label: pressureLabel, data: split.slowAlertData,     borderColor: '#FF8800', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
+                { label: pressureLabel, data: split.fastAlertData,     borderColor: '#FF4444', borderWidth: 2, fill: false, lineTension: 0, pointRadius: 0, spanGaps: false },
+                { label: 'Average (' + unitPressure + ')', data: averageLineData, borderColor: '#4DA8DA', borderWidth: 1, borderDash: [5, 5], fill: false, pointRadius: 0 }
             ]
         },
         options: {
@@ -606,7 +680,7 @@ function drawPressureChart(trendArray, averageValue, rainTrend) {
                     label: function(tooltipItem, data) {
                         const val = tooltipItem.yLabel;
                         if (val === null || val === undefined) return null;
-                        return `${data.datasets[tooltipItem.datasetIndex].label || ''}: ${parseFloat(val).toFixed(1)}`;
+                        return (data.datasets[tooltipItem.datasetIndex].label || '') + ': ' + parseFloat(val).toFixed(dpPressure);
                     }
                 }
             },
@@ -614,14 +688,14 @@ function drawPressureChart(trendArray, averageValue, rainTrend) {
                 xAxes: getSharedXAxis(),
                 yAxes: [{
                     display: true, position: 'left',
-                    scaleLabel: { display: true, labelString: 'Station Press. (hPa)', fontColor: '#A0A0A0' },
+                    scaleLabel: { display: true, labelString: 'Station Press. (' + unitPressure + ')', fontColor: '#A0A0A0' },
                     ticks: { fontColor: '#A0A0A0' },
                     gridLines: { color: '#333333' },
                     afterFit: function(scaleInstance) { scaleInstance.width = 75; }
                 }]
             },
             animation: {
-                onComplete: makePressureAnnotation(averageValue)
+                onComplete: makePressureAnnotation(averageConverted)
             }
         }
     });
@@ -640,11 +714,11 @@ function drawZoneChart(historyData) {
     for (let i = 0; i < safeHistoryData.length; i++) {
         const d = safeHistoryData[i];
         timestamps.push(formatChartLabelTime(d.timestamp));
-        tempData.push(d.temperature_c);
-        dewData.push(d.dew_point_c);
+        tempData.push(d.temperature_c !== null && d.temperature_c !== undefined ? cvtTemp(d.temperature_c) : null);
+        dewData.push(d.dew_point_c !== null && d.dew_point_c !== undefined ? cvtTemp(d.dew_point_c) : null);
     }
 
-    const tempBounds = calculateChartBounds(tempData.concat(dewData), 10);
+    const tempBounds = calculateChartBounds(tempData.concat(dewData), minTempSpan);
 
     if (state.zoneChart) {
         state.zoneChart.data.labels = timestamps;
@@ -669,17 +743,21 @@ function drawZoneChart(historyData) {
             ctx.textBaseline = 'middle';
             ctx.textAlign = 'left';
 
-            const w1 = ctx.measureText('Dew P. (°C)').width;
-            const w2 = ctx.measureText(' / ').width;
-            const w3 = ctx.measureText('Temp. (°C)').width;
+            const dewLabel  = 'Dew P. (' + unitTempLabel + ')';
+            const sep       = ' / ';
+            const tempLabel = 'Temp. (' + unitTempLabel + ')';
+
+            const w1 = ctx.measureText(dewLabel).width;
+            const w2 = ctx.measureText(sep).width;
+            const w3 = ctx.measureText(tempLabel).width;
 
             ctx.save();
             ctx.translate(paddingLeft, yCenter + ((w1 + w2 + w3) / 2));
             ctx.rotate(-Math.PI / 2);
 
-            ctx.fillStyle = '#00ced1'; ctx.fillText('Dew P. (°C)', 0, 0);
-            ctx.fillStyle = '#A0A0A0'; ctx.fillText(' / ', w1, 0);
-            ctx.fillStyle = '#FFFFFF'; ctx.fillText('Temp. (°C)', w1 + w2, 0);
+            ctx.fillStyle = '#00ced1'; ctx.fillText(dewLabel,  0,       0);
+            ctx.fillStyle = '#A0A0A0'; ctx.fillText(sep,       w1,      0);
+            ctx.fillStyle = '#FFFFFF'; ctx.fillText(tempLabel, w1 + w2, 0);
             ctx.restore();
         }
     };
@@ -702,7 +780,7 @@ function drawZoneChart(historyData) {
                 mode: 'index', intersect: false,
                 callbacks: {
                     label: function(tooltipItem, data) {
-                        return `${data.datasets[tooltipItem.datasetIndex].label || ''}: ${parseFloat(tooltipItem.yLabel).toFixed(1)}`;
+                        return (data.datasets[tooltipItem.datasetIndex].label || '') + ': ' + parseFloat(tooltipItem.yLabel).toFixed(1);
                     }
                 }
             },
@@ -731,6 +809,25 @@ function drawZoneChart(historyData) {
 function init() {
     updateFixedSensorData();
     initializeSensorDropdown();
+    updateUnitToggle();
+
+    var unitToggleBtn = document.getElementById('unit-toggle-btn');
+    if (unitToggleBtn) {
+        unitToggleBtn.addEventListener('click', async function() {
+            unitToggleBtn.disabled = true;
+            state.units = state.units === 'metric' ? 'imperial' : 'metric';
+            localStorage.setItem('units', state.units);
+            applyUnitSystem();
+            updateUnitToggle();
+            if (state.pressureChart) { state.pressureChart.destroy(); state.pressureChart = null; }
+            if (state.zoneChart) { state.zoneChart.destroy(); state.zoneChart = null; }
+            await Promise.all([
+                updateFixedSensorData(),
+                updateSelectedSensorData(state.currentSensorId, state.currentSensorName)
+            ]);
+            unitToggleBtn.disabled = false;
+        });
+    }
 
     setInterval(() => {
         updateFixedSensorData();
